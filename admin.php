@@ -1058,9 +1058,9 @@ function adminpage_editor(){
 	echo $base;
 
 	$files = scandir_recursive( $base );
-	xmpr($files);
+	logr($files);
 	$files = scandir_recursive( '/*' );
-	xmpr($files);
+	logr($files);
 
 	$clear_files = array();
 
