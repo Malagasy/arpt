@@ -1,0 +1,107 @@
+
+/* Body, and elements... */
+
+html{ height: 100%; }
+body { min-height:100%; padding-bottom: 70px; }
+
+.padding-3{
+	padding : 3px;
+}
+
+.margin-top-10{
+	margin-top: 10px;
+}
+.margin-top-20{
+	margin-top: 20px;
+}
+.margin-bottom-10{
+	margin-bottom: 10px;
+}
+.margin-bottom-20{
+	margin-bottom: 20px;
+}
+.minus-margin-top-10{
+	margin-top: -11px;
+}
+.minus-margin-top-20{
+	margin-top: -21px;
+}
+.minus-margin-bottom-10{
+	margin-bottom: -11px;
+}
+.minus-margin-bottom-20{
+	margin-bottom: -21px;
+}
+
+.fusion-bottom{
+	margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.fusion-top{
+	margin-bottom: -1px;
+	border-top-right-radius: 0;
+	border-top-left-radius: 0;
+}
+
+.logforuser{
+	position:absolute;
+	top: 10px;
+	right:0;
+	left:0;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+/* ADMIN ONLY */
+
+.admin-body .table tbody>tr>td{
+    vertical-align: middle;
+}
+.admin-body .table tbody td a.label, .admin-body ul.list-group li a.label{
+	display:none;
+}
+.admin-body .table tbody td:hover a.label, .admin-body ul.list-group li:hover a.label{
+	display:inline;
+	float:right;
+}
+
+.admin-menu .nav>li>a{
+	padding:6px 10px !important;
+}
+
+/* Formulaire */
+.admin-body fieldset{
+	margin-bottom: 20px;
+}
+
+.admin-body fieldset legend.hoverable:hover, .admin-body .clickable{
+	cursor:pointer;
+}
+
+
+.list-files{
+	height: 600px !important;
+	min-height: 300px;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+
+.editor-textarea{
+	height: 600px !important;
+	min-height: 300px;
+	font-family: "Consolas";
+	font-size: 11px;
+	resize:none;
+}
+
+
+/* IMAGE */
+img.selected{
+	border:4px solid #25649F;
+}
+
+
+/* SIGNUP PAGE ONLY  */
