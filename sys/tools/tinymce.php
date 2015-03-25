@@ -43,5 +43,8 @@ function is_tinymceable( $page_arg ){
 	global $arpt;
 	$conf = $arpt->get_entity( 'tinymce_conf' );
 
+	if( !isset($conf['allows'] ) )
+		$conf['allows'] = new Chain;
+
 	return $conf['allows']->check( $page_arg );
 }
