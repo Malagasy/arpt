@@ -56,5 +56,6 @@ include_once get_tool_sysdir() . '/users.php';
 include_once get_tool_sysdir() . '/categories.php';
 include_once get_tool_sysdir() . '/tinymce.php';
 include_once get_tool_sysdir() . '/admin.php';
+include_once get_tool_sysdir() . '/editor.php';
 include_once get_tool_sysdir() . '/email.php';
 include_once get_tool_sysdir() . '/internal.php';
