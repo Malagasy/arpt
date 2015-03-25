@@ -66,7 +66,7 @@ function get_theme_dir(){
 	return './development/themes/'.get_setting('current_theme');
 }
 function get_upload_dir(){
-	return './arpt/development/themes/uploads';
+	return './development/themes/uploads';
 }
 
 function get_tool_dir(){
