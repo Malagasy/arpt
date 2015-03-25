@@ -47,21 +47,6 @@ function glob_recursive($pattern, $flags = 0){
 
 	return $files;
 }
-function scandir_recursive( $folder ){
-	$scanned = scandir( $folder );
-
-	$r = array();
-
-	foreach( $scanned as $file ){
-		if( is_dir( $file ) ){
-			$r[$file] = scandir_recursive( $folder . '/' . $file );
-		}else{
-			$r[] = $file;
-		}
-	}
-
-	return $r;
-}
 
 function file_extension( $string ){
 	return pathinfo( $string , PATHINFO_EXTENSION );

@@ -283,6 +283,12 @@ class Arpt{
 		$this->entity[$name] = $entity;
 	}
 
+	public static function is_ajaxcall(){
+		if( defined('THE_AJAX_CALL' ) )
+			return THE_AJAX_CALL === true ? true : false;
+		return false;
+	}
+
 	private function checkurl(){ 
 		//if( is_adminpage() ){	
 			//if( !currentusercan( 'view-backend' ) || ( is_arg( 'general' ) && !currentusercan( 'manage-settings') ) ||  ( is_arg( array( 'add-content' , 'list-contents' , 'edit-content' ) ) && !currentusercan( 'manage-contents') ) || ( is_arg( array( 'category' , 'contents' , 'navmenu' , 'widgetmenu' ) ) && !currentusercan( 'manage-options') )  )

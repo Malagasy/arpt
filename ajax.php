@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+DEFINE('THE_AJAX_CALL',true);
+
 include_once 'loader.php';
 
 $arpt = Arpt::getInstance();

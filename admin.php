@@ -1092,63 +1092,57 @@ function adminpage_editor(){
 				?>
 			</div>
 
-			<script type="text/javascript">
-			jQuery(".editor-textarea").keydown(function(e) {
-			    if(e.keyCode === 9) { // tab was pressed
-			        // get caret position/selection
-			        var start = this.selectionStart;
-			        var end = this.selectionEnd;
-
-			        var $this = $(this);
-			        var value = $this.val();
-
-			        // set textarea value to: text before caret + tab + text after caret
-			        $this.val(value.substring(0, start)
-			                    + "\t"
-			                    + value.substring(end));
-
-			        // put caret at right position again (add one for the tab)
-			        this.selectionStart = this.selectionEnd = start + 1;
-
-			        // prevent the focus lose
-			        e.preventDefault();
-			    }
-			});
-
-			jQuery(".valid-editor-textarea").addClass("disabled");
-			jQuery(".editor-textarea").on("change keyup paste",function(){
-				jQuery(".valid-editor-textarea").removeClass("disabled");
-			});
-
-			jQuery(window).on("beforeunload",function(e){
-				console.log("try");
-				if( !jQuery(".valid-editor-textarea").hasClass("disabled") ){
-					if( !confirm("Le fichier a été modifié. Voulez-vous vraiment partir ?") )
-						e.preventDefault();
-				}
-				e.preventDefault();
-			});
-			</script>
-
-			<div class="col-md-4">
-				<?php
-	
-				if( $clear_files ){
-					echo '<div class="panel panel-primary">';
-					echo '<div class="panel-heading">Fichiers</div>';
-					echo '<div  class="list-group list-files">';
-					foreach( $clear_files as $file ){
-						echo '<a href="'. get_clean_url( '?file='.urlencode( $file ) ) .'" class="list-group-item"><small>' . $file . '</small></a>';
-					}
-					echo '</div>';
-					echo '</div>';
-				}
-
-
-				?>
+			<div class="col-md-4"><?php
+				echo '<div class="panel panel-primary" data-currentfolder="">';
+				echo '<div class="panel-heading">Fichiers</div>';
+				echo '<div  class="list-group list-files">';
+				echo '</div>';
+				echo '</div>'; ?>
 			</div>
 
 		</div>
-	</div><?php
+	</div>
+
+	<script type="text/javascript">
+	jQuery(".editor-textarea").keydown(function(e) {
+	    if(e.keyCode === 9) { // tab was pressed
+	        // get caret position/selection
+	        var start = this.selectionStart;
+	        var end = this.selectionEnd;
+
+	        var $this = $(this);
+	        var value = $this.val();
+
+	        // set textarea value to: text before caret + tab + text after caret
+	        $this.val(value.substring(0, start)
+	                    + "\t"
+	                    + value.substring(end));
+
+	        // put caret at right position again (add one for the tab)
+	        this.selectionStart = this.selectionEnd = start + 1;
+
+	        // prevent the focus lose
+	        e.preventDefault();
+	    }
+	});
+
+	jQuery(".valid-editor-textarea").addClass("disabled");
+	jQuery(".editor-textarea").on("change keyup paste",function(){
+		jQuery(".valid-editor-textarea").removeClass("disabled");
+	});
+
+	if( jQuery(".panel-primary").attr("data-currentfolder" ) == '' ){
+		jQuery(".panel-primary .list-files").html( phpajax( 'get_files_inside' , '/' ) );
+	}
+
+	jQuery(window).on("beforeunload",function(e){
+		console.log("try");
+		if( !jQuery(".valid-editor-textarea").hasClass("disabled") ){
+			if( !confirm("Le fichier a été modifié. Voulez-vous vraiment partir ?") )
+				e.preventDefault();
+		}
+		e.preventDefault();
+	});
+	</script><?php
 }
 ?>
