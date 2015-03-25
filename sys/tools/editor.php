@@ -11,7 +11,7 @@ function editor_get_files_inside( $folder ){
 
 	foreach( $files as $file ){
 		if( $file[0] == '.' ) continue;
-		if( is_dir( $file ) ){
+		if( is_dir( $folder  . '/' . $file ) ){
 			$files_2[] = $file;
 		}else{
 			if( in_array( file_extension( $file ) , $exts ) )
