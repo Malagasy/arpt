@@ -7,8 +7,6 @@ function editor_get_files_inside( $folder ){
 
 	$files_2 = array();
 
-	logr( $files );
-
 	foreach( $files as $file ){
 		if( $file[0] == '.' ) continue;
 		if( is_dir( $folder  . '/' . $file ) ){
@@ -22,7 +20,7 @@ function editor_get_files_inside( $folder ){
 	if( !Arpt::is_ajaxcall() ) return $files_2;
 
 	foreach( $files_2 as $file ){
-		if( is_dir( $file ) )
+		if( is_dir( $folder . '/' . $file ) )
 			echo '<a href="#" data-type="folder" data-path="'.$file.'" class="list-group-item"><strong>' . $file . '</strong></a>';
 		else
 			echo '<a href="#" data-type="file" data-path="'.$file.'" class="list-group-item">' . $file . '</a>';

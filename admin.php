@@ -1055,7 +1055,6 @@ function adminpage_editor(){
 		$base .= get_base_var('/');
 	else
 		$base .= '/';
-	logr( editor_get_files_inside( './development' ) );
 	?>
 	<div class="container-fluid">
 		<div class="row">
@@ -1069,7 +1068,7 @@ function adminpage_editor(){
 			</div>
 
 			<div class="col-md-4"><?php
-				echo '<div class="panel panel-primary" data-currentfolder="">';
+				echo '<div class="panel panel-primary" data-currentfolder="" data-basefolder="'.$base.'">';
 				echo '<div class="panel-heading">Fichiers</div>';
 				echo '<div  class="list-group list-files">';
 				echo '</div>';
@@ -1107,6 +1106,7 @@ function adminpage_editor(){
 		jQuery(".valid-editor-textarea").removeClass("disabled");
 	});
 	var current_folder = jQuery(".panel-primary").attr("data-currentfolder" );
+	var base_folder = jQuery(".panel-primary").attr("data-basefolder" );
 	if( current_folder == '' ){ 
 		jQuery(".panel-primary").attr("data-currentfolder" ,"<?php echo $base; ?>" );
 		jQuery(".panel-primary .list-files").html( phpajax( 'editor_get_files_inside' , '<?php echo $base; ?>' ) );
@@ -1118,11 +1118,21 @@ function adminpage_editor(){
 		e.preventDefault();
 		var type = jQuery(this).attr("data-type");
 		var path = jQuery(this).attr("data-path");
+		current_folder = jQuery(".panel-primary").attr("data-currentfolder" );
 
 		if( type == 'folder' ){
-			current_folder = jQuery(".panel-primary").attr("data-currentfolder" );
 			jQuery(".panel-primary").attr("data-currentfolder", current_folder + path + '/' );
 			jQuery(".panel-primary .list-files").html( phpajax( 'editor_get_files_inside' ,  current_folder + path + '/' ) );
+			jQuery(".panel-primary .list-files").append('<a href="#" data-type="back" data-path=".." class="list-group-item"><strong>..</strong></a>');
+		}
+
+		if( type == 'back' ){
+			var parent_folder = /[^/]*$/.exec( current_folder )[0];
+			jQuery(".panel-primary").attr("data-currentfolder", parent_folder );
+			jQuery(".panel-primary .list-files").html( phpajax( 'editor_get_files_inside' ,  parent_folder ) );
+
+			if( parent_folder != base_folder )
+				jQuery(".panel-primary .list-files").append('<a href="#" data-type="back" data-path=".." class="list-group-item"><strong>..</strong></a>');
 		}
 	});
 
