@@ -1127,17 +1127,16 @@ function adminpage_editor(){
 		}
 
 		if( type == 'back' ){
-			var parent_folder = /[^/]*$/.exec( current_folder )[0];
+			//var parent_folder = /[^/]*$/.exec( current_folder )[0];
 			jQuery(".panel-primary").attr("data-currentfolder", parent_folder );
 			jQuery(".panel-primary .list-files").html( phpajax( 'editor_get_files_inside' ,  parent_folder ) );
 
 			if( parent_folder != base_folder )
-				jQuery(".panel-primary .list-files").append('<a href="#" data-type="back" data-path=".." class="list-group-item"><strong>..</strong></a>');
+				jQuery(".panel-primary .list-files").prepend('<a href="#" data-type="back" data-path=".." class="list-group-item"><strong>..</strong></a>');
 		}
 	});
 
 	jQuery(window).on("beforeunload",function(e){
-		console.log("try");
 		if( !jQuery(".valid-editor-textarea").hasClass("disabled") ){
 			if( !confirm("Le fichier a été modifié. Voulez-vous vraiment partir ?") )
 				e.preventDefault();
