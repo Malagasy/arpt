@@ -1055,7 +1055,7 @@ function adminpage_editor(){
 	else
 		$base = '/';
 
-	$files = scandir_recursive( get_root_dir() );
+	$files = scandir_recursive( $base );
 
 	$clear_files = array();
 

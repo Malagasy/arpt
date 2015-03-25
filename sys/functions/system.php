@@ -2,8 +2,9 @@
 
 
 function get_base_var( $separator = null ){
-	if( ! get_root_dir() ) return false;
-	return $separator . get_root_dir() . $separator;
+	global $arpt;
+	if( !$arpt->get_base_url() ) return false;
+	return $separator . $arpt->get_base_url() . $separator;
 }
 
 function get_modelspage(){
