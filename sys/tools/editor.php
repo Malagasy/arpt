@@ -3,6 +3,8 @@
 function get_files_inside( $folder ){
 	$files = scandir( $folder );
 
+	echo 'lol';
+
 	if( !Arpt::is_ajaxcall() ) return $files;
 
 	foreach( $files as $file ){
