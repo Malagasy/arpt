@@ -8,6 +8,6 @@ define('MYSQLI_DATABASE' , 'db569955704');
 define( 'HOME_FILE' , 'home.php' );
 
 define( 'ROOT_DIR' , null );
-define( 'BASE_URL' , 'MyFramework' );
+define( 'BASE_URL' , null );
 
 define( 'MVC_MOD' , false );
