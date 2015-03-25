@@ -1101,7 +1101,7 @@ function adminpage_editor(){
 	    }
 	});
 
-	jQuery(".editor-textarea").on("change keyup paste",function(){
+	jQuery(".the_code").on("change keyup paste",".editor-textarea",function(){
 		if( jQuery(".valid-editor-textarea").html() == "OK" )
 			jQuery(".valid-editor-textarea").html("Enregistrer");
 		jQuery(".valid-editor-textarea").removeClass("disabled");
