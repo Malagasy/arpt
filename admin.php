@@ -1050,10 +1050,12 @@ function adminpage_multimedia(){
 }
 
 function adminpage_editor(){
+	echo get_base_var();
 	if( get_base_var() )
 		$base = get_base_var('/');
 	else
 		$base = '/';
+	echo $base;
 
 	$files = scandir_recursive( $base );
 
