@@ -1126,7 +1126,7 @@ function adminpage_editor(){
 			jQuery(".panel-primary .list-files").prepend('<a href="#" data-type="back" data-path="" class="list-group-item"><strong>..</strong></a>');
 		}
 		if( type == 'back' ){
-			//var parent_folder = /[^/]*$/.exec( current_folder )[0];
+			var parent_folder = /[^/]*$/.exec( current_folder )[0];
 			jQuery(".panel-primary").attr("data-currentfolder", parent_folder );
 			jQuery(".panel-primary .list-files").html( phpajax( 'editor_get_files_inside' ,  parent_folder ) );
 
