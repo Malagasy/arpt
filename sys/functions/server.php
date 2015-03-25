@@ -16,3 +16,8 @@ function is_ssl(){
 function get_the_host(){
 	return $_SERVER['HTTP_HOST'];
 }
+
+
+function get_root_dir(){
+	return ROOT_DIR;
+}

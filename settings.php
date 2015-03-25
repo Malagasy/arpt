@@ -7,7 +7,7 @@ define('MYSQLI_DATABASE' , 'db569955704');
 
 define( 'HOME_FILE' , 'home.php' );
 
-define( 'ROOT_DIR' , getcwd() );
+define( 'ROOT_DIR' , 'arpt' );
 define( 'BASE_URL' , 'MyFramework' );
 
 define( 'MVC_MOD' , false );

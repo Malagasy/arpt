@@ -62,10 +62,6 @@ function get_logout_url(){
 	return get_url( 'quit' );
 }
 
-function get_root_dir(){
-	return ROOT_DIR;
-}
-
 function get_theme_dir(){
 	return './development/themes/'.get_setting('current_theme');
 }
