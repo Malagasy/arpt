@@ -1115,7 +1115,6 @@ function adminpage_editor(){
 	}
 
 	jQuery(".list-files a").on("click",function(e){
-		e.preventDefault();
 		var type = jQuery(this).attr("data-type");
 		var path = jQuery(this).attr("data-path");
 		current_folder = jQuery(".panel-primary").attr("data-currentfolder" );
@@ -1134,6 +1133,9 @@ function adminpage_editor(){
 			if( parent_folder != base_folder )
 				jQuery(".panel-primary .list-files").prepend('<a href="#" data-type="back" data-path="" class="list-group-item"><strong>..</strong></a>');
 		}
+
+		
+		e.preventDefault();
 	});
 
 	jQuery(window).on("beforeunload",function(e){
