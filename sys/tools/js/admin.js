@@ -95,7 +95,7 @@ function phpajax( action , param1 , param2, param3 , param4 ){
 
 	var result;
 	jQuery.ajax({
-		url:ajaxpage, 
+		url:"ajax.php", 
 		type: "POST",
 		async: false,
 		data:{
