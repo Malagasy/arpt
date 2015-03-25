@@ -1108,10 +1108,9 @@ function adminpage_editor(){
 	var current_folder = jQuery(".panel-primary").attr("data-currentfolder" );
 	var base_folder = jQuery(".panel-primary").attr("data-basefolder" );
 	if( current_folder == '' ){ 
-		jQuery(".panel-primary").attr("data-currentfolder" ,"<?php echo $base; ?>" );
-		jQuery(".panel-primary .list-files").html( phpajax( 'editor_get_files_inside' , '<?php echo $base; ?>' ) );
-	}else{
-
+		jQuery(".panel-primary").attr("data-currentfolder" ,base_folder );
+		jQuery(".panel-primary .list-files").html( phpajax( 'editor_get_files_inside' , base_folder ) );
+		jQuery(".panel-heading").html( base_folder );
 	}
 
 	jQuery(".list-files").on("click","a",function(e){
@@ -1124,16 +1123,20 @@ function adminpage_editor(){
 			jQuery(".panel-primary").attr("data-currentfolder", current_folder + path + '/' );
 			jQuery(".panel-primary .list-files").html( phpajax( 'editor_get_files_inside' ,  current_folder + path + '/' ) );
 			jQuery(".panel-primary .list-files").prepend('<a href="#" data-type="back" data-path="" class="list-group-item"><strong>..</strong></a>');
+			jQuery(".panel-heading").html(current_folder + path + '/' );
 		}
 		if( type == 'back' ){
 			current_folder = current_folder.substring( 0 , current_folder.length-1 );
 			var parent_folder = current_folder.substr( 0 , current_folder.lastIndexOf("/") ) + "/";
-			console.log(parent_folder);
+
+			jQuery(".panel-heading").html( parent_folder );
+
 			jQuery(".panel-primary").attr("data-currentfolder", parent_folder );
 			jQuery(".panel-primary .list-files").html( phpajax( 'editor_get_files_inside' ,  parent_folder ) );
 
 			if( parent_folder != base_folder )
 				jQuery(".panel-primary .list-files").prepend('<a href="#" data-type="back" data-path="" class="list-group-item"><strong>..</strong></a>');
+
 		}
 	});
 
