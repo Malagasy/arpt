@@ -1127,6 +1127,7 @@ function adminpage_editor(){
 		}
 		if( type == 'back' ){
 			var parent_folder = current_folder.substr( 0 , current_folder.lastIndexOf("/") ) + "/";
+			console.log(parent_folder);
 			jQuery(".panel-primary").attr("data-currentfolder", parent_folder );
 			jQuery(".panel-primary .list-files").html( phpajax( 'editor_get_files_inside' ,  parent_folder ) );
 
