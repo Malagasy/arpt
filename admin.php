@@ -1149,10 +1149,12 @@ function adminpage_editor(){
 	});
 
 	jQuery(".the_code").on("click",".valid-editor-textarea",function(e){
-		var r = phpajax( 'editor_register_file' , jQuery(".the_code h2").html );
-		if( r != "false" )
+		var r = phpajax( 'editor_register_file' , jQuery(".the_code h2").html , jQuery(".editor-textarea").val() );
+		if( r != "false" ){
 			jQuery(this).html("OK");
-		jQuery(".valid-editor-textarea").addClass("disabled");
+			jQuery(".valid-editor-textarea").addClass("disabled");
+		}
+		jQuery(this).html("Réessayer SVP");
 	});
 
 	</script><?php

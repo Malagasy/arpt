@@ -51,6 +51,6 @@ function editor_register_file( $path , $content ){
 		return file_put_contents($path, $content);
 	}
 
-	if( !file_exists( $path ) ) die("false");
+	if( !file_exists( $path ) ) die("filenotexists");
 	die( file_put_contents($path, $content ) );
 }
