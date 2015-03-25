@@ -1153,8 +1153,9 @@ function adminpage_editor(){
 		if( r == "filechanged" ){
 			jQuery(this).html("OK");
 			jQuery(".valid-editor-textarea").addClass("disabled");
+		}else{
+			jQuery(this).html("Réessayer SVP");
 		}
-		jQuery(this).html("Réessayer SVP");
 	});
 
 	</script><?php
