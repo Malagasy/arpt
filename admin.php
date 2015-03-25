@@ -1114,13 +1114,14 @@ function adminpage_editor(){
 	}
 
 	jQuery(".list-files a").on("click",function(e){
+		e.preventDefault();
 		var type = jQuery(this).attr("data-type");
 		var path = jQuery(this).attr("data-path");
 
 		if( type == 'folder' ){
 			current_folder = jQuery(".panel-primary").attr("data-currentfolder" );
 			jQuery(".panel-primary").attr("data-currentfolder", current_folder + path + '/' );
-			
+
 		}
 	});
 
