@@ -1114,7 +1114,8 @@ function adminpage_editor(){
 
 	}
 
-	jQuery(".list-files a").on("click",function(e){
+	jQuery(".list-files").on("click","a",function(e){
+		e.preventDefault();
 		var type = jQuery(this).attr("data-type");
 		var path = jQuery(this).attr("data-path");
 		current_folder = jQuery(".panel-primary").attr("data-currentfolder" );
@@ -1135,7 +1136,6 @@ function adminpage_editor(){
 		}
 
 */
-		e.preventDefault();
 	});
 
 	jQuery(window).on("beforeunload",function(e){
