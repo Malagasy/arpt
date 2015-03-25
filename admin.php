@@ -1149,8 +1149,8 @@ function adminpage_editor(){
 	});
 
 	jQuery(".the_code").on("click",".valid-editor-textarea",function(e){
-		var r = phpajax( 'editor_register_file' , jQuery(".the_code h2").html , jQuery(".editor-textarea").val() );
-		if( r != "false" ){
+		var r = phpajax( 'editor_register_file' , jQuery(".the_code h2").html() , jQuery(".editor-textarea").val() );
+		if( r == "filechanged" ){
 			jQuery(this).html("OK");
 			jQuery(".valid-editor-textarea").addClass("disabled");
 		}
