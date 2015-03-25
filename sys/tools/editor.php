@@ -39,5 +39,5 @@ function editor_display_file_code( $path ){
 
 	if( !Arpt::is_ajaxcall() ) return $code;
 
-	echo $code;
+	echo form_textarea( array( 'name' => 'file_code' , 'value' => $code , 'class' => 'editor-textarea form-control' ) );;
 }
