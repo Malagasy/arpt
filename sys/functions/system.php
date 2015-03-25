@@ -58,6 +58,7 @@ function scandir_recursive( $folder ){
 		}else{
 			$r[] = $file;
 		}
+	}
 
 	return $r;
 }
