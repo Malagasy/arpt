@@ -1107,7 +1107,7 @@ function adminpage_editor(){
 	});
 	var current_folder = jQuery(".panel-primary").attr("data-currentfolder" );
 	if( current_folder == '' ){ 
-		jQuery(".panel-primary").attr("data-currentfolder" ,"<?php echo $base; >" );
+		jQuery(".panel-primary").attr("data-currentfolder" ,"<?php echo $base; ?>" );
 		jQuery(".panel-primary .list-files").html( phpajax( 'editor_get_files_inside' , '<?php echo $base; ?>' ) );
 	}else{
 
