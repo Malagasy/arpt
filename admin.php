@@ -1126,11 +1126,7 @@ function adminpage_editor(){
 			jQuery(".panel-primary .list-files").prepend('<a href="#" data-type="back" data-path="" class="list-group-item"><strong>..</strong></a>');
 		}
 		if( type == 'back' ){
-			console.log(current_folder);
-			current_folder = "lol/bob/lol";
-			var parts = current_folder.split("/");
-			var parent_folder = parts[parts.length -1];
-			console.log(parent_folder);
+			parent_folder = current_folder.substr( 0 , current_folder.lastIndexOf("/") );
 			jQuery(".panel-primary").attr("data-currentfolder", parent_folder );
 			jQuery(".panel-primary .list-files").html( phpajax( 'editor_get_files_inside' ,  parent_folder ) );
 
