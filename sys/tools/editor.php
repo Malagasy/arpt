@@ -7,6 +7,8 @@ function editor_get_files_inside( $folder ){
 
 	$files_2 = array();
 
+	logr( $files );
+
 	foreach( $files as $file ){
 		if( $file[0] == '.' ) continue;
 		if( is_dir( $file ) ){
