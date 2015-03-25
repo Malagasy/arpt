@@ -1140,8 +1140,9 @@ function adminpage_editor(){
 		}
 
 		if( type == 'file' ){
-			jQuery(".panel-heading").html( current_folder + path );
 			jQuery(".the_code").html( phpajax( 'editor_display_file_code' ,  current_folder + path ) );
+			jQuery(".the_code").prepend( '<h2>' + current_folder + path + '</h2>');
+			jQuery(".the_code").prepend( '<button class="btn btn-success pull-right">Enregistrer</button>' );
 		}
 	});
 
