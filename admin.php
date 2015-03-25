@@ -854,7 +854,15 @@ function adminpage_multimedia(){
 	$params_nb = -1;
 
 
-	$the_filter = isset( $_GET['dir'] ) ? $_GET['dir'] : '/';
+	$the_filter = 
+	if( isset( $_GET['dir'] ) ) :
+		$the_filter = $_GET['dir'];
+	else :
+		if( get_base_var() )
+			$the_filter = '.' . get_base_var('/');
+		else
+			$the_filter = './';
+	endif;
 	$uploads = get_uploaded( utf8_decode( $the_filter ) );
 	$nbOfUploads = count( $uploads );
 	$upload_dir_str =  get_upload_dir();
@@ -1134,7 +1142,7 @@ function adminpage_editor(){
 				jQuery(".panel-primary .list-files").prepend('<a href="#" data-type="back" data-path="" class="list-group-item"><strong>..</strong></a>');
 		}
 
-		
+
 		e.preventDefault();
 	});
 
