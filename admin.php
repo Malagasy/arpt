@@ -1054,21 +1054,9 @@ function adminpage_editor(){
 		$base = get_base_var('/');
 	else
 		$base = '/';
-
-	$files = scandir_recursive( $base );
-	logr($files);
 	$clear_files = array();
-
-	foreach( $files as $file ){
-		if( $file[0] == '.' ) continue;
-
-		$allowed_extensions = array( 'json' , 'js' , 'css' , 'php' , 'php4' , 'php5' , 'phtml' , 'html' , 'htm' , 'xml' , 'sql' , 'txt' , 'log' );
-
-		$allowed_extensions = call_layers( 'allowed_extensions_editor_layer' , $allowed_extensions );
-
-		if( !in_array( strtolower( file_extension( $file ) ) , $allowed_extensions ) ) continue;
-		$clear_files[] = $file;
-	}
+			
+	$allowed_extensions = array( 'json' , 'js' , 'css' , 'php' , 'php4' , 'php5' , 'phtml' , 'html' , 'htm' , 'xml' , 'sql' , 'txt' , 'log' );
 	?>
 	<div class="container-fluid">
 		<div class="row">
