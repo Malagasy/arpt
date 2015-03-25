@@ -1118,7 +1118,7 @@ function adminpage_editor(){
 		e.preventDefault();
 		var type = jQuery(this).attr("data-type");
 		var path = jQuery(this).attr("data-path");
-		current_folder = jQuery(".panel-primary").attr("data-currentfolder" );
+		var current_folder = jQuery(".panel-primary").attr("data-currentfolder" );
 
 		if( type == 'folder' ){
 			jQuery(".panel-primary").attr("data-currentfolder", current_folder + path + '/' );
@@ -1126,6 +1126,7 @@ function adminpage_editor(){
 			jQuery(".panel-primary .list-files").prepend('<a href="#" data-type="back" data-path="" class="list-group-item"><strong>..</strong></a>');
 		}
 		if( type == 'back' ){
+			console.log(current_folder);
 			var parts = current_folder.split("/");
 			var parent_folder = parts[parts.length -1];
 			console.log(parent_folder);
