@@ -47,21 +47,19 @@ function glob_recursive($pattern, $flags = 0){
 
 	return $files;
 }
-function scandir_recursive($dir, $prefix = '') {
-  $dir = rtrim($dir, '\\/');
-  $result = array();
+function scandir_recursive( $folder ){
+	$scanned = scandir( $folder );
 
-    foreach (scandir($dir) as $f) {
-      if ($f !== '.' and $f !== '..') {
-        if (is_dir("$dir/$f")) {
-          $result = array_merge($result, scandir_recursive("$dir/$f", "$prefix$f/"));
-        } else {
-          $result[] = $prefix.$f;
-        }
-      }
-    }
+	$r = array();
 
-  return $result;
+	foreach( $scanned as $file ){
+		if( is_dir( $file ) ){
+			$r[$file] = scandir_recursive( $folder . '/' . $file );
+		}else{
+			$r[] = $file;
+		}
+
+	return $r;
 }
 
 function file_extension( $string ){
