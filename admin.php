@@ -1128,6 +1128,7 @@ function adminpage_editor(){
 		if( type == 'back' ){
 			var parts = current_folder.split("/");
 			var parent_folder = parts[parts.length -1];
+			console.log(parent_folder);
 			jQuery(".panel-primary").attr("data-currentfolder", parent_folder );
 			jQuery(".panel-primary .list-files").html( phpajax( 'editor_get_files_inside' ,  parent_folder ) );
 
