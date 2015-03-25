@@ -1055,8 +1055,6 @@ function adminpage_editor(){
 	else
 		$base = '/';
 	$clear_files = array();
-
-	logr(get_files_inside('./'));
 			
 	$allowed_extensions = array( 'json' , 'js' , 'css' , 'php' , 'php4' , 'php5' , 'phtml' , 'html' , 'htm' , 'xml' , 'sql' , 'txt' , 'log' );
 	?>
@@ -1122,7 +1120,7 @@ function adminpage_editor(){
 	});
 
 	if( jQuery(".panel-primary").attr("data-currentfolder" ) == '' ){
-		jQuery(".panel-primary .list-files").html( phpajax( 'get_files_inside' , './' ) );
+		jQuery(".panel-primary .list-files").html( phpajax( 'editor_get_files_inside' , './' ) );
 	}
 
 	jQuery(window).on("beforeunload",function(e){
