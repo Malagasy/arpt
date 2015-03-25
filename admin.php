@@ -1056,7 +1056,7 @@ function adminpage_editor(){
 		$base = '/';
 	$clear_files = array();
 
-	xmpr(get_files_inside('/'));
+	logr(get_files_inside('/'));
 			
 	$allowed_extensions = array( 'json' , 'js' , 'css' , 'php' , 'php4' , 'php5' , 'phtml' , 'html' , 'htm' , 'xml' , 'sql' , 'txt' , 'log' );
 	?>
