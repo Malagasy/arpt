@@ -1058,7 +1058,7 @@ function adminpage_editor(){
 	?>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-8 the_code">
+			<div class="col-md-10 the_code">
 				<p>
 					Vous êtes sur l'éditeur de texte ARpt.
 				</p>
@@ -1067,7 +1067,7 @@ function adminpage_editor(){
 				</p>
 			</div>
 
-			<div class="col-md-4"><?php
+			<div class="col-md-2"><?php
 				echo '<div class="panel panel-primary" data-currentfolder="" data-basefolder="'.$base.'">';
 				echo '<div class="panel-heading">Fichiers</div>';
 				echo '<div  class="list-group list-files">';

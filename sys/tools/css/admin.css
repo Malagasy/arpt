@@ -90,10 +90,10 @@ body { min-height:100%; padding-bottom: 70px; }
 }
 
 .editor-textarea{
-	height: 600px !important;
+	height: 700px !important;
 	min-height: 300px;
 	font-family: "Consolas";
-	font-size: 11px;
+	font-size: 12px;
 	resize:none;
 }
 
