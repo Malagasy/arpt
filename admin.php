@@ -1055,6 +1055,7 @@ function adminpage_editor(){
 		$base .= get_base_var('/');
 	else
 		$base .= '/';
+	logr( editor_get_files_inside( './development' ) );
 	?>
 	<div class="container-fluid">
 		<div class="row">
