@@ -26,6 +26,7 @@ function editor_get_files_inside( $folder ){
 			echo '<a href="#" data-type="file" data-path="'.$file.'" class="list-group-item">' . $file . '</a>';
 
 	}
+	die();
 }
 
 function get_allowed_extension( $arg = array() ){
@@ -39,5 +40,17 @@ function editor_display_file_code( $path ){
 
 	if( !Arpt::is_ajaxcall() ) return $code;
 
-	echo form_textarea( array( 'name' => 'file_code' , 'spellcheck' => 'false' , 'value' => $code , 'class' => 'editor-textarea form-control' ) );;
+	$code = form_textarea( array( 'name' => 'file_code' , 'spellcheck' => 'false' , 'value' => $code , 'class' => 'editor-textarea form-control' ) );;
+	die( $code );
+}
+
+function editor_register_file( $path , $content ){
+	if( !Arpt::is_ajaxcall() ){
+		if( !file_exists( $path ) ) return false;
+
+		return file_put_contents($path, $content);
+	}
+
+	if( !file_exists( $path ) ) die("false");
+	die( file_put_contents($path, $content ) );
 }

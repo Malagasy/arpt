@@ -1101,8 +1101,9 @@ function adminpage_editor(){
 	    }
 	});
 
-	jQuery(".valid-editor-textarea").addClass("disabled");
 	jQuery(".editor-textarea").on("change keyup paste",function(){
+		if( jQuery(".valid-editor-textarea").html() == "OK" )
+			jQuery(".valid-editor-textarea").html("Enregistrer");
 		jQuery(".valid-editor-textarea").removeClass("disabled");
 	});
 	var current_folder = jQuery(".panel-primary").attr("data-currentfolder" );
@@ -1143,16 +1144,17 @@ function adminpage_editor(){
 			jQuery(".the_code").html( phpajax( 'editor_display_file_code' ,  current_folder + path ) );
 			jQuery(".the_code").prepend( '<h2>' + current_folder + path + '</h2>');
 			jQuery(".the_code").prepend( '<button class="btn btn-success pull-right valid-editor-textarea">Enregistrer</button>' );
+			jQuery(".valid-editor-textarea").addClass("disabled");
 		}
 	});
 
-	jQuery(window).on("beforeunload",function(e){
-		if( !jQuery(".valid-editor-textarea").hasClass("disabled") ){
-			if( !confirm("Le fichier a été modifié. Voulez-vous vraiment partir ?") )
-				e.preventDefault();
-		}
-		e.preventDefault();
+	jQuery(".the_code").on("click",".valid-editor-textarea",function(e){
+		var r = phpajax( 'editor_register_file' , jQuery(".the_code h2").html );
+		if( r != "false" )
+			jQuery(this).html("OK");
+		jQuery(".valid-editor-textarea").addClass("disabled");
 	});
+
 	</script><?php
 }
 ?>
