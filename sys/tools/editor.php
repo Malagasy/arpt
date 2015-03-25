@@ -14,9 +14,9 @@ function editor_get_files_inside( $folder ){
 			$files_2[] = $file;
 	}
 
-	if( !Arpt::is_ajaxcall() ) return $files;
+	if( !Arpt::is_ajaxcall() ) return $files_2;
 
-	foreach( $files as $file ){
+	foreach( $files_2 as $file ){
 		if( is_dir( $file ) )
 			echo '<a href="#" data-type="folder" data-path="'.$file.'" class="list-group-item"><strong>' . $file . '</strong></a>';
 		else
