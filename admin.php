@@ -1127,6 +1127,7 @@ function adminpage_editor(){
 		}
 		if( type == 'back' ){
 			console.log(current_folder);
+			current_folder = "lol/bob/lol";
 			var parts = current_folder.split("/");
 			var parent_folder = parts[parts.length -1];
 			console.log(parent_folder);
