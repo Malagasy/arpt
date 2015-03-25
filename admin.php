@@ -1138,6 +1138,11 @@ function adminpage_editor(){
 				jQuery(".panel-primary .list-files").prepend('<a href="#" data-type="back" data-path="" class="list-group-item"><strong>..</strong></a>');
 
 		}
+
+		if( type == 'file' ){
+			jQuery(".panel-heading").html( current_folder + path );
+			jQuery(".the_code").html( phpajax( 'editor_display_file_code' ,  current_folder + path ) );
+		}
 	});
 
 	jQuery(window).on("beforeunload",function(e){

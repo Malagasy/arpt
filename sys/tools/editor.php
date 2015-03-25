@@ -33,3 +33,11 @@ function get_allowed_extension( $arg = array() ){
 	$ext = array_merge( $default , $arg );
 	return call_layers('editor_allowed_extension_layer' , $ext );
 }
+
+function editor_display_file_code( $path ){
+	$code = file_get_contents( $path );
+
+	if( !Arpt::is_ajaxcall() ) return $code;
+
+	echo $code;
+}
