@@ -854,7 +854,6 @@ function adminpage_multimedia(){
 	$params_nb = -1;
 
 
-	$the_filter = 
 	if( isset( $_GET['dir'] ) ) :
 		$the_filter = $_GET['dir'];
 	else :
