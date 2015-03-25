@@ -7,9 +7,12 @@ function editor_get_files_inside( $folder ){
 
 	$files_2 = array();
 
-	foreach( $files as $file )
+	foreach( $files as $file ){
+		if( $file[0] == '.' ) continue;
+		
 		if( in_array( file_extension( $file ) , $exts ) )
 			$files_2[] = $file;
+	}
 
 	if( !Arpt::is_ajaxcall() ) return $files;
 

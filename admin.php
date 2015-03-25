@@ -1050,34 +1050,21 @@ function adminpage_multimedia(){
 }
 
 function adminpage_editor(){
+	$base = '.';
 	if( get_base_var() )
-		$base = get_base_var('/');
+		$base .= get_base_var('/');
 	else
-		$base = '/';
-	$clear_files = array();
-			
-	$allowed_extensions = array( 'json' , 'js' , 'css' , 'php' , 'php4' , 'php5' , 'phtml' , 'html' , 'htm' , 'xml' , 'sql' , 'txt' , 'log' );
+		$base .= '/';
 	?>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-8"><?php 
-				if( isset( $_GET['file'] ) ){
-					$path = urldecode( $_GET['file'] );
-					if( in_array( $path , $clear_files ) ){
-
-						form_submit( array( 'value' => 'Enregistrer' , 'class' => 'btn btn-success pull-right valid-editor-textarea' ) );
-						echo '<h3>./' . $path . '</h3>';
-						$contents = file_get_contents( get_root_dir() . '/' . $path );
-						form_textarea( array( 'name' => 'code_file' , 'class' => 'form-control editor-textarea' , 'value' => $contents , 'spellcheck' => "false" ) );
-					}else{
-						echo 'Accès refusé.';
-					}
-				}else{
-					?>
-					<p>Vous êtes sur l'éditeur de texte ARpt.</p>
-					<p>Ce module vous donne accès aux fichiers sources de votre site. Cliquez sur un fichier sur la liste ci-contre.</p><?php
-				} 
-				?>
+			<div class="col-md-8 the_code">
+				<p>
+					Vous êtes sur l'éditeur de texte ARpt.
+				</p>
+				<p>
+					Ce module vous donne accès aux fichiers sources de votre site. Cliquez sur un fichier sur la liste ci-contre.
+				</p>
 			</div>
 
 			<div class="col-md-4"><?php
@@ -1118,10 +1105,24 @@ function adminpage_editor(){
 	jQuery(".editor-textarea").on("change keyup paste",function(){
 		jQuery(".valid-editor-textarea").removeClass("disabled");
 	});
+	var current_folder = jQuery(".panel-primary").attr("data-currentfolder" );
+	if( current_folder == '' ){ 
+		jQuery(".panel-primary").attr("data-currentfolder" ,"./" );
+		jQuery(".panel-primary .list-files").html( phpajax( 'editor_get_files_inside' , '<?php echo $base; ?>' ) );
+	}else{
 
-	if( jQuery(".panel-primary").attr("data-currentfolder" ) == '' ){
-		jQuery(".panel-primary .list-files").html( phpajax( 'editor_get_files_inside' , './' ) );
 	}
+
+	jQuery(".list-files a").on("click",function(e){
+		var type = jQuery(this).attr("data-type");
+		var path = jQuery(this).attr("data-path");
+
+		if( type == 'folder' ){
+			current_folder = jQuery(".panel-primary").attr("data-currentfolder" );
+			jQuery(".panel-primary").attr("data-currentfolder", current_folder + path + '/' );
+			
+		}
+	});
 
 	jQuery(window).on("beforeunload",function(e){
 		console.log("try");
