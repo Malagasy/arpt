@@ -1,9 +1,9 @@
 <?php
 
-define('MYSQLI_LOCALHOST' , 'localhost');
-define('MYSQLI_ROOT' , 'root');
-define('MYSQLI_PASSWORD' , '');
-define('MYSQLI_DATABASE' , 'arpt');
+define('MYSQLI_LOCALHOST' , 'db569955704.db.1and1.com');
+define('MYSQLI_ROOT' , 'dbo569955704');
+define('MYSQLI_PASSWORD' , 'rarara91');
+define('MYSQLI_DATABASE' , 'db569955704');
 
 define( 'HOME_FILE' , 'home.php' );
 
