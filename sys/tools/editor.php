@@ -40,7 +40,7 @@ function editor_display_file_code( $path ){
 
 	if( !Arpt::is_ajaxcall() ) return $code;
 
-	$code = '<div class="file_code editor-editable" spellcheck="false" contenteditable>' . $code . '</div>';
+	$code = form_textarea( array( 'name' => 'file_code' , 'spellcheck' => 'false' , 'value' => $code , 'class' => 'editor-textarea form-control' ) );;
 	die( $code );
 }
 
@@ -50,8 +50,8 @@ function editor_register_file( $path , $content ){
 
 		return file_put_contents($path, $content);
 	}
-	
+	echo $content;
 	if( !file_exists( $path ) ) die("filenotexists");
-	if( file_put_contents($path, $content  )  === false ) die( "fails");
+	if( file_put_contents($path, ( ( $content ) ) ) === false ) die( "fails");
 	die("filechanged");
 }

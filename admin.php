@@ -1079,7 +1079,7 @@ function adminpage_editor(){
 	</div>
 
 	<script type="text/javascript">
-	jQuery(".editor-editable").keydown(function(e) {
+	jQuery(".editor-textarea").keydown(function(e) {
 	    if(e.keyCode === 9) { // tab was pressed
 	        // get caret position/selection
 	        var start = this.selectionStart;
@@ -1101,7 +1101,7 @@ function adminpage_editor(){
 	    }
 	});
 
-	jQuery(".the_code").on("change keyup paste",".editor-editable",function(){
+	jQuery(".the_code").on("change keyup paste",".editor-textarea",function(){
 		if( jQuery(".valid-editor-textarea").html() == "OK" )
 			jQuery(".valid-editor-textarea").html("Enregistrer");
 		jQuery(".valid-editor-textarea").removeClass("disabled");
@@ -1149,7 +1149,7 @@ function adminpage_editor(){
 	});
 
 	jQuery(".the_code").on("click",".valid-editor-textarea",function(e){
-		var r = phpajax( 'editor_register_file' , jQuery(".the_code h2").html() , jQuery(".editor-editable").html() );
+		var r = phpajax( 'editor_register_file' , jQuery(".the_code h2").html() , jQuery(".editor-textarea").val() );
 		if( r == "filechanged" ){
 			jQuery(this).html("OK");
 			jQuery(".valid-editor-textarea").addClass("disabled");

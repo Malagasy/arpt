@@ -89,15 +89,12 @@ body { min-height:100%; padding-bottom: 70px; }
 	overflow-y:auto;
 }
 
-.editor-editable{
+.editor-textarea{
 	height: 700px !important;
 	min-height: 300px;
 	font-family: "Consolas";
 	font-size: 12px;
-	padding:10px;
 	resize:none;
-	border:1px solid black;
-	overflow-y:auto;
 }
 
 
