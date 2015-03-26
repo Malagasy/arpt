@@ -28,7 +28,7 @@ get_header();
 							</thead>
 							<tbody><?php
 								foreach( $page_system_files as $file ) : 
-									if( file_extension( $file ) != '.php' ) continue;?>
+									if( file_extension( $file ) != 'php' ) continue;?>
 								<tr>
 									<td><?php echo a( qlink() . $file , $file ); ?></td>
 								</tr><?php
@@ -39,7 +39,7 @@ get_header();
 					</div>
 
 					<div class="col-md-3"><?php
-						$page_system_files = scandir( './sys/' );
+						$main_files = scandir( './sys/' );
 						?>
 						<table class="table table-striped table-hover ">
 							<thead>
@@ -48,8 +48,8 @@ get_header();
 								</tr>
 							</thead>
 							<tbody><?php
-								foreach( $page_system_files as $file ) : 
-									if( file_extension( $file ) != '.php' ) continue;?>
+								foreach( $main_files as $file ) : 
+									if( file_extension( $file ) != 'php' ) continue;?>
 								<tr>
 									<td><?php echo a( qlink() . $file , $file ); ?></td>
 								</tr><?php
@@ -60,7 +60,7 @@ get_header();
 					</div>
 					
 					<div class="col-md-3"><?php
-						$page_system_files = scandir( './sys/functions/' );
+						$function_files = scandir( './sys/functions/' );
 						?>
 						<table class="table table-striped table-hover ">
 							<thead>
@@ -69,8 +69,8 @@ get_header();
 								</tr>
 							</thead>
 							<tbody><?php
-								foreach( $page_system_files as $file ) : 
-									if( file_extension( $file ) != '.php' ) continue;?>
+								foreach( $function_files as $file ) : 
+									if( file_extension( $file ) != 'php' ) continue;?>
 								<tr>
 									<td><?php echo a( qlink() . $file , $file ); ?></td>
 								</tr><?php
@@ -81,7 +81,7 @@ get_header();
 					</div>
 
 					<div class="col-md-3"><?php
-						$page_system_files = scandir( './sys/tools/' );
+						$tool_files = scandir( './sys/tools/' );
 						?>
 						<table class="table table-striped table-hover ">
 							<thead>
@@ -90,8 +90,8 @@ get_header();
 								</tr>
 							</thead>
 							<tbody><?php
-								foreach( $page_system_files as $file ) : 
-									if( file_extension( $file ) != '.php' ) continue;?>
+								foreach( $tool_files as $file ) : 
+									if( file_extension( $file ) != 'php' ) continue;?>
 								<tr>
 									<td><?php echo a( qlink() . $file , $file ); ?></td>
 								</tr><?php
