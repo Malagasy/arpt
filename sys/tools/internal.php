@@ -163,6 +163,8 @@ function pre_insert_new_content(){
 	endif;
 	$contentValidator = new FormValidation(); 
 	$contentValidator->required('title');
+	if( !is_systempage() )
+		$contentValidator->required('message');
 	
 	$contentValidator = call_layers( 'pre_inc_' . $_REQUEST['content_type'] , $contentValidator , $_REQUEST );
 

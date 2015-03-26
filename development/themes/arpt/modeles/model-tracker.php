@@ -18,7 +18,7 @@ get_header();
 			set_queried( array( 'slug' => $slug ) );
 
 			while( qnext() ) : ?>
-				<h1><?php echo 'Fichiers ' . qtitle() ?></h1>
+				<h1><?php echo 'Fichiers : ' . qtitle() ?></h1>
 				<p class="content">
 					<?php echo qcontent(); ?>
 				</p><?php
