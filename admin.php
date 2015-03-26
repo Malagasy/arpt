@@ -1149,6 +1149,7 @@ function adminpage_editor(){
 	});
 
 	jQuery(".the_code").on("click",".valid-editor-textarea",function(e){
+		console.log( jQuery(".editor-textarea").val() );
 		var r = phpajax( 'editor_register_file' , jQuery(".the_code h2").html() , jQuery(".editor-textarea").val() );
 		if( r == "filechanged" ){
 			jQuery(this).html("OK");
