@@ -20,7 +20,9 @@ get_header();
 			endwhile; ?>
 			<div class="view_code_block">
 				<pre>
-					<?php echo trim( htmlspecialchars( file_get_contents( './' . qtitle() ) ) );	 ?>
+					<code class="php html">
+						<?php echo trim( htmlspecialchars( file_get_contents( './' . qtitle() ) ) );	 ?>
+					</code>
 				</pre>
 			</div>
 
