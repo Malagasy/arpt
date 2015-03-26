@@ -23,8 +23,8 @@ get_header();
 					<?php echo qcontent(); ?>
 				</p><?php
 			endwhile; ?>
-			<div class="view_code_block">
-				<pre style="font-size:11px"><code><?php echo trim( htmlspecialchars( file_get_contents( $path ) ) );	 ?></code></pre>
+			<div>
+				<pre class="view_code_block" style="font-size:11px"><code><?php echo trim( htmlspecialchars( file_get_contents( $path ) ) );	 ?></code></pre>
 			</div>
 
 			<p class="content-bottom top-buffer-40">
