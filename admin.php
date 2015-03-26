@@ -1154,7 +1154,7 @@ function adminpage_editor(){
 				if( !confirm("<?php echo $beforeleaving_message; ?>") )
 					return;
 
-			jQuery(".the_code").html( "Chargement..." ).jQuery(".the_code").html( phpajax( 'editor_display_file_code' ,  current_folder + path ) );
+			jQuery(".the_code").html( "Chargement..." ).html( phpajax( 'editor_display_file_code' ,  current_folder + path ) );
 			jQuery(".the_code").prepend( '<h2>' + current_folder + path + '</h2>');
 			jQuery(".the_code").prepend( '<button class="btn btn-success pull-right valid-editor-textarea"><span class="glyphicon glyphicon-save"> </span></button>' );
 			jQuery(".valid-editor-textarea").addClass("disabled");
