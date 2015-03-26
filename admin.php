@@ -1163,6 +1163,11 @@ function adminpage_editor(){
 		}
 	});
 
+	jQuery(window).on("beforeunload",function(){
+		if( !jQuery(".valid-editor-textarea").hasClass("disabled" ) )
+			return "Le fichier a été modifié. Voulez-vous partir sans enregistrer ?";
+	});
+
 	</script><?php
 }
 ?>
