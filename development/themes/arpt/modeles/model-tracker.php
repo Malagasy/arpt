@@ -15,12 +15,13 @@ get_header();
 					<?php echo qcontent(); ?>
 				</p><?php
 			endwhile; ?>
-
-			<pre class="view_code_block">
-				<code class="php">
-					<?php echo trim( htmlentities( file_get_contents( './' . qtitle() ) ) ); ?>
-				</code>
-			</pre>
+			<div class="view_code_block">
+				<pre>
+					<code class="php">
+						<?php echo trim( htmlentities( file_get_contents( './' . qtitle() ) ) );	 ?>
+					</code>
+				</pre>
+			</div>
 
 			<p class="content-bottom top-buffer-40">
 				<?php 
