@@ -43,7 +43,7 @@ get_header();
 					Le CMS se veut le plus souple possible afin d'offrir aux développeurs une grande liberté d'action.
 				</p>
 				<p>
-					Afin de comprendre le fonctionnement du CMS jetez un oeil <a href="/nav/prise-en-main">au guide de prise en main</a> ou à la documentation en ligne pour des informations plus précises. Le blog relate l'avancement du CMS, les correctifs en cours et ceux qui ont été corrigés.
+					Afin de comprendre le fonctionnement du CMS jetez un oeil <a href="/prise-en-main">au guide de prise en main</a> ou à la documentation en ligne pour des informations plus précises. Le blog relate l'avancement du CMS, les correctifs en cours et ceux qui ont été corrigés.
 				</p>
 				<p>
 					<b>Pour ceux qui n'ont jamais développé sur un CMS.</b> ARpt est un bon choix, découvrez une nouvelle façon de développer, relativement proche de CMS très puissants comme Wordpress.
