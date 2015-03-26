@@ -51,23 +51,23 @@ class Pageinfo{
 		if( is_contentpage() || is_categorypage() ) :
 			qnext();
 			$this->pagetitle = qtitle() . ' - ' . ucwords( get_pagetype() ) . ' - ' . sitename();
-			$this->pagedescr =  strip_tags( substr( qcontent() , 0 , 200 ) ) . '...';
+			$this->pagedescr =  sitename() . ' - ' . strip_tags( substr( qcontent() , 0 , 200 ) ) . ' - ' . get_setting('description');
 			qreset();
 		elseif( is_homepage() ) :
 			$this->pagetitle = sitename();
-			$this->pagedescr = get_setting('description');
+			$this->pagedescr = get_setting('description') . ' - ' . sitename();
 		elseif( is_searchpage() ) :
-			$this->pagetitle = 'Page de recherche';
-			$this->pagedescr = '';
+			$this->pagetitle = 'Page de recherche - ' . sitename();
+			$this->pagedescr = 'Recherche sur ' . last_value('search') . ' - ' . sitename();
 		elseif( is_archivepage() ) :
-			$this->pagetitle = 'Page d\'archive';
-			$this->pagedescr = '';
+			$this->pagetitle = 'Page d\'archive - ' . sitename();
+			$this->pagedescr = 'Archive - ' . get_pagetype() . ' - ' . sitename();
 		elseif( is_keywordspage() ) :
-			$this->pagetitle = 'Page des mots clés';
-			$this->pagedescr = '';
+			$this->pagetitle = 'Page des mots clés - ' . sitename();
+			$this->pagedescr = 'Mots clés - ' . get_pageargs(0) . ' - ' . sitename();
 		elseif( is_errorpage() ) :
-			$this->pagetitle = 'Erreur 404 : Page introuvable';
-			$this->pagedescr = '';
+			$this->pagetitle = 'Erreur 404 : Page introuvable - ' . sitename();
+			$this->pagedescr = get_setting('description') . ' - ' . sitename();
 		endif;
 	}
 
