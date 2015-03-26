@@ -30,7 +30,7 @@ get_header();
 								foreach( $page_system_files as $file ) : 
 									if( file_extension( $file ) != 'php' ) continue;?>
 								<tr>
-									<td><?php echo a( get_site_url( 't/' . $file ) , $file ); ?></td>
+									<td><?php echo a( get_site_url( 'tracks/' . $file ) , $file ); ?></td>
 								</tr><?php
 								endforeach; ?>
 
@@ -51,7 +51,7 @@ get_header();
 								foreach( $main_files as $file ) : 
 									if( file_extension( $file ) != 'php' ) continue;?>
 								<tr>
-									<td><?php echo a( get_site_url( 't/sys/' . $file ) , $file ); ?></td>
+									<td><?php echo a( get_site_url( 'tracks/sys/' . $file ) , $file ); ?></td>
 								</tr><?php
 								endforeach; ?>
 
@@ -72,7 +72,7 @@ get_header();
 								foreach( $function_files as $file ) : 
 									if( file_extension( $file ) != 'php' ) continue;?>
 								<tr>
-									<td><?php echo a( get_site_url( 'f/sys/functions/' . $file ) , $file ); ?></td>
+									<td><?php echo a( get_site_url( 'tracks/sys/functions/' . $file ) , $file ); ?></td>
 								</tr><?php
 								endforeach; ?>
 
@@ -93,7 +93,7 @@ get_header();
 								foreach( $tool_files as $file ) : 
 									if( file_extension( $file ) != 'php' ) continue;?>
 								<tr>
-									<td><?php echo a( get_site_url( 'f/sys/tools/' . $file ) , $file ); ?></td>
+									<td><?php echo a( get_site_url( 'tracks/sys/tools/' . $file ) , $file ); ?></td>
 								</tr><?php
 								endforeach; ?>
 
