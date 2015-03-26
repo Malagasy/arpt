@@ -15,6 +15,7 @@ function arpt_menu(){
 function arpt_new_contents(){
 	add_new_content('documentation');
 	add_new_content('fonction');
+	add_new_content('fichier');
 
 	add_field_content( 'fonction' , array( 'type' => 'textarea' , 'id' => 'prototype' , 'name' => 'prototype' , 'label' => 'Usage et paramètres' ) );
 	add_field_content( 'fonction' , array( 'type' => 'textarea' , 'id' => 'return' , 'name' => 'return' , 'label' => 'Valeurs de retour' ) );
@@ -24,4 +25,6 @@ function arpt_new_contents(){
 	add_field_content( 'documentation' , array( 'type' => 'textarea' , 'id' => 'usecase' , 'name' => 'example' , 'label' => 'Cas d\'utilisation' ) );
 	add_field_content( 'documentation' , array( 'type' => 'textarea' , 'id' => 'devinfo' ,'name' => 'infos_development' , 'label' => 'Informatons de développement' ) );
 	add_field_content( 'documentation' , array( 'type' => 'textarea' , 'id' => 'moreinfo' ,'name' => 'more_infos' , 'label' => 'Plus d\'infos' ) );
+
+	add_field_content( 'fichier' , array( 'type' => 'textarea' , 'id' => 'tracker' ,'name' => 'tracker_file' , 'label' => 'Notes relatives au fichier' ) );
 }
