@@ -572,7 +572,7 @@ function adminpage_option_general(){
 		div_close();
 		
 		div( array( 'class' => 'form-group' ) );
-		form_input( array( 'type' => 'text', 'name' => 'description' , 'value' => get_setting('slogan') , 'class' => 'form-control' ) , 'Slogan' );
+		form_input( array( 'type' => 'text', 'name' => 'slogan' , 'value' => get_setting('slogan') , 'class' => 'form-control' ) , 'Slogan' );
 		div_close();
 		
 		div( array( 'class' => 'form-group' ) );

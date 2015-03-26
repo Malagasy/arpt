@@ -134,6 +134,7 @@ function edit_general_settings(){
 	$settings = call_layers( 'edit_general_settings_layer' , $_POST );
 
 	set_setting( 'sitename' , $settings['sitename'] );
+	set_setting( 'slogan' , $settings['slogan'] );
 	set_setting( 'description' , $settings['description'] );
 	set_setting( 'admin_email' , $settings['admin_email'] );
 	set_setting( 'enable_signup' , $settings['enable_signup'] );
