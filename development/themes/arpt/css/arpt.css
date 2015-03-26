@@ -51,3 +51,9 @@ textarea.form-control{
 }
 
 .content h2{ border-bottom: 1px solid #dadada;}
+
+
+.view_code_block{
+	height: 700px !important;
+	overflow-y:auto;
+}
