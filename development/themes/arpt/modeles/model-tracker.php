@@ -19,8 +19,7 @@ get_header();
 				</p><?php
 			endwhile; ?>
 			<div class="view_code_block">
-					<textarea spellcheck="false" class="view_code_block form-control" readonly="readonly"><?php echo trim( htmlspecialchars( file_get_contents( './' . qtitle() ) ) );	 ?>
-					</textarea>
+				<pre><?php echo trim( htmlspecialchars( file_get_contents( './' . qtitle() ) ) );	 ?></pre>
 			</div>
 
 			<p class="content-bottom top-buffer-40">
