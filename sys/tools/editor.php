@@ -50,8 +50,8 @@ function editor_register_file( $path , $content ){
 
 		return file_put_contents($path, $content);
 	}
-	echo $content;
+	echo htmlentities( $content );
 	if( !file_exists( $path ) ) die("filenotexists");
-	if( file_put_contents($path, ( preg_quote( $content ) ) ) === false ) die( "fails");
+	if( file_put_contents($path, $content  ) ) === false ) die( "fails");
 	die("filechanged");
 }
