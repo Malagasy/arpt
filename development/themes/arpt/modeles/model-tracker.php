@@ -17,7 +17,7 @@ get_header();
 			endwhile; ?>
 			<div class="view_code_block">
 					<code class="php">
-						<?php echo trim( htmlentities( file_get_contents( './' . qtitle() ) ) );	 ?>
+						<?php echo trim( nl2br( htmlentities( file_get_contents( './' . qtitle() ) ) ) );	 ?>
 					</code>
 			</div>
 
