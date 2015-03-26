@@ -12,11 +12,6 @@ get_header();
 					<?php echo qcontent(); ?>
 				</p><?php
 			endwhile; 
-				$args['parentid'] = qid();
-				$args['userid'] = 1;
-				$args['modelpage'] = 0;
-				$args['message'] = '';
-
 			?>
 
 			<div class="container-fluid">
@@ -33,11 +28,7 @@ get_header();
 							</thead>
 							<tbody><?php
 								foreach( $page_system_files as $file ) : 
-									if( file_extension( $file ) != 'php' ) continue;
-								$args['title'] = $file;
-
-							insert_new_content( 'fichier' , $args );
-								?>
+									if( file_extension( $file ) != 'php' ) continue;?>
 								<tr>
 									<td><?php echo a( get_site_url( 't/' . $file ) , $file ); ?></td>
 								</tr><?php
@@ -58,11 +49,7 @@ get_header();
 							</thead>
 							<tbody><?php
 								foreach( $main_files as $file ) : 
-									if( file_extension( $file ) != 'php' ) continue;								$args['title'] = 'sys/' . $file;
-
-							insert_new_content( 'fichier' , $args );
-
-								?>
+									if( file_extension( $file ) != 'php' ) continue;?>
 								<tr>
 									<td><?php echo a( get_site_url( 't/sys/' . $file ) , $file ); ?></td>
 								</tr><?php
@@ -83,9 +70,7 @@ get_header();
 							</thead>
 							<tbody><?php
 								foreach( $function_files as $file ) : 
-									if( file_extension( $file ) != 'php' ) continue;								$args['title'] = 'sys/functions/' . $file;
-
-							insert_new_content( 'fichier' , $args );?>
+									if( file_extension( $file ) != 'php' ) continue;?>
 								<tr>
 									<td><?php echo a( get_site_url( 'f/sys/functions/' . $file ) , $file ); ?></td>
 								</tr><?php
@@ -106,9 +91,7 @@ get_header();
 							</thead>
 							<tbody><?php
 								foreach( $tool_files as $file ) : 
-									if( file_extension( $file ) != 'php' ) continue;								$args['title'] = 'sys/tools/' . $file;
-
-							insert_new_content( 'fichier' , $args );?>
+									if( file_extension( $file ) != 'php' ) continue;?>
 								<tr>
 									<td><?php echo a( get_site_url( 'f/sys/tools/' . $file ) , $file ); ?></td>
 								</tr><?php
