@@ -41,6 +41,11 @@ get_header();
 					</div>
 				</fieldset>
 			</form>
+			<p class="content-bottom top-buffer-40">
+				<?php 
+				echo '<i>' . siteslogan() . '</i>';
+				?>
+			</p>
 		</div>
 		<div class="col-md-4 top-buffer-40">
 			<?php

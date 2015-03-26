@@ -29,7 +29,7 @@ get_header();
 		
 		<p class="content-bottom top-buffer-40">
 			<?php 
-			echo '<i>' . description() . '</i>';
+			echo '<i>' . siteslogan() . '</i>';
 			?>
 		</p>
 		</div>

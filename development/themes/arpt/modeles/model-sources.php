@@ -1,23 +1,19 @@
 <?php
-
 get_header();
-set_queried( array( 'type' => 'article' ) );
 ?>
 
 <div class="container">
 	<div class="row page-header">
-		<div class="col-md-8 content">
+		<div class="col-md-8">
 			<?php
 			while( qnext() ) : ?>
-				<h2><?php echo qtitle() ?></h2>
-				<p class="contentdata">
-					<?php echo 'Publié le ' . qdate() . ' par ' . qauthor() . '. Dans la catégorie ' . qcategory(); ?>
-				</p>
+				<h1><?php echo qtitle() ?></h1>
 				<p class="content">
 					<?php echo qcontent(); ?>
 				</p><?php
-			endwhile;
+			endwhile; 
 			?>
+			
 			<p class="content-bottom top-buffer-40">
 				<?php 
 				echo '<i>' . siteslogan() . '</i>';
@@ -30,8 +26,11 @@ set_queried( array( 'type' => 'article' ) );
 			?>
 		</div>
 	</div>
-</div>
 
+	<div class="row" id="comments">
+		<?php load_part( 'commentaires' ); ?>
+	</div>
+</div>
 <?php
 get_footer();
 ?>
