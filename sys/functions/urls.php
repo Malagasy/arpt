@@ -36,10 +36,13 @@ function get_signup_url( $arg = null ){
 	return get_url( 'signup/' ) . $arg;
 }
 
-function get_site_url(){
+function get_site_url( $string = null ){
+
+	$string = trimslash( $string );
+
 	if( get_base_var() != '' )
-		return get_base_url() . '/' . get_base_var();
-	return get_base_url();
+		return get_base_url() . get_base_var('/') . '/' . $string;
+	return get_base_url() . '/' . $string;
 }
 
 function get_url( $name ){
