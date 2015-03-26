@@ -1123,7 +1123,7 @@ function adminpage_editor(){
 	jQuery(".list-files").on("click","a",function(e){
 
 
-		if( !jQuery(".valid-editor-textarea").hasClass("disabled" ) )
+		if( jQuery(".valid-editor-textarea").length && !jQuery(".valid-editor-textarea").hasClass("disabled" ) )
 			if( !confirm("<?php echo $beforeleaving_message; ?>") )
 				return;
 
@@ -1172,7 +1172,7 @@ function adminpage_editor(){
 	});
 
 	jQuery(window).on("beforeunload",function(){
-		if( !jQuery(".valid-editor-textarea").hasClass("disabled" ) )
+		if( jQuery(".valid-editor-textarea").length && !jQuery(".valid-editor-textarea").hasClass("disabled" ) )
 			return "<?php echo $beforeleaving_message; ?>";
 	});
 
