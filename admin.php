@@ -1122,12 +1122,12 @@ function adminpage_editor(){
 
 	jQuery(".list-files").on("click","a",function(e){
 
+		e.preventDefault();
 
 		if( jQuery(".valid-editor-textarea").length && !jQuery(".valid-editor-textarea").hasClass("disabled" ) )
 			if( !confirm("<?php echo $beforeleaving_message; ?>") )
 				return;
 
-		e.preventDefault();
 		var type = jQuery(this).attr("data-type");
 		var path = jQuery(this).attr("data-path");
 		var current_folder = jQuery(".panel-primary").attr("data-currentfolder" );
@@ -1155,7 +1155,7 @@ function adminpage_editor(){
 		if( type == 'file' ){
 			jQuery(".the_code").html( phpajax( 'editor_display_file_code' ,  current_folder + path ) );
 			jQuery(".the_code").prepend( '<h2>' + current_folder + path + '</h2>');
-			jQuery(".the_code").prepend( '<button class="btn btn-success pull-right valid-editor-textarea">Enregistrer</button>' );
+			jQuery(".the_code").prepend( '<button class="btn btn-success pull-right valid-editor-textarea"><span class="glyphicon glyphicon-save"> </span></button>' );
 			jQuery(".valid-editor-textarea").addClass("disabled");
 		}
 	});
@@ -1164,7 +1164,7 @@ function adminpage_editor(){
 		
 		var r = phpajax( 'editor_register_file' , jQuery(".the_code h2").html() , jQuery(".editor-textarea").val() );
 		if( r == "filechanged" ){
-			jQuery(this).html("OK");
+			jQuery(this).html('<span class="glyphicon glyphicon-saved"> </span>');
 			jQuery(".valid-editor-textarea").addClass("disabled");
 		}else{
 			jQuery(this).html("Réessayer SVP");
