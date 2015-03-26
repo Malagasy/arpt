@@ -97,6 +97,9 @@ body { min-height:100%; padding-bottom: 70px; }
 	resize:none;
 }
 
+.view_code_block{
+	height: 700px !important;
+}
 
 /* IMAGE */
 img.selected{

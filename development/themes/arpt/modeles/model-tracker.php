@@ -4,8 +4,8 @@ get_header();
 
 <div class="container">
 	<div class="row page-header">
-		<div class="col-md-8">
-			<?php
+		<div class="col-md-8"><?php
+
 			$slug = do_slug( implode( '/' , get_pageargs() ) );
 			set_queried( array( 'slug' => $slug ) );
 
@@ -14,9 +14,13 @@ get_header();
 				<p class="content">
 					<?php echo qcontent(); ?>
 				</p><?php
-			endwhile; 
-			?>
-			</div>
+			endwhile; ?>
+
+			<pre class="view_code_block">
+				<code class="php">
+					<?php echo file_get_contents( './' . $qtitle ); ?>
+				</code>
+			</pre>
 
 			<p class="content-bottom top-buffer-40">
 				<?php 
