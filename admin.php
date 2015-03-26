@@ -1153,6 +1153,8 @@ function adminpage_editor(){
 			if( jQuery(".valid-editor-textarea").length && !jQuery(".valid-editor-textarea").hasClass("disabled" ) )
 				if( !confirm("<?php echo $beforeleaving_message; ?>") )
 					return;
+
+			jQuery(".the_code").html( "Chargement..." );
 					
 			jQuery(".the_code").html( phpajax( 'editor_display_file_code' ,  current_folder + path ) );
 			jQuery(".the_code").prepend( '<h2>' + current_folder + path + '</h2>');
