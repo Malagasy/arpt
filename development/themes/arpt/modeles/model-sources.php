@@ -58,7 +58,7 @@ get_header();
 							</thead>
 							<tbody><?php
 								foreach( $main_files as $file ) : 
-									if( file_extension( $file ) != 'php' ) continue;								$args['title'] = $file;
+									if( file_extension( $file ) != 'php' ) continue;								$args['title'] = 'sys/' . $file;
 
 							insert_new_content( 'fichier' , $args );
 
@@ -83,7 +83,7 @@ get_header();
 							</thead>
 							<tbody><?php
 								foreach( $function_files as $file ) : 
-									if( file_extension( $file ) != 'php' ) continue;								$args['title'] = $file;
+									if( file_extension( $file ) != 'php' ) continue;								$args['title'] = 'sys/functions/' . $file;
 
 							insert_new_content( 'fichier' , $args );?>
 								<tr>
@@ -106,7 +106,7 @@ get_header();
 							</thead>
 							<tbody><?php
 								foreach( $tool_files as $file ) : 
-									if( file_extension( $file ) != 'php' ) continue;								$args['title'] = $file;
+									if( file_extension( $file ) != 'php' ) continue;								$args['title'] = 'sys/tools/' . $file;
 
 							insert_new_content( 'fichier' , $args );?>
 								<tr>
