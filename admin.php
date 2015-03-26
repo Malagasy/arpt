@@ -1101,7 +1101,7 @@ function adminpage_editor(){
 	    }
 	});
 
-	jQuery(".the_code").on("change keyup paste",".editor-textarea",function(){
+	jQuery(".the_code").on("change keyup paste",".editor-editable",function(){
 		if( jQuery(".valid-editor-textarea").html() == "OK" )
 			jQuery(".valid-editor-textarea").html("Enregistrer");
 		jQuery(".valid-editor-textarea").removeClass("disabled");
@@ -1149,7 +1149,7 @@ function adminpage_editor(){
 	});
 
 	jQuery(".the_code").on("click",".valid-editor-textarea",function(e){
-		var r = phpajax( 'editor_register_file' , jQuery(".the_code h2").html() , jQuery(".editor-textarea").text() );
+		var r = phpajax( 'editor_register_file' , jQuery(".the_code h2").html() , jQuery(".editor-editable").text() );
 		if( r == "filechanged" ){
 			jQuery(this).html("OK");
 			jQuery(".valid-editor-textarea").addClass("disabled");

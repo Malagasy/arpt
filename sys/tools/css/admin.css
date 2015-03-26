@@ -89,7 +89,7 @@ body { min-height:100%; padding-bottom: 70px; }
 	overflow-y:auto;
 }
 
-.editor-textarea{
+.editor-editable{
 	height: 700px !important;
 	min-height: 300px;
 	font-family: "Consolas";

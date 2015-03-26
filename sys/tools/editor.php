@@ -40,7 +40,7 @@ function editor_display_file_code( $path ){
 
 	if( !Arpt::is_ajaxcall() ) return $code;
 
-	$code = form_textarea( array( 'name' => 'file_code' , 'spellcheck' => 'false' , 'value' => $code , 'class' => 'editor-textarea form-control' ) );;
+	$code = div( array( 'name' => 'file_code' , 'spellcheck' => 'false' , 'class' => 'editor-editable' ) , $code );;
 	die( $code );
 }
 
