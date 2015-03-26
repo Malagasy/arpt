@@ -1059,6 +1059,8 @@ function adminpage_editor(){
 		$base .= get_base_var('/');
 	else
 		$base .= '/';
+
+	$beforeleaving_message = "Le fichier a été modifié et ne sera pas enregistré.";
 	?>
 	<div class="container-fluid">
 		<div class="row">
@@ -1119,6 +1121,12 @@ function adminpage_editor(){
 	}
 
 	jQuery(".list-files").on("click","a",function(e){
+
+
+		if( !jQuery(".valid-editor-textarea").hasClass("disabled" ) )
+			if( !confirm("<?php echo $beforeleaving_message; ?>") )
+				return;
+
 		e.preventDefault();
 		var type = jQuery(this).attr("data-type");
 		var path = jQuery(this).attr("data-path");
@@ -1165,7 +1173,7 @@ function adminpage_editor(){
 
 	jQuery(window).on("beforeunload",function(){
 		if( !jQuery(".valid-editor-textarea").hasClass("disabled" ) )
-			return "Le fichier a été modifié. Voulez-vous partir sans enregistrer ?";
+			return "<?php echo $beforeleaving_message; ?>";
 	});
 
 	</script><?php
