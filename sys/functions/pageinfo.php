@@ -138,6 +138,10 @@ function description(){
 	return call_layers('description_layer',get_setting('description') );
 }
 
+function siteslogan(){
+	return call_layers('siteslogan_layer',get_setting('slogan') );
+}
+
 function sitedescription(){
 	return get_pageinfo()->get_pagedescr();
 }

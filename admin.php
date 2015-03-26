@@ -572,7 +572,11 @@ function adminpage_option_general(){
 		div_close();
 		
 		div( array( 'class' => 'form-group' ) );
-		form_input( array( 'type' => 'text', 'name' => 'description' , 'value' => get_setting('description') , 'class' => 'form-control' ) , 'Définissez-le en quelques mots' );
+		form_input( array( 'type' => 'text', 'name' => 'description' , 'value' => get_setting('slogan') , 'class' => 'form-control' ) , 'Slogan' );
+		div_close();
+		
+		div( array( 'class' => 'form-group' ) );
+		form_input( array( 'type' => 'text', 'name' => 'description' , 'value' => get_setting('description') , 'class' => 'form-control' ) , 'Définissez votre site (100 caractères)' );
 		div_close();
 		
 		div( array( 'class' => 'form-group' ) );

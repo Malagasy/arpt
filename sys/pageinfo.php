@@ -54,7 +54,7 @@ class Pageinfo{
 			$this->pagedescr =  strip_tags( substr( qcontent() , 0 , 200 ) ) . ' - ' . sitename() . ' - ' . description();
 			qreset();
 		elseif( is_homepage() ) :
-			$this->pagetitle = sitename() . ', ' . description();
+			$this->pagetitle = sitename() . ', ' . siteslogan();
 			$this->pagedescr = description() . ' - ' . sitename();
 		elseif( is_searchpage() ) :
 			$this->pagetitle = 'Page de recherche - ' . sitename();
