@@ -51,7 +51,7 @@ get_header();
 								foreach( $main_files as $file ) : 
 									if( file_extension( $file ) != 'php' ) continue;?>
 								<tr>
-									<td><?php echo a( qlink() . $file , $file ); ?></td>
+									<td><?php echo a( qlink() . 'sys/' . $file , $file ); ?></td>
 								</tr><?php
 								endforeach; ?>
 
@@ -72,7 +72,7 @@ get_header();
 								foreach( $function_files as $file ) : 
 									if( file_extension( $file ) != 'php' ) continue;?>
 								<tr>
-									<td><?php echo a( qlink() . $file , $file ); ?></td>
+									<td><?php echo a( qlink() . 'sys/functions/' . $file , $file ); ?></td>
 								</tr><?php
 								endforeach; ?>
 
@@ -93,7 +93,7 @@ get_header();
 								foreach( $tool_files as $file ) : 
 									if( file_extension( $file ) != 'php' ) continue;?>
 								<tr>
-									<td><?php echo a( qlink() . $file , $file ); ?></td>
+									<td><?php echo a( qlink() . 'sys/tools/' . $file , $file ); ?></td>
 								</tr><?php
 								endforeach; ?>
 
