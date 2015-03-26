@@ -1,4 +1,7 @@
 <?php
+if( !get_pageargs() )
+	redirect( get_url('sources') );
+
 get_header();
 ?>
 
