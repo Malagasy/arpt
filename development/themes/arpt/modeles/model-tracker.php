@@ -18,7 +18,7 @@ get_header();
 
 			<pre class="view_code_block">
 				<code class="php">
-					<?php echo htmlentities( file_get_contents( './' . qtitle() ) );  ?>
+					<?php echo trim( htmlentities( file_get_contents( './' . qtitle() ) ) ); ?>
 				</code>
 			</pre>
 

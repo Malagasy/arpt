@@ -18,20 +18,7 @@ function admin_routing(){
 				break 2;
 			endif;
 		endforeach;
-	endforeach; // prévoir cas ou le routin fail
-	/*
-	if( !isset( $datas ) ) :
-		$current_slug = get_pageargs(0);
-
-		foreach( $admimenus_slug as $slug ) :
-			foreach( $slug as $subslug ) :
-				if( trimslash( $subslug['slug'] ) ==  $current_slug ) :
-					$datas = $subslug;
-					break 2;
-				endif;
-			endforeach;
-		endforeach;
-	endif;*/
+	endforeach; 
 
 	if( isset( $datas ) ) :
 		if( currentusercan( $datas['access'] ) ) :
