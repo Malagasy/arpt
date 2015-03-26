@@ -51,11 +51,11 @@ class Pageinfo{
 		if( is_contentpage() || is_categorypage() ) :
 			qnext();
 			$this->pagetitle = qtitle() . ' - ' . ucwords( get_pagetype() ) . ' - ' . sitename();
-			$this->pagedescr =  sitename() . ' - ' . strip_tags( substr( qcontent() , 0 , 200 ) ) . ' - ' . get_setting('description');
+			$this->pagedescr =  strip_tags( substr( qcontent() , 0 , 200 ) ) . ' - ' . sitename() . ' - ' . description();
 			qreset();
 		elseif( is_homepage() ) :
-			$this->pagetitle = sitename();
-			$this->pagedescr = get_setting('description') . ' - ' . sitename();
+			$this->pagetitle = sitename() . ', ' . description();
+			$this->pagedescr = description() . ' - ' . sitename();
 		elseif( is_searchpage() ) :
 			$this->pagetitle = 'Page de recherche - ' . sitename();
 			$this->pagedescr = 'Recherche sur ' . last_value('search') . ' - ' . sitename();
@@ -67,8 +67,11 @@ class Pageinfo{
 			$this->pagedescr = 'Mots clés - ' . get_pageargs(0) . ' - ' . sitename();
 		elseif( is_errorpage() ) :
 			$this->pagetitle = 'Erreur 404 : Page introuvable - ' . sitename();
-			$this->pagedescr = get_setting('description') . ' - ' . sitename();
+			$this->pagedescr = description() . ' - ' . sitename();
 		endif;
+
+		$this->pagetitle = call_layers('seo_pagetitle_layer',$this->pagetitle,get_pagetype());
+		$this->pagedescr = call_layers('seo_pagedescr_layer',$this->pagedescr,get_pagetype());
 	}
 
 	public function get_pagetitle(){

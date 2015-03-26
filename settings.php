@@ -10,3 +10,5 @@ define( 'HOME_FILE' , 'home.php' );
 define( 'BASE_URL' , null );
 
 define( 'MVC_MOD' , false );
+
+//u80395823

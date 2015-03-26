@@ -132,10 +132,10 @@ function sitetitle(){
 }
 
 function sitename(){
-	return get_setting('sitename');
+	return call_layers('sitename_layer',get_setting('sitename') );
 }
 function description(){
-	return get_setting('description');
+	return call_layers('description_layer',get_setting('description') );
 }
 
 function sitedescription(){

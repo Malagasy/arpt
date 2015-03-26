@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="FR">
 	<head>
 
 	<?php head(); ?>
-		<title><?php echo sitetitle(); ?></title>
+	
+	<title><?php echo sitetitle(); ?></title>
 
 	</head>
 
