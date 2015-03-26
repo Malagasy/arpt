@@ -57,6 +57,6 @@ textarea.form-control{
 	height: 700px !important;
 	overflow-y:auto;
 	font-family: "Consolas";
-	font-size: 12px !important;
+	font-size: 10px !important;
 	resize:none;
 }
