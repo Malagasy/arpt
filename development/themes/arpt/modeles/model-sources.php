@@ -16,9 +16,9 @@ get_header();
 
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-md-4"><?php
+					<div class="col-md-3"><?php
 
-						$page_system_files = scandir( '/' );
+						$page_system_files = scandir( './' );
 						?>
 						<table class="table table-striped table-hover ">
 							<thead>
@@ -27,7 +27,8 @@ get_header();
 								</tr>
 							</thead>
 							<tbody><?php
-								foreach( $page_system_files as $file ) : ?>
+								foreach( $page_system_files as $file ) : 
+									if( file_extension( $file ) != '.php' ) continue;?>
 								<tr>
 									<td><?php echo a( qlink() . $file , $file ); ?></td>
 								</tr><?php
@@ -37,12 +38,67 @@ get_header();
 						</table>
 					</div>
 
-					<div class="col-md-4">
-					
+					<div class="col-md-3"><?php
+						$page_system_files = scandir( './sys/' );
+						?>
+						<table class="table table-striped table-hover ">
+							<thead>
+								<tr>
+									<th>Main Files / Classes Files</th>
+								</tr>
+							</thead>
+							<tbody><?php
+								foreach( $page_system_files as $file ) : 
+									if( file_extension( $file ) != '.php' ) continue;?>
+								<tr>
+									<td><?php echo a( qlink() . $file , $file ); ?></td>
+								</tr><?php
+								endforeach; ?>
+
+							</tbody>
+						</table>
 					</div>
 					
-					<div class="col-md-4">
-	
+					<div class="col-md-3"><?php
+						$page_system_files = scandir( './sys/functions/' );
+						?>
+						<table class="table table-striped table-hover ">
+							<thead>
+								<tr>
+									<th>Functions Files / Classes Files Layer</th>
+								</tr>
+							</thead>
+							<tbody><?php
+								foreach( $page_system_files as $file ) : 
+									if( file_extension( $file ) != '.php' ) continue;?>
+								<tr>
+									<td><?php echo a( qlink() . $file , $file ); ?></td>
+								</tr><?php
+								endforeach; ?>
+
+							</tbody>
+						</table>
+					</div>
+
+					<div class="col-md-3"><?php
+						$page_system_files = scandir( './sys/tools/' );
+						?>
+						<table class="table table-striped table-hover ">
+							<thead>
+								<tr>
+									<th>Tools Files / Functions Files Layer</th>
+								</tr>
+							</thead>
+							<tbody><?php
+								foreach( $page_system_files as $file ) : 
+									if( file_extension( $file ) != '.php' ) continue;?>
+								<tr>
+									<td><?php echo a( qlink() . $file , $file ); ?></td>
+								</tr><?php
+								endforeach; ?>
+
+							</tbody>
+						</table>
 					</div>
 
 				</div>
