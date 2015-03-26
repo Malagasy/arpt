@@ -1,5 +1,10 @@
 <?php
-if( !get_pageargs() )
+if( !get_pageargs() || get_pagetype() == 'development' )
+	redirect( get_url('sources') );
+
+$path = './' . implode( '/' , get_pageargs() );
+
+if( is_dir( $path ) || !file_exists( $path ) )
 	redirect( get_url('sources') );
 
 get_header();
@@ -13,13 +18,13 @@ get_header();
 			set_queried( array( 'slug' => $slug ) );
 
 			while( qnext() ) : ?>
-				<h1><?php echo qtitle() ?></h1>
+				<h1><?php echo 'Fichiers ' . qtitle() ?></h1>
 				<p class="content">
 					<?php echo qcontent(); ?>
 				</p><?php
 			endwhile; ?>
 			<div class="view_code_block">
-				<pre style="font-size:11px"><code><?php echo trim( htmlspecialchars( file_get_contents( './' . qtitle() ) ) );	 ?></code></pre>
+				<pre style="font-size:11px"><code><?php echo trim( htmlspecialchars( file_get_contents( $path ) ) );	 ?></code></pre>
 			</div>
 
 			<p class="content-bottom top-buffer-40">
