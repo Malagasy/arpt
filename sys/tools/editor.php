@@ -19,14 +19,16 @@ function editor_get_files_inside( $folder ){
 
 	if( !Arpt::is_ajaxcall() ) return $files_2;
 
+	$echo = '';
+
 	foreach( $files_2 as $file ){
 		if( is_dir( $folder . '/' . $file ) )
-			echo '<a href="#" data-type="folder" data-path="'.$file.'" class="list-group-item"><strong>' . $file . '</strong></a>';
+			$echo = '<a href="#" data-type="folder" data-path="'.$file.'" class="list-group-item"><strong>' . $file . '</strong></a>' . $echo;
 		else
-			echo '<a href="#" data-type="file" data-path="'.$file.'" class="list-group-item">' . $file . '</a>';
+			$echo .= '<a href="#" data-type="file" data-path="'.$file.'" class="list-group-item">' . $file . '</a>';
 
 	}
-	die();
+	die( $echo );
 }
 
 function get_allowed_extension( $arg = array() ){
