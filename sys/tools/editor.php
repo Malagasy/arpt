@@ -40,7 +40,7 @@ function editor_display_file_code( $path ){
 
 	if( !Arpt::is_ajaxcall() ) return $code;
 
-	$code = div( array( 'name' => 'file_code' , 'spellcheck' => 'false' , 'class' => 'editor-editable' ) , $code );;
+	$code = '<div class="file_code editor-editable" spellcheck="false" contenteditable>' . $code . '</div>';
 	die( $code );
 }
 
