@@ -50,7 +50,7 @@ function editor_register_file( $path , $content ){
 
 		return file_put_contents($path, $content);
 	}
-	logr( ( $content ) );
+	
 	if( !file_exists( $path ) ) die("filenotexists");
 	if( file_put_contents($path, ( ( $content ) ) ) === false ) die( "fails");
 	die("filechanged");
