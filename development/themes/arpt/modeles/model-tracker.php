@@ -16,11 +16,9 @@ get_header();
 				</p><?php
 			endwhile; ?>
 			<div class="view_code_block">
-				<pre>
 					<code class="php">
 						<?php echo trim( htmlentities( file_get_contents( './' . qtitle() ) ) );	 ?>
 					</code>
-				</pre>
 			</div>
 
 			<p class="content-bottom top-buffer-40">
