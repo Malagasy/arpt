@@ -1124,10 +1124,6 @@ function adminpage_editor(){
 
 		e.preventDefault();
 
-		if( jQuery(".valid-editor-textarea").length && !jQuery(".valid-editor-textarea").hasClass("disabled" ) )
-			if( !confirm("<?php echo $beforeleaving_message; ?>") )
-				return;
-
 		var type = jQuery(this).attr("data-type");
 		var path = jQuery(this).attr("data-path");
 		var current_folder = jQuery(".panel-primary").attr("data-currentfolder" );
@@ -1153,6 +1149,11 @@ function adminpage_editor(){
 		}
 
 		if( type == 'file' ){
+
+			if( jQuery(".valid-editor-textarea").length && !jQuery(".valid-editor-textarea").hasClass("disabled" ) )
+				if( !confirm("<?php echo $beforeleaving_message; ?>") )
+					return;
+					
 			jQuery(".the_code").html( phpajax( 'editor_display_file_code' ,  current_folder + path ) );
 			jQuery(".the_code").prepend( '<h2>' + current_folder + path + '</h2>');
 			jQuery(".the_code").prepend( '<button class="btn btn-success pull-right valid-editor-textarea"><span class="glyphicon glyphicon-save"> </span></button>' );

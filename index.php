@@ -10,3 +10,4 @@ $arpt->activation();
 $arpt->development_activation();
 
 $arpt->routing();
+?>
