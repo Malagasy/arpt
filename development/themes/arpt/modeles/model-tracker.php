@@ -19,8 +19,7 @@ get_header();
 				</p><?php
 			endwhile; ?>
 			<div class="view_code_block">
-					<textarea class="form-control disabled">
-						<?php echo trim( htmlspecialchars( file_get_contents( './' . qtitle() ) ) );	 ?>
+					<textarea class="view_code_block form-control"><?php echo trim( htmlspecialchars( file_get_contents( './' . qtitle() ) ) );	 ?>
 					</textarea>
 			</div>
 
