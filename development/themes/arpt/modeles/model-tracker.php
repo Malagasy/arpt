@@ -4,7 +4,7 @@ if( !get_pageargs() || get_pagetype() == 'development' )
 
 $path = './' . implode( '/' , get_pageargs() );
 
-if( is_dir( $path ) || !file_exists( $path ) )
+if( is_dir( $path ) || !file_exists( $path ) || $path == './settings.php' )
 	redirect( get_url('sources') );
 
 get_header();

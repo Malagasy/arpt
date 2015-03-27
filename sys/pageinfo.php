@@ -50,7 +50,7 @@ class Pageinfo{
 	public function seo(){
 		if( is_contentpage() || is_categorypage() ) :
 			qnext();
-			$this->pagetitle = qtitle() . ' - ' . ucwords( get_pagetype() ) . ' - ' . sitename();
+			$this->pagetitle = qtitle() . ' - ' . sitename();
 			$this->pagedescr =  strip_tags( substr( qcontent() , 0 , 200 ) ) . ' - ' . sitename() . ' - ' . description();
 			qreset();
 		elseif( is_homepage() ) :

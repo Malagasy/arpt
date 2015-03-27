@@ -28,7 +28,7 @@ get_header();
 							</thead>
 							<tbody><?php
 								foreach( $page_system_files as $file ) : 
-									if( file_extension( $file ) != 'php' ) continue;?>
+									if( file_extension( $file ) != 'php' || $file == 'settings.php' ) continue;?>
 								<tr>
 									<td><?php echo a( get_site_url( 'tracks/' . $file ) , $file ); ?></td>
 								</tr><?php
