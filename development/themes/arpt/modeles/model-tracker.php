@@ -18,18 +18,21 @@ get_header();
 			set_queried( array( 'slug' => $slug ) );
 
 			while( qnext() ) : ?>
-				<h1><small><?php echo 'Fichiers : ' . qtitle() ?></small></h1>
+				<h1>Fichiers ARpt</h1>
 				<p class="content">
 					<?php echo qcontent(); ?>
 				</p><?php
 			endwhile; ?>
-			<div class="pre_view_code_block">
-				<span><?php
-					$finfo = finfo_open( FILEINFO_NONE  );
-					logr( finfo_file( $finfo , $path ) );
-					?>
-	
-				</span>
+			<div class="pre_view_code_block"><?php
+				$last_edit_file = filemtime( $path );
+				$size_file = filesize( $path ); ?>
+				<p>
+					Taille du fichier : <?php echo $size_file; ?> octets
+				</p>
+				<p>
+					Dernières modifications : <?php echo arpt_date( $last_edit_file ); ?>
+				</p>
+				
 				<pre class="view_code_block" style="font-size:11px"><code><?php echo trim( htmlspecialchars( file_get_contents( $path ) ) );	 ?></code></pre>
 			</div>
 

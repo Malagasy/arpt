@@ -241,7 +241,8 @@ function italic( $str ){
 }
 
 function arpt_date( $date , $part1 = 'd/m/o' , $part2 = 'H:i' , $link = ' à ' ){
-	$time_timestamp = strtotime( $date );
+	
+	$time_timestamp = is_number( $date ) ? $date : strtotime( $date );
 
 	return date($part1 , $time_timestamp) . $link . date($part2 , $time_timestamp);
 }
