@@ -8,12 +8,7 @@ function get_prototype_functions(){
 	$code = file_get_contents( $base_path . $files[0] );
 	$gets = token_get_all( $code );
 
-	$r = array();
-	foreach( $gets as $k => $v ){
-		$r[][$k] = token_name($v);
-	}
-
-	logr($r);
+	logr( get_defined_functions() );
 
 	exit();
 
