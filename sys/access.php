@@ -11,7 +11,12 @@ function get_arpt_roles( $name = null ){
 		return $arpt_roles[$name];
 	return false;
 }
-
+/**
+	* Pdoc
+	* Test
+	*
+	* Lol
+*/
 function parseArray_get_roles(){
 	global $arpt_roles;
 
