@@ -240,7 +240,7 @@ function italic( $str ){
 	return ' <i>' . $str . '</i> ';
 }
 
-function arpt_date( $date , $part1 = 'd/m/o' , $part2 = 'H:i' , $link = ' à ' ){
+function arpt_date( $date , $part1 = 'd/m/o' , $part2 = 'H\hi' , $link = ' à ' ){
 	
 	$time_timestamp = is_number( $date ) ? $date : strtotime( $date );
 

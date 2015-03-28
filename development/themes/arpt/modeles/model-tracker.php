@@ -28,11 +28,10 @@ get_header();
 				$size_file = filesize( $path ); ?>
 				<p>
 					Taille du fichier : <?php echo $size_file; ?> octets
-				</p>
-				<p>
+					<br>
 					Dernières modifications : <?php echo arpt_date( $last_edit_file ); ?>
 				</p>
-				
+
 				<pre class="view_code_block" style="font-size:11px"><code><?php echo trim( htmlspecialchars( file_get_contents( $path ) ) );	 ?></code></pre>
 			</div>
 
