@@ -76,6 +76,8 @@ function get_prototype_functions(){
 		}
 	}
 
+	logr($f);
+
 	/*foreach( $f as $function ){
 
 		$function = $f['get_contentinfo'];
@@ -95,8 +97,8 @@ function get_prototype_functions(){
 				foreach( $function['Parameters'] as $parameter ){
 					$value .= "<li><strong>" . $parameter['paramName'] . "</strong>";
 					if( $parameter['optional'] == true )
-						$value .= " (optionel)";
-					$value .= " : </li>";
+						$value .= " (Optionnel)";
+					$value .= "  </li>";
 				}
 				$value .= "</ul>";
 			}
