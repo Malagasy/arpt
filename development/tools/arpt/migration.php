@@ -235,7 +235,7 @@ function get_prototype_functions(){
 			$content->qnext();
 			if( diffstr( $content->qtype() , 'fonction' ) ) continue;
 			if( strtotime( $content->qproperty('last_edit') ) >=  filemtime( './' . $function['File'] ) ) continue;
-			echo "lastedit:" . strtotime( $content->qproperty('last_edit') . "-----" . filemtime( './' . $function['File'] ) . '<br>';
+			echo "lastedit:" . strtotime( $content->qproperty('last_edit') ) . "-----" . filemtime( './' . $function['File'] ) . '<br>';
 			update_content( $content->qid() , $the_args );
 
 				$value = '<pre><code class="php">' . $function['Prototype'] . '</code></pre>';
