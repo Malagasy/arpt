@@ -86,7 +86,7 @@ function get_prototype_functions(){
 	logr($f);
 	//foreach( $f as $function ){
 
-		$function = $f[1111];
+		$function = $f[5000];
 
 		$the_args['parentid'] = 5;
 		$the_args['userid'] = 1;
@@ -124,7 +124,7 @@ function get_prototype_functions(){
 			}
 
 		}
-
+die();
 	//}*/
 		
 	
