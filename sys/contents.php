@@ -81,6 +81,7 @@ class Contents extends Queries{
 	}
 
 	private function internal_process( $specificities ){
+
 		if( $specificities['status'] == 'all' )
 			$specificities['status'] = null;
 

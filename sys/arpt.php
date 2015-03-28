@@ -345,6 +345,8 @@ class Arpt{
 						$this->load( page_dir( 'archive.php' ) );
 					else
 						$this->load( page_dir('contents.php') );
+					logr($this->queried());
+					exit();
 					break;
 				case routing_search():
 					$this->load( page_dir( 'search.php' ) );
