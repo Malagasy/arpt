@@ -33,6 +33,8 @@ function get_prototype_functions(){
 
 	$files[] = 'access.php';
 
+	$id_files = 0;
+
 	foreach( $files as $the_file ){
 
 		$line = strtok( file_get_contents( $base_path . $the_file ) , "\r\n"  );
@@ -43,11 +45,13 @@ function get_prototype_functions(){
 			$nb_line++;
 			if( preg_match($preg, $line ) )
 				$args[] = array( $line , $nb_line );
-			$file_lines[$the_file][$nb_line] = $line;
+			$current_file_lines[$nb_line] = $line;
 			$line = strtok( "\r\n" );
 		}
 
 		foreach( $args as $arg ){
+
+			$id_files++;
 
 			$arg[0] = str_replace('function','',$arg[0]);
 			$arg[0] = trim( str_replace('{','',$arg[0]) );
@@ -82,16 +86,39 @@ function get_prototype_functions(){
 			$tmp['Parameters'] = $params_2;
 			$tmp['File'] = 'sys/' . $the_file;
 
-			$f[] = $tmp;
+			$f[$id_files] = $tmp;
+
+
+
+			$start_line = $tmp['Line'];
+
+			$found_pdoc = false;
+
+			while( ( $foundpdoc = strpos( $current_file_lines[$start_line-3] , '/**' ) ) === false ){
+				$start_line--;
+				if( $start_line < 0 ) break;
+				if( isset( $f[$id_files-1] ) )
+					if( $start_line == $f[$id_files-1]['Line'] )
+						break;
+			}
+
+			if( $foundpdoc !== false ){
+				$the_pdoc = array_slice( $current_file_lines , $start_line , $tmp['Line'] - 1 );
+				logr($the_pdoc);
+
+			}
+
+
 
 
 		}
+
 
 		$args = array();
 
 	}
 	logr($f);
-	logr($file_lines);
+	logr($current_file_lines);
 
 	/*
 	foreach( $f as $function ){

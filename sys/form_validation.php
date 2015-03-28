@@ -53,7 +53,7 @@ class FormValidation extends AT_Errors{
 
 	public function notequals( $first , $second ){
 		if( $this->exists( $first ) ) :
-			if( is_number( $second ) ) $second = strval($second);
+			if( !is_number( $second ) ) $second = strval($second);
 
 			if( $_POST[$first] == $second ) :
 				$this->add('not-equals', ucfirst( $first ) . ' et ' . $second . ' sont équivalents.' );

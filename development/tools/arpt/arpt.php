@@ -17,7 +17,9 @@ function arpt_menu(){
 	create_new_navmenu( 'footer' , "Liens d'informations bas de page" , 'page' , "Est affiché en bas de chaque page" );
 }
 
+/**
 
+*/
 function arpt_new_contents(){
 	add_new_content('documentation');
 	add_new_content('fonction');
