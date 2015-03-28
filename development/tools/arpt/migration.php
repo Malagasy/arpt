@@ -85,10 +85,9 @@ function get_prototype_functions(){
 	}
 
 	logr($f);
-die();
 	//foreach( $f as $function ){
 
-		$function = $f[4535];
+		$function = $f[5615];
 
 		$the_args['parentid'] = 5;
 		$the_args['userid'] = 1;
@@ -99,10 +98,12 @@ die();
 		$content = get_contents( array( 'title' => $function['FunctionName'] ) );
 
 		if( !$content->qhas() ){
+			echo 'Création de ' . $function['FunctionName'] . '<br>';
 		
 			$cid = insert_new_content( 'fonction' , $the_args );
 
 			if( $cid ){
+			echo $function['FunctionName'] . ' crée.' . '<br>';
 				$value = "<pre><code>" . highlight_string( $function['Prototype'] , true ) . "</code></pre>";
 				if( $function['Parameters'] != false ){
 					$value .= "<ul>";
@@ -118,9 +119,16 @@ die();
 				update_contentproperty( $cid , 'prototype' , $value );
 				update_contentproperty( $cid , 'return' , 'Non renseigné.' );
 				update_contentproperty( $cid , 'example' , 'Non renseigné.' );
+
+
+				echo 'CustomChamps crées.' . '<br>';
 			}
 
 		}
+
+
+
+	die();
 	//}*/
 		
 	
