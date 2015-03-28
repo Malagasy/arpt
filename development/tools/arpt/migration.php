@@ -14,10 +14,13 @@ function get_prototype_functions(){
 	$handle = fopen( $base_path . $files[0] , "r" );
 	if( $handle ){
 		while( ($line = fgets( $handle ) !== false ) ){
+			echo $line;
 			if( preg_match( $preg, $line ) )
 				$args[] = $line;
 		}
 		fclose($handle);
+	}else{
+		echo 'fails';
 	}
 
 	logr($args);
