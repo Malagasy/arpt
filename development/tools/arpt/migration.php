@@ -83,7 +83,7 @@ function get_prototype_functions(){
 		}
 
 	}
-
+logr($f);
 	//foreach( $f as $function ){
 
 		$function = $f[4444];
@@ -103,7 +103,7 @@ function get_prototype_functions(){
 
 			if( $cid ){
 			echo $function['FunctionName'] . ' crée.' . '<br>';
-				$value = "<pre><code>" . highlight_string( '<?php ' . $function['Prototype'] . ' ?>', true ) . "</code></pre>";
+				$value = "<pre><code><?php " . $function['Prototype'] . "?></code></pre>";
 				if( $function['Parameters'] != false ){
 					$value .= "<ul>";
 					foreach( $function['Parameters'] as $parameter ){
