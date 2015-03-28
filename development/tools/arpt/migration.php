@@ -187,7 +187,7 @@ function get_prototype_functions(){
 							}else{
 								if( samestr( $pdoc_last_type , 'param' ) ){
 									if( $pdoc_line_no_star )
-										$pdoc_format['Metas'][ 'param' ][$param_number['param']]['Description'] .= $pdoc_line_no_star;
+										$pdoc_format['Metas'][ 'param' ][$param_number['param']]['Description'] .= ' ' . $pdoc_line_no_star;
 								}
 							}
 						}

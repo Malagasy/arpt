@@ -20,6 +20,10 @@ function get_arpt_roles( $name = null ){
   * @param string $myArgument With a *description* of this argument, these may also
   *    span multiple lines.
   *
+  * Test...
+  * @param string $myArgument With a *description* of this argument, these may also
+  *    span multiple lines.
+  *
   * @return void
   */
 function parseArray_get_roles(){
