@@ -1,6 +1,7 @@
 <?php
 
 function get_prototype_functions(){
+	/*
 	$base_path = './sys/';
 	$files[] = 'access.php';
 	$files[] = 'properties.php';
@@ -10,6 +11,6 @@ function get_prototype_functions(){
 
 	logr( get_defined_functions() );
 
-	exit();
+	exit();*/
 
 }

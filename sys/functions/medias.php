@@ -6,13 +6,13 @@ function upload_miniature( $cid , $files , $maxsize = null ){
 	if( $files['size'] > $maxsize ) return false;
 	elseif( !is_image( $files['tmp_name'] ) ) return false;
 	
-	if( ( $ext = get_extension( $files['type'] ) ) === false ) return false;
+	if( ( $ext = is_image_mime( $files['type'] ) ) === false ) return false;
 
  	return move_uploaded_file( $files['tmp_name'] ,  get_upload_dir() . '/avatar-' . get_contentslug( $cid ) . $ext );
 
 }
 
-function get_extension( $mime ){
+function is_image_mime( $mime ){
 
 	if( $mime == "image/jpeg" ) return '.jpeg';
 	elseif( $mime == "image/png" ) return '.png';
@@ -57,7 +57,6 @@ function get_miniature( $type = 'content' , $id = null ){
 
 function upload_medias( $files , $parentdir){
 	foreach( $files as $file ) :
-		$ext = get_extension( $file['type'] );
 		if( $file['size'] > maxsize_upload_files() ) continue;
 		move_uploaded_file( $file['tmp_name'] ,  get_upload_dir() . $parentdir . date("omd-Gi") . '-' . $file['name'] );
 	endforeach;
