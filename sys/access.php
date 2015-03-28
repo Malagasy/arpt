@@ -64,7 +64,15 @@ function add_access_to_role( $rolename , $accessname ){
 
 	return true;
 }
-
+/**
+	* Vérifie l'existence d'un rôle.
+	*
+	* Cette fonction vérifie que le rôle $name a bien été crée ( à partir de create_new_role() ).
+	*
+	* @param String $name Nom du rôle à vérifier
+	*
+	* @return Boolean Retourne True si le rôle existe, sinon False.
+*/
 function role_exists( $name ){
 	global $arpt_roles;
 	if( isset( $arpt_roles[$name] ) )
