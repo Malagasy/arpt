@@ -52,7 +52,7 @@ function get_prototype_functions(){
 			$tmp = array();
 
 			$tmp['FunctionName'] = $f_name;
-			$tmp['Prototype'] = "<?php " . $arg[0] . " ?>";
+			$tmp['Prototype'] = htmlentities( "<?php " . $arg[0] . " ?>" );
 			$tmp['Line'] = $arg[1];
 
 			preg_match('#\((.*?)\)#', $arg[0], $tmp_params);
@@ -85,7 +85,7 @@ function get_prototype_functions(){
 	}
 	//foreach( $f as $function ){
 
-		$function = $f[9591];
+		$function = $f[3665];
 
 		$the_args['parentid'] = 5;
 		$the_args['userid'] = 1;
@@ -102,7 +102,7 @@ function get_prototype_functions(){
 
 			if( $cid ){
 			echo $function['FunctionName'] . ' crée.' . '<br>';
-				$value = "<pre><code>" . $function['Prototype'] . "</code></pre>";
+				$value = '<pre><code class="php">' . $function['Prototype'] . '</code></pre>';
 				if( $function['Parameters'] != false ){
 					$value .= "<ul>";
 					foreach( $function['Parameters'] as $parameter ){
