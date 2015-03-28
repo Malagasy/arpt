@@ -84,6 +84,7 @@ function get_prototype_functions(){
 
 	}
 	logr($f);
+	die();
 	//foreach( $f as $function ){
 
 		$function = $f[5000];
