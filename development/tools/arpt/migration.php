@@ -115,6 +115,7 @@ function get_prototype_functions(){
 				$metas = false;
 
 				$p_number_description = 0;
+				$param_number = array();
 
 
 				foreach( $the_pdoc as $pdoc_line ){
