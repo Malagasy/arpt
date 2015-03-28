@@ -209,7 +209,7 @@ function get_prototype_functions(){
 
 				}
 
-				logr($pdoc_format);
+				$f[$id_files]['PHPDoc'] = $pdoc_format;
 
 			}
 
@@ -223,7 +223,6 @@ function get_prototype_functions(){
 
 	}
 	logr($f);
-	logr($current_file_lines);
 
 	/*
 	foreach( $f as $function ){
