@@ -34,7 +34,7 @@ get_header();
 						<h4>Exemple pratique</h4>
 					<?php
 					$childs = get_contentchilds( array( 'category' => 'technique' ) );
-					xmpr($childs);
+					logr($childs);
 					if( $childs->qhas() ){
 						echo '<ul>';
 						while( $childs->next() ){
