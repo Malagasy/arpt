@@ -221,8 +221,6 @@ function get_prototype_functions(){
 	}
 
 	foreach( $f as $function ){
-		logr($function);
-
 		$the_args['title'] = $function['FunctionName'];
 		if( $function['PHPDoc']['Summary'] )
 			$the_args['message'] = '<p>'. $function['PHPDoc']['Summary'] .'</p>';
