@@ -18,14 +18,22 @@ get_header();
 			set_queried( array( 'slug' => $slug ) );
 
 			while( qnext() ) : ?>
-				<h1><?php echo 'Fichiers : ' . qtitle() ?></h1>
+				<h1><small><?php echo 'Fichiers : ' . qtitle() ?></small></h1>
 				<p class="content">
 					<?php echo qcontent(); ?>
 				</p><?php
 			endwhile; ?>
-			<div>
+			<div class="pre_view_code_block">
+				<span><?php
+					$finfo = finfo_open( FILEINFO_NONE  );
+					logr( finfo_file( $finfo , $path ) );
+					?>
+	
+				</span>
 				<pre class="view_code_block" style="font-size:11px"><code><?php echo trim( htmlspecialchars( file_get_contents( $path ) ) );	 ?></code></pre>
 			</div>
+
+
 
 			<p class="content-bottom top-buffer-40">
 				<?php 
