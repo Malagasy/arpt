@@ -159,7 +159,8 @@ function get_prototype_functions(){
 					if( $metas ){
 
 						$pdoc_line_2 = trim( substr( $pdoc_line , 1 ) );
-						
+						echo $pdoc_line_2;
+
 						$pdoc_format['Metas'] = '';
 
 					}
