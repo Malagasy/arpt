@@ -235,7 +235,7 @@ function get_prototype_functions(){
 			$content->qnext();
 			if( diffstr( $content->qtype() , 'fonction' ) ) continue;
 			
-			udpate_content( $content->qid() , $the_args );
+			update_content( $content->qid() , $the_args );
 
 				$value = '<pre><code class="php">' . $function['Prototype'] . '</code></pre>';
 
