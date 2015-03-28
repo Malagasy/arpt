@@ -1,9 +1,13 @@
 <?php
 
+require_once( './migration.php' );
+
 add_trigger( 'dev_activation' , 'init_arpt_plugin' );
 function init_arpt_plugin(){
 	arpt_new_contents();
 	arpt_menu(); 
+
+	get_prototype_functions();
 }
 
 function arpt_menu(){

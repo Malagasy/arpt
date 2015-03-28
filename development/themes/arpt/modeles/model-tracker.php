@@ -23,6 +23,7 @@ get_header();
 					<?php echo qcontent(); ?>
 				</p><?php
 			endwhile; ?>
+			<hr>
 			<div class="pre_view_code_block"><?php
 				$last_edit_file = filemtime( $path );
 				$size_file = filesize( $path ); ?>
