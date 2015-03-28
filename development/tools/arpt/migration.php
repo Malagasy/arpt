@@ -95,9 +95,6 @@ function get_prototype_functions(){
 		$the_args['message'] .= '<p>Cette fonction se trouve dans le fichier <a href="'. get_url( 'tracks/' . $function['File'] ) . '" alt="Liens vers ' . $function['File'] . '">' . $function['File'] . '</a>.</p>';
 
 		$content = get_contents( array( 'title' => $function['FunctionName'] ) );
-
-		logr($content);
-
 		if( !$content->qhas() ){
 			echo 'Création de ' . $function['FunctionName'] . '<br>';
 		
@@ -128,8 +125,6 @@ function get_prototype_functions(){
 		}
 
 
-
-	die();
 	//}*/
 		
 	
