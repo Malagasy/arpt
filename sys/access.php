@@ -12,10 +12,10 @@ function get_arpt_roles( $name = null ){
 	return false;
 }
 /**
-	* Pdoc
-	* Test
-	*
-	* Lol
+	* Ceci est un test pour la fonction parseArray_get_roles.
+	* 
+	* C'est la super description de la fonction.
+	* Sur 2 lignes hééhé
 */
 function parseArray_get_roles(){
 	global $arpt_roles;

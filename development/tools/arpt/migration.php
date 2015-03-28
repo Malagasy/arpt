@@ -103,8 +103,60 @@ function get_prototype_functions(){
 			}
 
 			if( $foundpdoc !== false ){
-				$the_pdoc = array_slice( $current_file_lines , $start_line , $tmp['Line'] - 1 - $start_line );
+				$pdoc_format = array();
+				$the_pdoc = array_slice( $current_file_lines , $start_line , $tmp['Line'] - 1 - $start_line - 1 );
 				logr($the_pdoc);
+
+				$summary = true;
+				$pdoc_format['Summary'] = '';
+				$pdoc_format['Description'] = array();
+				$description = false;
+				$metas = false;
+
+				foreach( $the_pdoc as $pdoc_line ){
+
+					$pdoc_line = trim( $pdoc_line );
+
+					if( $summary ){
+						if( $pdoc_line[0] == '*' && strlen( $pdoc_line ) > 2 ){
+							$pdoc_line = substr( $pdoc_line , 1 );
+							if( ($dot_position = strpos( $pdoc_line , '.' ) ) !== false ) :
+								$pdoc_format['Summary'] .= substr( $pdoc_line , 0 , $dot_position );
+								$summary = false;
+								$description = true;
+							else :
+								$pdoc_format['Summary'] .= $pdoc_line;
+							endif;
+
+						}
+					}
+					if( $description ){
+						$p_number_description = 0;
+
+						if( !isset( $pdoc_format['Description'][$p_number_description] ) )
+							$pdoc_format['Description'][$p_number_description] = '';
+
+						if( $pdoc_line[0] == '*' && strlen( $pdoc_line ) > 2 ){
+								$pdoc_line = substr( $pdoc_line , 1 );
+
+								$first_word = strstr( substr( $pdoc_line , 1 ) , ' ' , true );
+								if( $first_word[0] == '@' ) :
+									$description = false;
+									$metas = true;
+								else :
+									$pdoc_format['Description'][$p_number_description] .= $pdoc_line;
+								endif;
+
+						}else{
+							$p_number_description++;
+						}
+					}
+
+					if( $metas ){
+						
+					}
+
+				}
 
 			}
 
