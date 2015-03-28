@@ -34,7 +34,6 @@ function get_prototype_functions(){
 	$code = strtok( file_get_contents( $base_path . $files[0] ) , "\r\n"  );
 
 	while( $line !== false ){
-		logr($line);
 		if( preg_match($preg, $line ) )
 			$args[] = $line;
 		$line = strtok( "\r\n" );
