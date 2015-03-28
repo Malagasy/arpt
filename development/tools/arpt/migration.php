@@ -29,6 +29,10 @@ function get_prototype_functions(){
 
 	$f = array();
 
+	unset( $files );
+
+	$files[] = './sys/access.php';
+
 	foreach( $files as $the_file ){
 
 		$line = strtok( file_get_contents( $base_path . $the_file ) , "\r\n"  );
@@ -39,6 +43,7 @@ function get_prototype_functions(){
 			$nb_line++;
 			if( preg_match($preg, $line ) )
 				$args[] = array( $line , $nb_line );
+			$file_lines[$the_file][$nb_line] = $line;
 			$line = strtok( "\r\n" );
 		}
 
@@ -85,6 +90,10 @@ function get_prototype_functions(){
 		$args = array();
 
 	}
+	logr($f);
+	logr($file_lines);
+
+	/*
 	foreach( $f as $function ){
 
 		$the_args['parentid'] = 5;
@@ -124,6 +133,7 @@ function get_prototype_functions(){
 
 		}
 	}
+	*/
 
 	die();
 		
