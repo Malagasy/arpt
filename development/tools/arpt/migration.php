@@ -84,6 +84,8 @@ function get_prototype_functions(){
 
 		}
 
+		$args = array();
+
 	}
 	logr($f);
 	die();
