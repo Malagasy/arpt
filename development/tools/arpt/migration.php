@@ -51,7 +51,7 @@ function get_prototype_functions(){
 		$tmp['FunctionName'] = $f_name;
 		$tmp['Prototype'] = $arg;
 
-		preg_match_all('/\(([A-Za-z0-9 ]+?)\)/', $arg, $tmp_params);
+		preg_match('#\((.*?)\)#', $arg, $tmp_params);
 		logr($tmp_params);
 		$params = explode( ',' , $tmp_params );
 		$tmp['Parameters'] = $params;
