@@ -27,6 +27,7 @@ function get_prototype_functions(){
 	$args = array();
 	$preg = '/function[\s\n]+(\S+)[\s\n]*\(/';
 
+		logr($files);
 
 	foreach( $files as $the_file ){
 
@@ -53,7 +54,18 @@ function get_prototype_functions(){
 			preg_match('#\((.*?)\)#', $arg, $tmp_params);
 
 			$params = explode( ',' , $tmp_params[1] );
-			$tmp['Parameters'] = $params;
+			$params_2 = array();
+
+			foreach( $params as $param ){
+				if( ( $the_pos = strpos( $param , '=' ) ) !== false ){
+					$params_2[] = array( 'paramName' => trim( substr( $param , 0 , $the_pos ) ) , 'optional' => true );
+				}else{
+					$params_2[] = array( 'paramName' => trim( $param ) , 'optional' => false );
+				}
+
+			}
+
+			$tmp['Parameters'] = $params_2;
 			$tmp['File'] = $base_path . $the_file;
 
 			$f[] = $tmp;
