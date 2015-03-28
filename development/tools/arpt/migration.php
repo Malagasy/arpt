@@ -85,11 +85,10 @@ function get_prototype_functions(){
 	}
 
 	logr($f);
-	die();
 
-	/*foreach( $f as $function ){
+	//foreach( $f as $function ){
 
-		$function = $f['get_contentinfo'];
+		$function = $f[4535];
 
 		$the_args['parentid'] = 5;
 		$the_args['userid'] = 1;
@@ -116,7 +115,7 @@ function get_prototype_functions(){
 			update_contentproperty( $cid , 'return' , 'Non renseigné.' );
 			update_contentproperty( $cid , 'example' , 'Non renseigné.' );
 		}
-	//}*/
+	//}
 		
 	
 }
