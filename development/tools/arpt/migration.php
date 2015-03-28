@@ -29,10 +29,6 @@ function get_prototype_functions(){
 
 	$f = array();
 
-	unset( $files );
-
-	$files[] = 'access.php';
-
 	$id_files = 0;
 
 	foreach( $files as $the_file ){
@@ -73,7 +69,7 @@ function get_prototype_functions(){
 			if( $tmp_params[1] ){
 				foreach( $params as $param ){
 					if( ( $the_pos = strpos( $param , '=' ) ) !== false ){
-						$params_2[] = array( 'paramName' => trim( substr( $param , 0 , $the_pos ) ) , 'optional' => true );
+						$params_2[] = array( 'paramName' => trim( substr( $param , 0 , $the_pos ) ) , 'optional' => true , 'default' => trim( substr( $param , $the_pos ) ) );
 					}else{
 						$params_2[] = array( 'paramName' => trim( $param ) , 'optional' => false );
 					}
@@ -126,7 +122,7 @@ function get_prototype_functions(){
 						if( $pdoc_line[0] == '*' && strlen( $pdoc_line ) > 2 ){
 							$pdoc_line = substr( $pdoc_line , 1 );
 							if( ($dot_position = strpos( $pdoc_line , '.' ) ) !== false ) :
-								$pdoc_format['Summary'] .= substr( $pdoc_line , 0 , $dot_position );
+								$pdoc_format['Summary'] .= substr( $pdoc_line , 0 , $dot_position ) . '.';
 								$summary = false;
 								$description = true;
 							else :
@@ -225,47 +221,83 @@ function get_prototype_functions(){
 	}
 	logr($f);
 
-	/*
+	
 	foreach( $f as $function ){
 
-		$the_args['parentid'] = 5;
-		$the_args['userid'] = 1;
 		$the_args['title'] = $function['FunctionName'];
-		$the_args['message'] = '<p>Cette page a été générée automatiquement et n\'a pas encore été modifié.</p>';
+		if( isset( $function['PHPDoc']['Summary'] ) )
+			$the_args['message'] = '<p>'. $function['PHPDoc']['Summary'] .'</p>';
+		else
+			$the_args['message'] = '<p>Cette page a été générée automatiquement et n\'a pas encore été modifié.</p>';
 		$the_args['message'] .= '<p>Cette fonction se trouve dans le fichier <a href="'. get_url( 'tracks/' . $function['File'] ) . '" alt="Liens vers ' . $function['File'] . '">' . $function['File'] . ' (l.'.$function['Line'].')</a>.</p>';
-		$the_args['keywords'] = 'fonctions, ' . $function['File'];
 
-		$content = get_contents( array( 'title' => $function['FunctionName'] ) );
-		if( !$content->qhas() ){
-			echo 'Création de ' . $function['FunctionName'] . '<br>';
-		
-			$cid = insert_new_content( 'fonction' , $the_args );
+			echo 'Mise àjour de ' . $function['FunctionName'] . '<br>';
+
+			$content = get_contents( array( 'slug' => do_slug( $function['FunctionName'] ) ) );
+			$content->qnext();
+			if( diffstr( $content->qtype() , 'fonction' ) ) continue;
+			$cid = udpate_content( $content->qid() , $the_args );
 
 			if( $cid ){
-			echo $function['FunctionName'] . ' crée.' . '<br>';
+
 				$value = '<pre><code class="php">' . $function['Prototype'] . '</code></pre>';
-				if( $function['Parameters'] != false ){
-					$value .= "<ul>";
-					foreach( $function['Parameters'] as $parameter ){
-						$value .= "<li><strong>" . $parameter['paramName'] . "</strong>";
-						if( $parameter['optional'] == true )
-							$value .= " (Optionnel)";
-						$value .= "  </li>";
+
+				if( isset( $function['PHPDoc']['Description'] ) )
+					$value .= "<p>" . $function['PHPDoc']['Description'] . "</p>";
+
+
+				if( isset( $function['PHPDoc']['Metas']['param'] ) ){
+					if( $function['PHPDoc']['Metas']['param'] != false ){
+						$value .= '<ul class="fonction-parametres">';
+						foreach( $function['PHPDoc']['Metas']['param'] as $parameter ){
+							$value .= "<li>" . $parameter['Type'] . ' <strong>' . $parameter['Argument'] . '</strong>';
+							if( $parameter['optional'] == true )
+								$value .= " (Optionnel) : ";
+
+							if( $parameter['Description'] )
+								$value .= $parameter['Description'];
+
+							if( $parameter['optional'] == true )
+								$value .=  "<br>Défaut: " . strtoupper( $parameter['default'] );
+
+							$value .= "  </li>";
+						}
+						$value .= "</ul>";
 					}
-					$value .= "</ul>";
+				}else{
+					if( $function['Parameters'] != false ){
+						$value .= "<ul>";
+						foreach( $function['Parameters'] as $parameter ){
+							$value .= "<li><strong>" . $parameter['paramName'] . "</strong>";
+							if( $parameter['optional'] == true ){
+								$value .= " (Optionnel) <br> Défaut: " . strtoupper( $parameter['default'] );
+							}
+							$value .= "  </li>";
+						}
+						$value .= "</ul>";
+					}
 				}
 
 				update_contentproperty( $cid , 'prototype' , $value );
-				update_contentproperty( $cid , 'return' , 'Non renseigné.' );
-				update_contentproperty( $cid , 'example' , 'Non renseigné.' );
 
 
-				echo 'CustomChamps crées.' . '<br>';
+				$value = '';
+				if( isset( $function['PHPDoc']['Metas']['return'] ) ){
+					$value .= "<p>Retourne <strong>" . $function['PHPDoc']['Metas']['return']['Type'] . '</strong></p>';
+					if(  isset( $function['PHPDoc']['Metas']['return']['Description'] ) )
+						$value .= "<p>" . $function['PHPDoc']['Metas']['return']['Description'] . "</p>";
+				}else{
+					$value .= "Non renseigné.";
+				}
+				update_contentproperty( $cid , 'return' , $value );
+
+
+				echo 'CustomChamps édités.' . '<br>';
 			}
 
 		}
 	}
-	*/
+	
 
 	die();
 		
