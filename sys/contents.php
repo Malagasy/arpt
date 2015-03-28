@@ -12,6 +12,7 @@ class Contents extends Queries{
 
 
 			$clean = array( 	'selection' => '*',
+								'title' => null,
 								'type' 	=> null,
 								'id'	=> null,
 								'userid' => null,
@@ -38,7 +39,7 @@ class Contents extends Queries{
 			$this->currentpage = currentpage();
 			$this->limit = $specificities['limit'];
 
-			$where = ' 1 = 1  ' .clause_where( 'id' , '=' , $specificities['id'] , ' AND ' ) . clause_where( 'content_type' , '=' , $specificities['type'] , ' AND ' , clause_where( 'parent_id', '=' , $specificities['parent_id'] , ' AND ' ) ) . clause_where( 'content_slug' , '=' , $specificities['slug'] , ' AND ' ) . clause_where( 'user_id' , '=' , $specificities['userid'] , ' AND ' ) . clause_where( 'content_status' , '=' , $specificities['status'] , ' AND ' );
+			$where = ' 1 = 1  ' .clause_where( 'id' , '=' , $specificities['id'] , ' AND ' ) . clause_where( 'content_type' , '=' , $specificities['type'] , ' AND ' , clause_where( 'parent_id', '=' , $specificities['parent_id'] , ' AND ' ) ) . clause_where( 'content_slug' , '=' , $specificities['slug'] , ' AND ' ) . clause_where( 'user_id' , '=' , $specificities['userid'] , ' AND ' ) . clause_where( 'content_status' , '=' , $specificities['status'] , ' AND ' ) . clause_where( 'content_title' , '=' , $specificities['title'] , ' AND ' );
 			$where .= clause_in( 'id' , $specificities['specified_ids'] , ' AND ');
 			$where .= clause_where('YEAR(content_date)' , '=' , $specificities['year'] , ' AND ' ) . clause_where( 'MONTH(content_date)' , '=' , $specificities['month'] , ' AND ' ) . clause_where( 'DAY(content_date)' , '=' , $specificities['day'] , ' AND ' );
 			$where .= clause_orderby( $specificities['orderby'] , '' , '' , '' , ' ' . $specificities['ob_suffix'] . ' ');				
