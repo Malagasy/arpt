@@ -27,6 +27,8 @@ get_header();
 				$last_edit_file = filemtime( $path );
 				$size_file = filesize( $path ); ?>
 				<p>
+					Localisation : <?php echo $path; ?>
+					<br>
 					Taille du fichier : <?php echo $size_file; ?> octets
 					<br>
 					Dernières modifications : <?php echo arpt_date( $last_edit_file ); ?>
