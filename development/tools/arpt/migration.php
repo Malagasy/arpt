@@ -125,7 +125,6 @@ function get_prototype_functions(){
 
 		}
 
-die();
 	//}*/
 		
 	
