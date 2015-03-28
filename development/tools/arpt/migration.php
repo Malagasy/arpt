@@ -118,7 +118,6 @@ function get_prototype_functions(){
 				foreach( $the_pdoc as $pdoc_line ){
 
 					$pdoc_line = trim( $pdoc_line );
-					echo $pdoc_line . '<br>';
 
 					if( $summary ){
 						if( $pdoc_line[0] == '*' && strlen( $pdoc_line ) > 2 ){
@@ -139,6 +138,7 @@ function get_prototype_functions(){
 							$pdoc_format['Description'][$p_number_description] = '';
 
 						if( $pdoc_line[0] == '*' && strlen( $pdoc_line ) > 2 ){
+							echo $pdoc_line . '<br>';
 								$pdoc_line = substr( $pdoc_line , 1 );
 
 								$first_word = strstr( substr( $pdoc_line , 1 ) , ' ' , true );
