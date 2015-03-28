@@ -217,6 +217,7 @@ function get_prototype_functions(){
 
 
 		$args = array();
+	}
 
 
 	foreach( $f as $function ){
@@ -295,7 +296,6 @@ function get_prototype_functions(){
 
 				echo 'CustomChamps édités.' . '<br>';
 			}
-	//	redirect( get_clean_url() );
 		
 	
 }
