@@ -220,12 +220,6 @@ function get_prototype_functions(){
 
 	}
 
-		$content = get_contents( array( 'slug' => do_slug( 'role_exists' ) ) );
-			$content->qnext();
-			echo $content->qtype();
-			die();
-
-	
 	foreach( $f as $function ){
 
 		$the_args['title'] = $function['FunctionName'];
