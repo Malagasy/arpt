@@ -46,6 +46,8 @@ function get_prototype_functions(){
 
 			$f_name = substr( $arg , 0 , strpos( $arg , '(' ) );
 
+
+
 			$tmp['FunctionName'] = $f_name;
 			$tmp['Prototype'] = $arg;
 
@@ -71,9 +73,10 @@ function get_prototype_functions(){
 			$tmp['Parameters'] = $params_2;
 			$tmp['File'] = 'sys/' . $the_file;
 
-			$f[$f_name] = $tmp;
 
 		}
+		
+		$f[$f_name] = $tmp;
 	}
 
 	logr($f);
