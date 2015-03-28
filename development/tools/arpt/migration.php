@@ -137,7 +137,7 @@ function get_prototype_functions(){
 
 						if( $pdoc_line[0] == '*' && strlen( $pdoc_line ) > 2 ){
 
-								$pdoc_line = substr( $pdoc_line , 1 );
+								$pdoc_line = trim( substr( $pdoc_line , 1 ) );
 
 								$first_word = strstr( $pdoc_line , ' ' , true );
 								echo $first_word . '<br>';
