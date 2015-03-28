@@ -52,7 +52,7 @@ function get_prototype_functions(){
 			$tmp = array();
 
 			$tmp['FunctionName'] = $f_name;
-			$tmp['Prototype'] = $arg[0];
+			$tmp['Prototype'] = "<?php " . $arg[0] . " ?>";
 			$tmp['Line'] = $arg[1];
 
 			preg_match('#\((.*?)\)#', $arg[0], $tmp_params);
@@ -83,16 +83,15 @@ function get_prototype_functions(){
 		}
 
 	}
-logr($f);
 	//foreach( $f as $function ){
 
-		$function = $f[4444];
+		$function = $f[9591];
 
 		$the_args['parentid'] = 5;
 		$the_args['userid'] = 1;
 		$the_args['title'] = $function['FunctionName'];
 		$the_args['message'] = '<p>Cette page a été générée automatiquement et n\'a pas encore été modifié.</p>';
-		$the_args['message'] .= '<p>Cette fonction se trouve dans le fichier <a href="'. get_url( 'tracks/' . $function['File'] ) . '" alt="Liens vers ' . $function['File'] . '">' . $function['File'] . '</a>.</p>';
+		$the_args['message'] .= '<p>Cette fonction se trouve dans le fichier <a href="'. get_url( 'tracks/' . $function['File'] ) . '" alt="Liens vers ' . $function['File'] . '">' . $function['File'] . ' (L'.$function['Line'].')</a>.</p>';
 		$the_args['keywords'] = 'fonctions, ' . $function['File'];
 
 		$content = get_contents( array( 'title' => $function['FunctionName'] ) );
@@ -103,7 +102,7 @@ logr($f);
 
 			if( $cid ){
 			echo $function['FunctionName'] . ' crée.' . '<br>';
-				$value = "<pre><code><?php " . $function['Prototype'] . "?></code></pre>";
+				$value = "<pre><code>" . $function['Prototype'] . "</code></pre>";
 				if( $function['Parameters'] != false ){
 					$value .= "<ul>";
 					foreach( $function['Parameters'] as $parameter ){
