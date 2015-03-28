@@ -28,10 +28,10 @@ function get_prototype_functions(){
 	$preg = '/function[\s\n]+(\S+)[\s\n]*\(/';
 
 	$f = array();
-	
+
 	foreach( $files as $the_file ){
 
-		$code = strtok( file_get_contents( $base_path . $the_file ) , "\r\n"  );
+		$line = strtok( file_get_contents( $base_path . $the_file ) , "\r\n"  );
 
 		while( $line !== false ){
 			if( preg_match($preg, $line ) )
