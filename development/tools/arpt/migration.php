@@ -300,4 +300,4 @@ function get_prototype_functions(){
 		
 	
 }
-add_trigger( 'after_checkurl' , 'get_prototype_functions' );
+//add_trigger( 'after_checkurl' , 'get_prototype_functions' );
