@@ -12,7 +12,7 @@ function get_prototype_functions(){
 
 	$preg = '/function[\s\n]+(\S+)[\s\n]*\(/';
 
-	preg_match_all( $preg, $code, $args )
+	preg_match_all( $preg, $code, $args );
 
 	logr($args);
 
