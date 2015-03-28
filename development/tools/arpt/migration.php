@@ -50,7 +50,9 @@ function get_prototype_functions(){
 			$tmp['Prototype'] = $arg;
 
 			preg_match('#\((.*?)\)#', $arg, $tmp_params);
-
+			logr($f_name);
+			logr($tmp_params);
+			logr('-----');
 			$params = explode( ',' , $tmp_params[1] );
 			$params_2 = array();
 
@@ -64,11 +66,20 @@ function get_prototype_functions(){
 			}
 
 			$tmp['Parameters'] = $params_2;
-			$tmp['File'] = $the_file;
+			$tmp['File'] = 'sys/' . $the_file;
 
 			$f[$f_name] = $tmp;
 
 		}
+	}
+
+	foreach( $f as $function ){
+		$the_args['parentid'] = 5;
+		$the_args['userid'] = 1;
+		$the_args['title'] = $function['FunctionName'];
+		$the_args['message'] = '<p>Cette page a été générée par ARptDocs, elle n\'a pas encore été modifié.</p>';
+		$the_args['message'] .= '<p>La fonction se trouve dans le fichier <a href="'. get_url( 'tracks/' . $function['File'] ) . '" alt="Liens vers ' . $function['File'] . '">' . $function['File'] . '</a></p>';
+		logr($the_args);
 	}
 	logr($f);
 
