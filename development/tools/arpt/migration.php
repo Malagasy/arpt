@@ -229,13 +229,15 @@ function get_prototype_functions(){
 
 		$the_args['message'] .= '<p>Cette fonction se trouve dans le fichier <a href="'. get_url( 'tracks/' . $function['File'] ) . '" alt="Liens vers ' . $function['File'] . '">' . $function['File'] . ' (l.'.$function['Line'].')</a>.</p>';
 
-			echo 'Mise à jour de ' . $function['FunctionName'] . '<br>';
 
 			$content = get_contents( array( 'slug' => do_slug( $function['FunctionName'] ) ) );
 			$content->qnext();
+			
+			echo "lastedit:" . strtotime( $content->qproperty('last_edit') ) . "-----" . filemtime( './' . $function['File'] ) . '<br>';
 			if( diffstr( $content->qtype() , 'fonction' ) ) continue;
 			if( strtotime( $content->qproperty('last_edit') ) >=  filemtime( './' . $function['File'] ) ) continue;
-			echo "lastedit:" . strtotime( $content->qproperty('last_edit') ) . "-----" . filemtime( './' . $function['File'] ) . '<br>';
+
+			echo 'Mise à jour de ' . $function['FunctionName'] . '<br>';
 			update_content( $content->qid() , $the_args );
 
 				$value = '<pre><code class="php">' . $function['Prototype'] . '</code></pre>';
