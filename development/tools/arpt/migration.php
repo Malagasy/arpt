@@ -6,10 +6,14 @@ function get_prototype_functions(){
 	$files[] = 'properties.php';
 	logr( $base_path . $files[0] );
 	$code = file_get_contents( $base_path . $files[0] );
-	logr($code);
 	$gets = token_get_all( $code );
 
-	logr($gets);
+	$r = array();
+	foreach( $gets as $k => $v ){
+		$r[][$k] = token_name($v);
+	}
+
+	logr($r);
 
 	exit();
 
