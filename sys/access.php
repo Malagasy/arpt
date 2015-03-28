@@ -16,6 +16,10 @@ function get_arpt_roles( $name = null ){
 	* 
 	* C'est la super description de la fonction.
 	* Sur 2 lignes hééhé
+	* 
+	* Deuxième paragraphe, est ce que ça va marcher ?
+	*
+	* Même 3, soyons fous
 */
 function parseArray_get_roles(){
 	global $arpt_roles;
