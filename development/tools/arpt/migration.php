@@ -90,11 +90,11 @@ function get_prototype_functions(){
 
 
 
-			$start_line = $tmp['Line'];
+			$start_line = $tmp['Line']-3;
 
 			$found_pdoc = false;
 
-			while( ( $foundpdoc = strpos( $current_file_lines[$start_line-3] , '/**' ) ) === false ){
+			while( ( $foundpdoc = strpos( $current_file_lines[$start_line] , '/**' ) ) === false ){
 				$start_line--;
 				if( $start_line < 0 ) break;
 				if( isset( $f[$id_files-1] ) )
@@ -103,7 +103,7 @@ function get_prototype_functions(){
 			}
 
 			if( $foundpdoc !== false ){
-				$the_pdoc = array_slice( $current_file_lines , $start_line , $tmp['Line'] - 1 );
+				$the_pdoc = array_slice( $current_file_lines , $start_line , $tmp['Line'] - 1 - $start_line );
 				logr($the_pdoc);
 
 			}
