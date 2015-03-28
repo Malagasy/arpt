@@ -73,13 +73,15 @@ function get_prototype_functions(){
 			$tmp['Parameters'] = $params_2;
 			$tmp['File'] = 'sys/' . $the_file;
 
+			$f[$f_name] = $tmp;
+
 
 		}
-		
-		$f[$f_name] = $tmp;
+
 	}
 
 	logr($f);
+	die();
 
 	/*foreach( $f as $function ){
 
