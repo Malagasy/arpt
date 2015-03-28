@@ -29,6 +29,8 @@ function get_prototype_functions(){
 
 	$f = array();
 
+	logr($files);
+
 	foreach( $files as $the_file ){
 
 		$line = strtok( file_get_contents( $base_path . $the_file ) , "\r\n"  );
