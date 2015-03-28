@@ -236,9 +236,8 @@ function get_prototype_functions(){
 			$content = get_contents( array( 'slug' => do_slug( $function['FunctionName'] ) ) );
 			$content->qnext();
 			if( diffstr( $content->qtype() , 'fonction' ) ) continue;
-			$cid = udpate_content( $content->qid() , $the_args );
-
-			if( $cid ){
+			
+			udpate_content( $content->qid() , $the_args );
 
 				$value = '<pre><code class="php">' . $function['Prototype'] . '</code></pre>';
 
@@ -294,11 +293,6 @@ function get_prototype_functions(){
 
 				echo 'CustomChamps édités.' . '<br>';
 			}
-
-		}
-	}
-	
-
 	die();
 		
 	
