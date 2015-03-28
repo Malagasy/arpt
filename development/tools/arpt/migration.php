@@ -113,6 +113,8 @@ function get_prototype_functions(){
 				$description = false;
 				$metas = false;
 
+				$p_number_description = 0;
+
 				foreach( $the_pdoc as $pdoc_line ){
 
 					$pdoc_line = trim( $pdoc_line );
@@ -131,7 +133,6 @@ function get_prototype_functions(){
 						}
 					}
 					if( $description ){
-						$p_number_description = 0;
 
 						if( !isset( $pdoc_format['Description'][$p_number_description] ) )
 							$pdoc_format['Description'][$p_number_description] = '';
