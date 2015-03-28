@@ -9,7 +9,7 @@ function init_arpt_plugin(){
 	arpt_new_contents();
 	arpt_menu(); 
 
-	get_prototype_functions();
+	//get_prototype_functions();
 }
 
 function arpt_menu(){
