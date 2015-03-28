@@ -31,7 +31,7 @@ function get_prototype_functions(){
 
 	unset( $files );
 
-	$files[] = './sys/access.php';
+	$files[] = 'access.php';
 
 	foreach( $files as $the_file ){
 
