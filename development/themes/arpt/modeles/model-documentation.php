@@ -51,7 +51,7 @@ get_header();
 			</div>
 			<div class="col-md-8">
 				<?php
-				$fonctions = new_content( array( 'type' => 'fonction' ) );
+				$fonctions = new_content( array( 'type' => 'fonction' , 'limit' => 50 ) );
 				$i = 0;
 				?>
 				<h4>Dernières fonctions documentées..</h4>
