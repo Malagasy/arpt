@@ -75,8 +75,11 @@ function get_prototype_functions(){
 
 		}
 	}
-/*
-	foreach( $f as $function ){
+
+	//foreach( $f as $function ){
+
+		$function = $f['get_contentinfo'];
+
 		$the_args['parentid'] = 5;
 		$the_args['userid'] = 1;
 		$the_args['title'] = $function['FunctionName'];
@@ -86,12 +89,24 @@ function get_prototype_functions(){
 		$cid = insert_new_content( 'fonction' , $the_args );
 
 		if( $cid ){
-			$value = "<pre><code>" . highlight_string( )
+			$value = "<pre><code>" . highlight_string( $function['Prototype'] ) . "</code></pre>";
+			if( $function['Parameters'] != false ){
+				$value .= "<ul>";
+				foreach( $function['Parameters'] as $parameter ){
+					$value .= "<li><strong>" . $parameter['paramName'] . "</strong>";
+					if( $parameter['optional'] == true )
+						$value .= " (optionel)";
+					$value .= " : </li>";
+				}
+				$value .= "</ul>";
+			}
 
 			update_contentproperty( $cid , 'prototype' , $value );
+			update_contentproperty( $cid , 'return' , 'Non renseigné.' );
+			update_contentproperty( $cid , 'example' , 'Non renseigné.' );
 		}
-	}
-		*/
+	//}
+		
 	
 	logr($f);
 
