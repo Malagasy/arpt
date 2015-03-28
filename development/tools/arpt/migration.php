@@ -181,12 +181,13 @@ function get_prototype_functions(){
 									if( !isset( $pdoc_format['Metas'][ $pdoc_params[0] ][$param_number[$pdoc_params[0]]]['Description'] ) )
 										$pdoc_format['Metas'][ $pdoc_params[0] ][$param_number[$pdoc_params[0]]]['Description'] = '';
 
-									$pdoc_format['Metas'][ $pdoc_params[0] ][$param_number[$pdoc_params[0]]]['Description'] .= implode( ' ' , array_slice( $pdoc_params , 2 ) );
+									$pdoc_format['Metas'][ $pdoc_params[0] ][$param_number[$pdoc_params[0]]]['Description'] .= implode( ' ' , array_slice( $pdoc_params , 3 ) );
 
 								}
 							}else{
 								if( samestr( $pdoc_last_type , 'param' ) ){
-									$pdoc_format['Metas'][ $pdoc_params[0] ][$param_number[$pdoc_params[0]]]['Description'] .= $pdoc_line_no_star;
+									if( $pdoc_line_no_star )
+										$pdoc_format['Metas'][ 'param' ][$param_number['param']]['Description'] .= $pdoc_line_no_star;
 								}
 							}
 						}
