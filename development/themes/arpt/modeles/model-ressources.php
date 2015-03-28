@@ -33,8 +33,7 @@ get_header();
 					<div class="col-md-6">
 						<h4>Exemple pratique</h4>
 					<?php
-					$childs = get_contentchilds( array( 'category' => 'technique' ) );
-					logr($childs);
+					$childs = get_contentchilds( array( 'category' => 'pratique' ) );
 					if( $childs->qhas() ){
 						echo '<ul>';
 						while( $childs->next() ){
