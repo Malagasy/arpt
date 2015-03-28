@@ -178,6 +178,8 @@ function update_content( $cid , $datas ){
 
 function insert_new_content( $content_type , $datas ){
 
+	if( !is_active_content( $content_type ) ) return false;
+
 	$default = array(
 		'parentid' => null,
 		'userid' => get_currentuserid(),

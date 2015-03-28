@@ -50,19 +50,22 @@ function get_prototype_functions(){
 			$tmp['Prototype'] = $arg;
 
 			preg_match('#\((.*?)\)#', $arg, $tmp_params);
-			logr($f_name);
-			logr($tmp_params);
-			logr('-----');
+
 			$params = explode( ',' , $tmp_params[1] );
+
 			$params_2 = array();
 
-			foreach( $params as $param ){
-				if( ( $the_pos = strpos( $param , '=' ) ) !== false ){
-					$params_2[] = array( 'paramName' => trim( substr( $param , 0 , $the_pos ) ) , 'optional' => true );
-				}else{
-					$params_2[] = array( 'paramName' => trim( $param ) , 'optional' => false );
-				}
+			if( $tmp_params[1] ){
+				foreach( $params as $param ){
+					if( ( $the_pos = strpos( $param , '=' ) ) !== false ){
+						$params_2[] = array( 'paramName' => trim( substr( $param , 0 , $the_pos ) ) , 'optional' => true );
+					}else{
+						$params_2[] = array( 'paramName' => trim( $param ) , 'optional' => false );
+					}
 
+				}
+			}else{
+				$params_2 = false;
 			}
 
 			$tmp['Parameters'] = $params_2;
@@ -72,14 +75,21 @@ function get_prototype_functions(){
 
 		}
 	}
-
+/*
 	foreach( $f as $function ){
 		$the_args['parentid'] = 5;
 		$the_args['userid'] = 1;
 		$the_args['title'] = $function['FunctionName'];
-		$the_args['message'] = '<p>Cette page a été générée par ARptDocs, elle n\'a pas encore été modifié.</p>';
-		$the_args['message'] .= '<p>La fonction se trouve dans le fichier <a href="'. get_url( 'tracks/' . $function['File'] ) . '" alt="Liens vers ' . $function['File'] . '">' . $function['File'] . '</a></p>';
-		logr($the_args);
+		$the_args['message'] = '<p>Cette page a été générée automatiquement et n\'a pas encore été modifié.</p>';
+		$the_args['message'] .= '<p>Cette fonction se trouve dans le fichier <a href="'. get_url( 'tracks/' . $function['File'] ) . '" alt="Liens vers ' . $function['File'] . '">' . $function['File'] . '</a>.</p>';
+		
+		$cid = insert_new_content( 'fonction' , $the_args );
+
+		if( $cid ){
+			$value = "<pre><code>" . highlight_string( )
+
+			update_contentproperty( $cid , 'prototype' , $value );
+		}*/
 	}
 	logr($f);
 
