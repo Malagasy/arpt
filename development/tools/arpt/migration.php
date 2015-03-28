@@ -1,6 +1,7 @@
 <?php
 
 function get_prototype_functions(){
+	if( !isset( $_GET['update_function_documentation'] ) ) return;
 
 	$base_path = './sys/';
 	$files[] = 'access.php';
@@ -229,7 +230,7 @@ function get_prototype_functions(){
 			$the_args['message'] = '<p>Cette page a été générée automatiquement et n\'a pas encore été modifié.</p>';
 		$the_args['message'] .= '<p>Cette fonction se trouve dans le fichier <a href="'. get_url( 'tracks/' . $function['File'] ) . '" alt="Liens vers ' . $function['File'] . '">' . $function['File'] . ' (l.'.$function['Line'].')</a>.</p>';
 
-			echo 'Mise àjour de ' . $function['FunctionName'] . '<br>';
+			echo 'Mise à jour de ' . $function['FunctionName'] . '<br>';
 
 			$content = get_contents( array( 'slug' => do_slug( $function['FunctionName'] ) ) );
 			$content->qnext();
@@ -240,7 +241,8 @@ function get_prototype_functions(){
 				$value = '<pre><code class="php">' . $function['Prototype'] . '</code></pre>';
 
 				if( isset( $function['PHPDoc']['Description'] ) )
-					$value .= "<p>" . $function['PHPDoc']['Description'] . "</p>";
+					foreach( $function['PHPDoc']['Description'] as $paragraphe )
+						$value .= "<p>" . $paragraphe . "</p>";
 
 
 				if( isset( $function['PHPDoc']['Metas']['param'] ) ){
@@ -250,6 +252,8 @@ function get_prototype_functions(){
 							$value .= "<li>" . $parameter['Type'] . ' <strong>' . $parameter['Argument'] . '</strong>';
 							if( $parameter['optional'] == true )
 								$value .= " (Optionnel) : ";
+							else
+								$value .= " : ";
 
 							if( $parameter['Description'] )
 								$value .= $parameter['Description'];
@@ -263,7 +267,7 @@ function get_prototype_functions(){
 					}
 				}else{
 					if( $function['Parameters'] != false ){
-						$value .= "<ul>";
+						$value .= '<ul class="fonction-parametres">';
 						foreach( $function['Parameters'] as $parameter ){
 							$value .= "<li><strong>" . $parameter['paramName'] . "</strong>";
 							if( $parameter['optional'] == true ){
@@ -280,7 +284,7 @@ function get_prototype_functions(){
 
 				$value = '';
 				if( isset( $function['PHPDoc']['Metas']['return'] ) ){
-					$value .= "<p>Retourne <strong>" . $function['PHPDoc']['Metas']['return']['Type'] . '</strong></p>';
+					$value .= "<p>Retourne <strong>" . $function['PHPDoc']['Metas']['return']['Type'] . '</strong>.</p>';
 					if(  isset( $function['PHPDoc']['Metas']['return']['Description'] ) )
 						$value .= "<p>" . $function['PHPDoc']['Metas']['return']['Description'] . "</p>";
 				}else{
@@ -291,7 +295,9 @@ function get_prototype_functions(){
 
 				echo 'CustomChamps édités.' . '<br>';
 			}
-	die();
+
+		redirect( get_site_url() );
 		
 	
 }
+add_trigger( 'after_checkurl' , 'get_prototype_functions' );
