@@ -9,10 +9,16 @@ function get_prototype_functions(){
 	$code = file_get_contents( $base_path . $files[0] );
 
 	$args = array();
-
 	$preg = '/function[\s\n]+(\S+)[\s\n]*\(/';
 
-	preg_match_all( $preg, $code, $args );
+	$handle = foen( $base_path . $files[0] , "r" );
+	if( $handle ){
+		while( ($line = fget( $handle ) !== false ) ){
+			if( preg_match( $preg, $line ) )
+				$args[] = $line;
+		}
+		fclose($handle);
+	}
 
 	logr($args);
 
