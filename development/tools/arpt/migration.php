@@ -33,25 +33,29 @@ function get_prototype_functions(){
 
 		$line = strtok( file_get_contents( $base_path . $the_file ) , "\r\n"  );
 
+		$nb_line = 0;
+
 		while( $line !== false ){
+			$nb_line++;
 			if( preg_match($preg, $line ) )
-				$args[] = $line;
+				$args[] = array( $line , $nb_line );
 			$line = strtok( "\r\n" );
 		}
 
 		foreach( $args as $arg ){
 
-			$arg = str_replace('function','',$arg);
-			$arg = trim( str_replace('{','',$arg) );
+			$arg[0] = str_replace('function','',$arg[0]);
+			$arg[0] = trim( str_replace('{','',$arg[0]) );
 
-			$f_name = substr( $arg , 0 , strpos( $arg , '(' ) );
+			$f_name = substr( $arg[0] , 0 , strpos( $arg[0] , '(' ) );
 
-
+			$tmp = array();
 
 			$tmp['FunctionName'] = $f_name;
-			$tmp['Prototype'] = $arg;
+			$tmp['Prototype'] = $arg[0];
+			$tmp['Line'] = $arg[1];
 
-			preg_match('#\((.*?)\)#', $arg, $tmp_params);
+			preg_match('#\((.*?)\)#', $arg[0], $tmp_params);
 
 			$params = explode( ',' , $tmp_params[1] );
 
