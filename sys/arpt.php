@@ -328,6 +328,10 @@ class Arpt{
 
 		call_triggers( 'before_routing' );
 		$this->pageinfo->seo();
+
+					logr($this->queried());
+					logr($this->pageinfo->get_pagetype());
+					exit();
 		if( $this->mvc_mod == false )
 			switch( $page = $this->pageinfo->get_pagetype() ) {
 				case routing_home():
@@ -345,8 +349,6 @@ class Arpt{
 						$this->load( page_dir( 'archive.php' ) );
 					else
 						$this->load( page_dir('contents.php') );
-					logr($this->queried());
-					exit();
 					break;
 				case routing_search():
 					$this->load( page_dir( 'search.php' ) );
