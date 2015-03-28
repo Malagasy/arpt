@@ -61,7 +61,7 @@ class Contents extends Queries{
 
 			$specificities = array_merge( $default , $specificities );
 
-			$query['set'] = clause_where( 'id' , '=' , $specificities['id'] ) . clause_where( 'parent_id' , '=' , $specificities['parent_id'] , ',' ) . clause_where( 'content_model' , '=' , $specificities['content_model'] , ',' ) . clause_where( 'content_title' , '=' , $specificities['title'] , ',' ) . clause_where( 'content_slug' , '=' , $specificities['slug'] , ',' ) . clause_where( 'content_content' , '=' , $specificities['message'] , ',' );
+			$query['set'] = clause_where( 'id' , '=' , $specificities['id'] ) . clause_where( 'parent_id' , '=' , $specificities['parent_id'] , ',' ) . clause_where( 'content_model' , '=' , $specificities['content_model'] , ',' ) . clause_where( 'content_title' , '=' , $specificities['title'] , ',' ) . clause_where( 'content_slug' , '=' , $specificities['slug'] , ',' ) . clause_where( 'content_content' , '=' , addslashes( $specificities['message'] ) , ',' );
 			$query['where'] = clause_where( 'id' , '=' , $specificities['id'] );
 
 			$specificities = $query;
