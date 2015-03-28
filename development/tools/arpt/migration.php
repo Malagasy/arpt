@@ -83,6 +83,7 @@ function get_prototype_functions(){
 		}
 
 	}
+	logr($f);
 	//foreach( $f as $function ){
 
 		$function = $f[1111];
