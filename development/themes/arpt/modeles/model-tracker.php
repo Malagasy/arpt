@@ -35,7 +35,7 @@ get_header();
 					Dernières modifications : <?php echo arpt_date( $last_edit_file ); ?>
 				</p>
 
-				<pre class="view_code_block" style="font-size:11px"><code><?php echo highlight_string ( trim( htmlspecialchars( file_get_contents( $path ) ) ) );	 ?></code></pre>
+				<pre class="view_code_block" style="font-size:11px"><?php echo highlight_string ( trim( ( file_get_contents( $path ) ) ) );	 ?></pre>
 			</div>
 
 
