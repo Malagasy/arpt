@@ -1,7 +1,7 @@
 <?php
 
 function get_prototype_functions(){
-	$base_path = './';
+	$base_path = './sys/';
 	$files[] = 'access.php';
 	$files[] = 'properties.php';
 
