@@ -24,7 +24,10 @@ function get_arpt_roles( $name = null ){
   * @param string $myArgument With a *description* of this argument, these may also
   *    span multiple lines.
   *
-  * @return void
+  * @return array|false This function return mixed
+  * But may return other things
+  *
+  * Like that
   */
 function parseArray_get_roles(){
 	global $arpt_roles;
