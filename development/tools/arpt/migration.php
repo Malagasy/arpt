@@ -96,6 +96,8 @@ function get_prototype_functions(){
 
 		$content = get_contents( array( 'title' => $function['FunctionName'] ) );
 
+		logr($content);
+
 		if( !$content->qhas() ){
 			echo 'Création de ' . $function['FunctionName'] . '<br>';
 		
