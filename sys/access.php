@@ -12,16 +12,16 @@ function get_arpt_roles( $name = null ){
 	return false;
 }
 /**
-	* Ceci est un test pour la fonction parseArray_get_roles.
-	* 
-	* C'est la super description de la fonction.
-	* Sur 2 lignes hééhé
-	* 
-	* Deuxième paragraphe, est ce que ça va marcher ?
-	*
-	* Même 3, soyons fous
-	* @param Test
-*/
+  * A summary informing the user what the associated element does.
+  *
+  * A *description*, that can span multiple lines, to go _in-depth_ into the details of this element
+  * and to provide some background information or textual references.
+  *
+  * @param string $myArgument With a *description* of this argument, these may also
+  *    span multiple lines.
+  *
+  * @return void
+  */
 function parseArray_get_roles(){
 	global $arpt_roles;
 

@@ -116,6 +116,7 @@ function get_prototype_functions(){
 
 				$p_number_description = 0;
 
+
 				foreach( $the_pdoc as $pdoc_line ){
 
 					$pdoc_line = trim( $pdoc_line );
@@ -158,10 +159,37 @@ function get_prototype_functions(){
 
 					if( $metas ){
 
-						$pdoc_line_2 = trim( substr( $pdoc_line , 1 ) );
-						echo $pdoc_line_2;
+						if( $pdoc_line[0] == '*' ){
+							$pdoc_line_no_star = trim( substr( $pdoc_line , 1 ) );
 
-						$pdoc_format['Metas'] = '';
+							$pdoc_params = array_filter( explode( ' ' , $pdoc_line_no_star ) );
+
+							if( $pdoc_params[0][0] == '@' ){
+								$pdoc_params[0] = substr( $pdoc_params[0] , 1 ); // remove the @
+
+								$pdoc_last_type = $pdoc_params[0];
+
+								if( !isset( $param_number[$pdoc_params[0]] ) )
+									$param_number[$pdoc_params[0]] = -1;
+
+								$param_number[$pdoc_params[0]]++;
+
+								if( $pdoc_params[0] == 'param' ){
+									$pdoc_format['Metas'][ $pdoc_params[0] ][$param_number[$pdoc_params[0]]]['Type'] = $pdoc_params[1];
+									$pdoc_format['Metas'][ $pdoc_params[0] ][$param_number[$pdoc_params[0]]]['Argument'] = $pdoc_params[2];
+									
+									if( !isset( $pdoc_format['Metas'][ $pdoc_params[0] ][$param_number[$pdoc_params[0]]]['Description'] ) )
+										$pdoc_format['Metas'][ $pdoc_params[0] ][$param_number[$pdoc_params[0]]]['Description'] = '';
+
+									$pdoc_format['Metas'][ $pdoc_params[0] ][$param_number[$pdoc_params[0]]]['Description'] .= implode( ' ' , array_slice( $pdoc_params , 2 ) );
+
+								}
+							}else{
+								if( samestr( $pdoc_last_type , 'param' ) ){
+									$pdoc_format['Metas'][ $pdoc_params[0] ][$param_number[$pdoc_params[0]]]['Description'] .= $pdoc_line_no_star;
+								}
+							}
+						}
 
 					}
 
