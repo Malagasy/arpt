@@ -26,7 +26,7 @@ get_header();
 						}
 						echo '</ul>';
 					}
-					$childs->qfree();
+					$childs->free();
 					?>
 					</div>
 
