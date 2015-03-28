@@ -6,7 +6,7 @@ function get_prototype_functions(){
 	$files[] = 'properties.php';
 
 	$code = file_get_contents( $base_path . $file[0] );
-
+	logr($code);
 	$gets = token_get_all( $code );
 
 	logr($gets);
