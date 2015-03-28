@@ -11,7 +11,7 @@ function get_prototype_functions(){
 	$args = array();
 	$preg = '/function[\s\n]+(\S+)[\s\n]*\(/';
 
-	$handle = foen( $base_path . $files[0] , "r" );
+	$handle = fopen( $base_path . $files[0] , "r" );
 	if( $handle ){
 		while( ($line = fget( $handle ) !== false ) ){
 			if( preg_match( $preg, $line ) )
