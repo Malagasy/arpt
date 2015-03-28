@@ -84,8 +84,8 @@ function get_prototype_functions(){
 
 	}
 
-	/*logr($f);
-
+	logr($f);
+die();
 	//foreach( $f as $function ){
 
 		$function = $f[4535];
@@ -95,25 +95,31 @@ function get_prototype_functions(){
 		$the_args['title'] = $function['FunctionName'];
 		$the_args['message'] = '<p>Cette page a été générée automatiquement et n\'a pas encore été modifié.</p>';
 		$the_args['message'] .= '<p>Cette fonction se trouve dans le fichier <a href="'. get_url( 'tracks/' . $function['File'] ) . '" alt="Liens vers ' . $function['File'] . '">' . $function['File'] . '</a>.</p>';
-		
-		$cid = insert_new_content( 'fonction' , $the_args );
 
-		if( $cid ){
-			$value = "<pre><code>" . highlight_string( $function['Prototype'] ) . "</code></pre>";
-			if( $function['Parameters'] != false ){
-				$value .= "<ul>";
-				foreach( $function['Parameters'] as $parameter ){
-					$value .= "<li><strong>" . $parameter['paramName'] . "</strong>";
-					if( $parameter['optional'] == true )
-						$value .= " (Optionnel)";
-					$value .= "  </li>";
+		$content = get_contents( array( 'title' => $function['FunctionName'] ) );
+
+		if( !$content->qhas() ){
+		
+			$cid = insert_new_content( 'fonction' , $the_args );
+
+			if( $cid ){
+				$value = "<pre><code>" . highlight_string( $function['Prototype'] , true ) . "</code></pre>";
+				if( $function['Parameters'] != false ){
+					$value .= "<ul>";
+					foreach( $function['Parameters'] as $parameter ){
+						$value .= "<li><strong>" . $parameter['paramName'] . "</strong>";
+						if( $parameter['optional'] == true )
+							$value .= " (Optionnel)";
+						$value .= "  </li>";
+					}
+					$value .= "</ul>";
 				}
-				$value .= "</ul>";
+
+				update_contentproperty( $cid , 'prototype' , $value );
+				update_contentproperty( $cid , 'return' , 'Non renseigné.' );
+				update_contentproperty( $cid , 'example' , 'Non renseigné.' );
 			}
 
-			update_contentproperty( $cid , 'prototype' , $value );
-			update_contentproperty( $cid , 'return' , 'Non renseigné.' );
-			update_contentproperty( $cid , 'example' , 'Non renseigné.' );
 		}
 	//}*/
 		
