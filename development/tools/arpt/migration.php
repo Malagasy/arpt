@@ -227,13 +227,12 @@ function get_prototype_functions(){
 		else
 			$the_args['message'] = '<p>Cette page a été générée automatiquement et n\'a pas encore été modifié.</p>';
 
-		$the_args['message'] .= '<p>Cette fonction se trouve dans le fichier <a href="'. get_url( 'tracks/' . $function['File'] ) . '" alt="Liens vers ' . $function['File'] . '">' . $function['File'] . ' (l.'.$function['Line'].')</a>.</p>';
+		$the_args['message'] .= '<p>Cette fonction se trouve dans le fichier <a href="'. get_url( 'tracks/' . $function['File'] ) . '" alt="Liens vers ' . $function['File'] . '">' . $function['File'] . ' (l.'.$function['Line'].')</a></p>';
 
 
 			$content = get_contents( array( 'slug' => do_slug( $function['FunctionName'] ) ) );
 			$content->qnext();
-			
-			echo "lastedit:" . strtotime( $content->qproperty('last_edit') ) . "-----" . filemtime( './' . $function['File'] ) . '<br>';
+
 			if( diffstr( $content->qtype() , 'fonction' ) ) continue;
 			if( strtotime( $content->qproperty('last_edit') ) >=  filemtime( './' . $function['File'] ) ) continue;
 
@@ -297,7 +296,6 @@ function get_prototype_functions(){
 
 				echo 'CustomChamps édités.' . '<br>';
 			}
-die();
 		redirect( get_clean_url() );
 		
 	
