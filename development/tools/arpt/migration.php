@@ -174,7 +174,7 @@ function get_prototype_functions(){
 
 								$param_number[$pdoc_params[0]]++;
 
-								if( $pdoc_params[0] == 'param' ){
+								if( samestr( $pdoc_params[0] , 'param' ) ){
 									$pdoc_format['Metas'][ $pdoc_params[0] ][$param_number[$pdoc_params[0]]]['Type'] = $pdoc_params[1];
 									$pdoc_format['Metas'][ $pdoc_params[0] ][$param_number[$pdoc_params[0]]]['Argument'] = $pdoc_params[2];
 									
@@ -184,10 +184,23 @@ function get_prototype_functions(){
 									$pdoc_format['Metas'][ $pdoc_params[0] ][$param_number[$pdoc_params[0]]]['Description'] .= implode( ' ' , array_slice( $pdoc_params , 3 ) );
 
 								}
+								if( samestr( $pdoc_params[0] , 'return' ) ){
+									$pdoc_format['Metas'][ $pdoc_params[0] ]['Type'] = $pdoc_params[1];
+									
+									if( !isset( $pdoc_format['Metas'][ $pdoc_params[0] ]['Description'] ) )
+										$pdoc_format['Metas'][ $pdoc_params[0] ]['Description'] = '';
+
+									$pdoc_format['Metas'][ $pdoc_params[0] ]['Description'] .= implode( ' ' , array_slice( $pdoc_params , 2 ) );
+
+								}
 							}else{
 								if( samestr( $pdoc_last_type , 'param' ) ){
 									if( $pdoc_line_no_star )
-										$pdoc_format['Metas'][ 'param' ][$param_number['param']]['Description'] .= ' ' . $pdoc_line_no_star;
+										$pdoc_format['Metas'][ $pdoc_last_type ][$param_number['param']]['Description'] .= ' ' . $pdoc_line_no_star;
+								}
+								if( samestr( $pdoc_last_type , 'return' ) ){
+									if( $pdoc_line_no_star )
+										$pdoc_format['Metas'][ $pdoc_last_type ]['Description'] .= ' ' . $pdoc_line_no_star;
 								}
 							}
 						}
