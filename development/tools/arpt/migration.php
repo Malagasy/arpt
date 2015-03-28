@@ -53,6 +53,8 @@ function get_prototype_functions(){
 
 			$tmp['FunctionName'] = $f_name;
 			$tmp['Prototype'] = htmlentities( "<?php " . $arg[0] . " ?>" );
+			echo "<pre><code>" . $tmp['Prototype'] . "</code></pre>";
+			die();
 			$tmp['Line'] = $arg[1];
 
 			preg_match('#\((.*?)\)#', $arg[0], $tmp_params);
