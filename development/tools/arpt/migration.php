@@ -1,7 +1,7 @@
 <?php
 
 function get_prototype_functions(){
-	if( !isset( $_GET['update_function_documentation'] ) ) return;
+	if( !isset( $_GET['update_function_documentation'] ) && !is_systempage() ) return;
 
 	$base_path = './sys/';
 	$files[] = 'access.php';
