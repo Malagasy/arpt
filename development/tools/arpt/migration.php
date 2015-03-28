@@ -102,7 +102,6 @@ function get_prototype_functions(){
 			if( $foundpdoc !== false ){
 				$pdoc_format = array();
 				$the_pdoc = array_slice( $current_file_lines , $start_line , $tmp['Line'] - 1 - $start_line - 1 );
-				logr($the_pdoc);
 
 				$summary = true;
 				$pdoc_format['Summary'] = '';
@@ -222,12 +221,14 @@ function get_prototype_functions(){
 	}
 
 	foreach( $f as $function ){
+		logr($function);
 
 		$the_args['title'] = $function['FunctionName'];
 		if( isset( $function['PHPDoc']['Summary'] ) )
 			$the_args['message'] = '<p>'. $function['PHPDoc']['Summary'] .'</p>';
 		else
 			$the_args['message'] = '<p>Cette page a été générée automatiquement et n\'a pas encore été modifié.</p>';
+
 		$the_args['message'] .= '<p>Cette fonction se trouve dans le fichier <a href="'. get_url( 'tracks/' . $function['File'] ) . '" alt="Liens vers ' . $function['File'] . '">' . $function['File'] . ' (l.'.$function['Line'].')</a>.</p>';
 
 			echo 'Mise à jour de ' . $function['FunctionName'] . '<br>';
@@ -235,6 +236,7 @@ function get_prototype_functions(){
 			$content = get_contents( array( 'slug' => do_slug( $function['FunctionName'] ) ) );
 			$content->qnext();
 			if( diffstr( $content->qtype() , 'fonction' ) ) continue;
+			if( strtotime( $content->qproperty('last_edit') ) >=  filesize( './' . $function['File'] ) ) continue;
 			
 			update_content( $content->qid() , $the_args );
 
