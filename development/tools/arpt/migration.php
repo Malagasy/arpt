@@ -76,7 +76,7 @@ function get_prototype_functions(){
 		}
 	}
 
-	//foreach( $f as $function ){
+	/*foreach( $f as $function ){
 
 		$function = $f['get_contentinfo'];
 
@@ -105,10 +105,7 @@ function get_prototype_functions(){
 			update_contentproperty( $cid , 'return' , 'Non renseigné.' );
 			update_contentproperty( $cid , 'example' , 'Non renseigné.' );
 		}
-	//}
+	//}*/
 		
 	
-	logr($f);
-
-	exit();
 }
