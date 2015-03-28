@@ -53,7 +53,7 @@ function add_access_to_role( $rolename , $accessname ){
 	*
 	* @param String $name Nom du rôle à vérifier.
 	*
-	* @return True|False Retourne True si le rôle existe, sinon False.
+	* @return Boolean Retourne True si le rôle existe, sinon False.
 */
 function role_exists( $name ){
 	global $arpt_roles;
