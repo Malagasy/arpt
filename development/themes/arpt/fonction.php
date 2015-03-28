@@ -13,20 +13,20 @@ get_header();
 		</p>
 		<p>
 		<?php if( $party = qproperty( 'prototype' ) ) : ?>
-			<h2>Prototype</h2>
+			<h3>Prototype</h3>
 			<?php echo $party; ?>
 		<?php endif; ?>
 		</p>
 		<p>
 		<?php if( $party = qproperty( 'return' ) ) : ?>
-			<h2>Valeurs de retour</h2>
+			<h3>Valeurs de retour</3>
 			<?php echo $party; ?>
 		<?php endif; ?>
 		</p>
 
 		<p>
 		<?php if( $party = qproperty( 'example' ) ) : ?>
-			<h2>Cas d'utilisation</h2>
+			<h3>Cas d'utilisation</h3>
 			<?php echo $party; ?>
 		<?php endif; ?>
 		</p>

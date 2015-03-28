@@ -298,7 +298,7 @@ function get_prototype_functions(){
 				echo 'CustomChamps édités.' . '<br>';
 			}
 
-	//	redirect( get_site_url() );
+		redirect( get_current_url() );
 		
 	
 }
