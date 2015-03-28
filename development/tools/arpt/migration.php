@@ -219,6 +219,7 @@ function get_prototype_functions(){
 		$args = array();
 
 	}
+	logr($f);
 
 	foreach( $f as $function ){
 		$the_args['title'] = $function['FunctionName'];
