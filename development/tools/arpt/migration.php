@@ -281,7 +281,7 @@ function get_prototype_functions(){
 					}
 				}
 
-				update_contentproperty( $cid , 'prototype' , $value );
+				update_contentproperty( $content->qid() , 'prototype' , $value );
 
 
 				$value = '';
@@ -292,7 +292,7 @@ function get_prototype_functions(){
 				}else{
 					$value .= "Non renseigné.";
 				}
-				update_contentproperty( $cid , 'return' , $value );
+				update_contentproperty( $content->qid() , 'return' , $value );
 
 
 				echo 'CustomChamps édités.' . '<br>';
