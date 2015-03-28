@@ -52,8 +52,8 @@ function get_prototype_functions(){
 		$tmp['Prototype'] = $arg;
 
 		preg_match('#\((.*?)\)#', $arg, $tmp_params);
-		logr($tmp_params);
-		$params = explode( ',' , $tmp_params );
+		
+		$params = explode( ',' , $tmp_params[1] );
 		$tmp['Parameters'] = $params;
 
 		$f[] = $tmp;
