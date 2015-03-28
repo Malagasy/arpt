@@ -27,8 +27,8 @@ function get_prototype_functions(){
 	$args = array();
 	$preg = '/function[\s\n]+(\S+)[\s\n]*\(/';
 
-		logr($files);
-
+	$f = array();
+	
 	foreach( $files as $the_file ){
 
 		$code = strtok( file_get_contents( $base_path . $the_file ) , "\r\n"  );
@@ -38,8 +38,6 @@ function get_prototype_functions(){
 				$args[] = $line;
 			$line = strtok( "\r\n" );
 		}
-
-		$f = array();
 
 		foreach( $args as $arg ){
 
