@@ -19,7 +19,24 @@ function get_prototype_functions(){
 		$line = strtok( "\r\n" );
 	}
 
+	$f = array();
+
+	foreach( $args as $arg ){
+
+		$arg = str_replace('function','',$arg);
+		$arg = trim( str_replace('{','',$arg) );
+
+		$f_name = substr( $arg , 0 , strpos( $arg , '(' ) );
+
+		$tmp['FunctionName'] = $f_name;
+		$tmp['Prototype'] = $arg;
+
+		$f[] = $tmp;
+
+	}
+
 	logr($args);
+	logr($f);
 
 	exit();
 }
