@@ -224,7 +224,7 @@ function get_prototype_functions(){
 		logr($function);
 
 		$the_args['title'] = $function['FunctionName'];
-		if( isset( $function['PHPDoc']['Summary'] ) )
+		if( $function['PHPDoc']['Summary'] )
 			$the_args['message'] = '<p>'. $function['PHPDoc']['Summary'] .'</p>';
 		else
 			$the_args['message'] = '<p>Cette page a été générée automatiquement et n\'a pas encore été modifié.</p>';
@@ -236,7 +236,7 @@ function get_prototype_functions(){
 			$content = get_contents( array( 'slug' => do_slug( $function['FunctionName'] ) ) );
 			$content->qnext();
 			if( diffstr( $content->qtype() , 'fonction' ) ) continue;
-			if( strtotime( $content->qproperty('last_edit') ) >=  filesize( './' . $function['File'] ) ) continue;
+			if( strtotime( $content->qproperty('last_edit') ) >=  filemtime( './' . $function['File'] ) ) continue;
 			
 			update_content( $content->qid() , $the_args );
 
@@ -298,7 +298,7 @@ function get_prototype_functions(){
 				echo 'CustomChamps édités.' . '<br>';
 			}
 
-		redirect( get_site_url() );
+	//	redirect( get_site_url() );
 		
 	
 }
