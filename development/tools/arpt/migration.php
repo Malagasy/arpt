@@ -29,8 +29,6 @@ function get_prototype_functions(){
 
 	$f = array();
 
-	logr($files);
-
 	foreach( $files as $the_file ){
 
 		$line = strtok( file_get_contents( $base_path . $the_file ) , "\r\n"  );
@@ -88,8 +86,6 @@ function get_prototype_functions(){
 
 	}
 	foreach( $f as $function ){
-
-		$function = $f[5000];
 
 		$the_args['parentid'] = 5;
 		$the_args['userid'] = 1;
