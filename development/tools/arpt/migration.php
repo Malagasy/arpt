@@ -137,19 +137,18 @@ function get_prototype_functions(){
 
 						if( $pdoc_line[0] == '*' && strlen( $pdoc_line ) > 2 ){
 
-								$pdoc_line = trim( substr( $pdoc_line , 1 ) );
+								$pdoc_line_2 = trim( substr( $pdoc_line , 1 ) );
 
-								$first_word = strstr( $pdoc_line , ' ' , true );
-								echo $first_word . '<br>';
+								$first_word = strstr( $pdoc_line_2 , ' ' , true );
+
 								if( $first_word[0] == '@' ) :
-
 									$description = false;
 									$metas = true;
 								else :
 									if( !isset( $pdoc_format['Description'][$p_number_description] ) )
 										$pdoc_format['Description'][$p_number_description] = '';
 
-									$pdoc_format['Description'][$p_number_description] .= $pdoc_line;
+									$pdoc_format['Description'][$p_number_description] .= $pdoc_line_2;
 								endif;
 
 						}else{
@@ -158,6 +157,9 @@ function get_prototype_functions(){
 					}
 
 					if( $metas ){
+
+						$pdoc_line_2 = trim( substr( $pdoc_line , 1 ) );
+						
 						$pdoc_format['Metas'] = '';
 
 					}
