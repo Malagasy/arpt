@@ -134,11 +134,8 @@ function get_prototype_functions(){
 					}
 					if( $description ){
 
-						if( !isset( $pdoc_format['Description'][$p_number_description] ) )
-							$pdoc_format['Description'][$p_number_description] = '';
-
 						if( $pdoc_line[0] == '*' && strlen( $pdoc_line ) > 2 ){
-							echo $pdoc_line . '<br>';
+
 								$pdoc_line = substr( $pdoc_line , 1 );
 
 								$first_word = strstr( substr( $pdoc_line , 1 ) , ' ' , true );
@@ -146,6 +143,9 @@ function get_prototype_functions(){
 									$description = false;
 									$metas = true;
 								else :
+									if( !isset( $pdoc_format['Description'][$p_number_description] ) )
+										$pdoc_format['Description'][$p_number_description] = '';
+
 									$pdoc_format['Description'][$p_number_description] .= $pdoc_line;
 								endif;
 
