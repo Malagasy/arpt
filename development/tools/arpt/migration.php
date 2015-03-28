@@ -10,7 +10,7 @@ function get_prototype_functions(){
 	$args = array();
 	$preg = '/function[\s\n]+(\S+)[\s\n]*\(/';
 
-	$code = strtok( file_get_contents( $base_path . $files[0] , "\r\n" ) );
+	$code = strtok( file_get_contents( $base_path . $files[0] ) , "\r\n"  );
 
 	while( $line !== false ){
 		logr($line);
