@@ -52,6 +52,7 @@ function get_prototype_functions(){
 		$tmp['Prototype'] = $arg;
 
 		preg_match_all('/\(([A-Za-z0-9 ]+?)\)/', $arg, $tmp_params);
+		xmpr($tmp_params);
 		$params = explode( ',' , $tmp_params );
 		$tmp['Parameters'] = $params;
 
