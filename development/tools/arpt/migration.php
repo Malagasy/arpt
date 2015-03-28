@@ -219,7 +219,11 @@ function get_prototype_functions(){
 		$args = array();
 
 	}
-	logr($f);
+
+		$content = get_contents( array( 'slug' => do_slug( 'role_exists' ) ) );
+			$content->qnext();
+			echo $content->qtype();
+			die();
 
 	
 	foreach( $f as $function ){
