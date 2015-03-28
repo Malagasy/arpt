@@ -6,15 +6,15 @@ function get_prototype_functions(){
 	$files[] = 'access.php';
 	$files[] = 'properties.php';
 
-	$code = file_get_contents( $base_path . $files[0] );
 
 	$args = array();
 	$preg = '/function[\s\n]+(\S+)[\s\n]*\(/';
 
 	$handle = fopen( $base_path . $files[0] , "r" );
+	logr($handle);
 	if( $handle ){
 		while( ($line = fgets( $handle ) !== false ) ){
-			echo $line;
+			logr($line);
 			if( preg_match( $preg, $line ) )
 				$args[] = $line;
 		}
