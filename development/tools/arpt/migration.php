@@ -110,6 +110,7 @@ function get_prototype_functions(){
 				$summary = true;
 				$pdoc_format['Summary'] = '';
 				$pdoc_format['Description'] = array();
+				$pdoc_format['Metas'] = array();
 				$description = false;
 				$metas = false;
 
@@ -138,8 +139,10 @@ function get_prototype_functions(){
 
 								$pdoc_line = substr( $pdoc_line , 1 );
 
-								$first_word = strstr( substr( $pdoc_line , 1 ) , ' ' , true );
+								$first_word = strstr( $pdoc_line , ' ' , true );
+								echo $first_word . '<br>';
 								if( $first_word[0] == '@' ) :
+
 									$description = false;
 									$metas = true;
 								else :
@@ -155,6 +158,7 @@ function get_prototype_functions(){
 					}
 
 					if( $metas ){
+						$pdoc_format['Metas'] = '';
 
 					}
 

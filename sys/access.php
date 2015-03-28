@@ -20,6 +20,7 @@ function get_arpt_roles( $name = null ){
 	* Deuxième paragraphe, est ce que ça va marcher ?
 	*
 	* Même 3, soyons fous
+	* @param Test
 */
 function parseArray_get_roles(){
 	global $arpt_roles;
