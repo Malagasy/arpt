@@ -91,7 +91,7 @@ function get_prototype_functions(){
 		$the_args['userid'] = 1;
 		$the_args['title'] = $function['FunctionName'];
 		$the_args['message'] = '<p>Cette page a été générée automatiquement et n\'a pas encore été modifié.</p>';
-		$the_args['message'] .= '<p>Cette fonction se trouve dans le fichier <a href="'. get_url( 'tracks/' . $function['File'] ) . '" alt="Liens vers ' . $function['File'] . '">' . $function['File'] . ' (L'.$function['Line'].')</a>.</p>';
+		$the_args['message'] .= '<p>Cette fonction se trouve dans le fichier <a href="'. get_url( 'tracks/' . $function['File'] ) . '" alt="Liens vers ' . $function['File'] . '">' . $function['File'] . ' (l.'.$function['Line'].')</a>.</p>';
 		$the_args['keywords'] = 'fonctions, ' . $function['File'];
 
 		$content = get_contents( array( 'title' => $function['FunctionName'] ) );
