@@ -24,40 +24,41 @@ function get_prototype_functions(){
 			$files[] = $tools_path . $file;
 	}
 
-	logr($files);
-
-
-
 	$args = array();
 	$preg = '/function[\s\n]+(\S+)[\s\n]*\(/';
 
-	$code = strtok( file_get_contents( $base_path . $files[0] ) , "\r\n"  );
 
-	while( $line !== false ){
-		if( preg_match($preg, $line ) )
-			$args[] = $line;
-		$line = strtok( "\r\n" );
-	}
+	foreach( $files as $the_file ){
 
-	$f = array();
+		$code = strtok( file_get_contents( $base_path . $the_file ) , "\r\n"  );
 
-	foreach( $args as $arg ){
+		while( $line !== false ){
+			if( preg_match($preg, $line ) )
+				$args[] = $line;
+			$line = strtok( "\r\n" );
+		}
 
-		$arg = str_replace('function','',$arg);
-		$arg = trim( str_replace('{','',$arg) );
+		$f = array();
 
-		$f_name = substr( $arg , 0 , strpos( $arg , '(' ) );
+		foreach( $args as $arg ){
 
-		$tmp['FunctionName'] = $f_name;
-		$tmp['Prototype'] = $arg;
+			$arg = str_replace('function','',$arg);
+			$arg = trim( str_replace('{','',$arg) );
 
-		preg_match('#\((.*?)\)#', $arg, $tmp_params);
-		
-		$params = explode( ',' , $tmp_params[1] );
-		$tmp['Parameters'] = $params;
+			$f_name = substr( $arg , 0 , strpos( $arg , '(' ) );
 
-		$f[] = $tmp;
+			$tmp['FunctionName'] = $f_name;
+			$tmp['Prototype'] = $arg;
 
+			preg_match('#\((.*?)\)#', $arg, $tmp_params);
+
+			$params = explode( ',' , $tmp_params[1] );
+			$tmp['Parameters'] = $params;
+			$tmp['File'] = $base_path . $the_file;
+
+			$f[] = $tmp;
+
+		}
 	}
 	logr($f);
 
