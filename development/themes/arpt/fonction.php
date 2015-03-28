@@ -19,7 +19,7 @@ get_header();
 		</p>
 		<p>
 		<?php if( $party = qproperty( 'return' ) ) : ?>
-			<h3>Valeurs de retour</3>
+			<h3>Valeurs de retour</h3>
 			<?php echo $party; ?>
 		<?php endif; ?>
 		</p>
