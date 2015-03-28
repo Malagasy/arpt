@@ -19,7 +19,7 @@
 			</ul>
 		</div>
 		<div class="row">
-			©2015 ARpt, un CMS simple et évolutif. Développé par Andy RAL | Propulsé par ARpt
+			©2015 ARpt, un CMS simple et évolutif. Développé par Andy RALANTONISAINANA | Propulsé par ARpt
 		</div>
 	</div>
 </footer>

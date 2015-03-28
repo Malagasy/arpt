@@ -64,9 +64,9 @@ function get_prototype_functions(){
 			}
 
 			$tmp['Parameters'] = $params_2;
-			$tmp['File'] = $base_path . $the_file;
+			$tmp['File'] = $the_file;
 
-			$f[] = $tmp;
+			$f[$f_name] = $tmp;
 
 		}
 	}
