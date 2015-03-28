@@ -89,8 +89,10 @@ function get_prototype_functions(){
 			$value = "<pre><code>" . highlight_string( )
 
 			update_contentproperty( $cid , 'prototype' , $value );
-		}*/
+		}
 	}
+		*/
+	
 	logr($f);
 
 	exit();
