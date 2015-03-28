@@ -10,17 +10,12 @@ function get_prototype_functions(){
 	$args = array();
 	$preg = '/function[\s\n]+(\S+)[\s\n]*\(/';
 
-	$handle = fopen( $base_path . $files[0] , "r" );
-	logr($handle);
-	if( $handle ){
-		while( ($line = fgets( $handle ) !== false ) ){
-			logr($line);
-			if( preg_match( $preg, $line ) )
-				$args[] = $line;
-		}
-		fclose($handle);
-	}else{
-		echo 'fails';
+	$code = strtok( file_get_contents( $base_path . $files[0] , "\r\n" ) );
+
+	while( $line !== false ){
+		if( preg_match($preg, $line ) )
+			$args[] = $line;
+		$line = strtok( "\r\n" );
 	}
 
 	logr($args);
