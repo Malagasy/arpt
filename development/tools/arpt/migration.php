@@ -153,10 +153,12 @@ function get_prototype_functions(){
 					}
 
 					if( $metas ){
-						
+
 					}
 
 				}
+
+				logr($pdoc_format);
 
 			}
 
