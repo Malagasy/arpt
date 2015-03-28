@@ -329,7 +329,7 @@ class Arpt{
 		call_triggers( 'before_routing' );
 		$this->pageinfo->seo();
 
-					logr($this->queried());
+					logr($this->queried;
 					logr($this->pageinfo->get_pagetype());
 					exit();
 		if( $this->mvc_mod == false )
