@@ -87,9 +87,7 @@ function get_prototype_functions(){
 		$args = array();
 
 	}
-	logr($f);
-	die();
-	//foreach( $f as $function ){
+	foreach( $f as $function ){
 
 		$function = $f[5000];
 
@@ -129,8 +127,9 @@ function get_prototype_functions(){
 			}
 
 		}
-die();
-	//}*/
+	}
+
+	die();
 		
 	
 }
