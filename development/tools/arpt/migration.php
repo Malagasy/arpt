@@ -221,7 +221,7 @@ function get_prototype_functions(){
 
 
 	foreach( $f as $function ){
-		
+
 		$the_args['title'] = $function['FunctionName'];
 		if( $function['PHPDoc']['Summary'] )
 			$the_args['message'] = '<p>'. $function['PHPDoc']['Summary'] .'</p>';
@@ -262,7 +262,7 @@ function get_prototype_functions(){
 								$value .= $parameter['Description'];
 
 							if( $function['Parameters'][$i]['optional'] == true )
-								$value .=  "<br>Défaut: " . strtoupper( $function['Parameters'][0]['default'] );
+								$value .=  "<br>Défaut: " . strtoupper( $function['Parameters'][$i]['default'] );
 
 							$value .= "  </li>";
 							$i++;
