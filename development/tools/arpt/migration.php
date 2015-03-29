@@ -296,7 +296,7 @@ function get_prototype_functions(){
 
 				echo 'CustomChamps édités.' . '<br>';
 			}
-			redirect( get_admin_url('arpt-tools' ) );
+			die();
 		
 	
 }
