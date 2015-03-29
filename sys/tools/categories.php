@@ -48,3 +48,4 @@ function category_exists( $id ){
 		return true;
 	endif;
 }
+?>
