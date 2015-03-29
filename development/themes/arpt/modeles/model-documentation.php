@@ -51,10 +51,10 @@ get_header();
 			</div>
 			<div class="col-md-8">
 				<?php
-				$fonctions = new_content( array( 'type' => 'fonction' , 'limit' => 50 ) );
+				$fonctions = new_content( array( 'type' => 'fonction' , 'limit' => 20 ) );
 				$i = 0;
 				?>
-				<h4>Dernières fonctions documentées..</h4>
+				<h4>Quelques fonctions</h4>
 				<table class="table">
 					<thead></thead>
 					<tbody>

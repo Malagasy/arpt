@@ -50,7 +50,7 @@ class Pageinfo{
 	public function seo(){
 		if( is_contentpage() || is_categorypage() ) :
 			qnext();
-			$this->pagetitle = qtitle() . ' - ' . sitename();
+			$this->pagetitle = qtitle() . ' &laquo; ' . sitename();
 			$this->pagedescr =  strip_tags( substr( qcontent() , 0 , 200 ) ) . ' - ' . sitename() . ' - ' . description();
 			qreset();
 		elseif( is_homepage() ) :
@@ -59,16 +59,16 @@ class Pageinfo{
 				$this->pagetitle .= ', ' . lcfirst( $slogan );
 			$this->pagedescr = description() . ' - ' . sitename();
 		elseif( is_searchpage() ) :
-			$this->pagetitle = 'Page de recherche - ' . sitename();
+			$this->pagetitle = 'Page de recherche &laquo; ' . sitename();
 			$this->pagedescr = 'Recherche sur ' . last_value('search') . ' - ' . sitename();
 		elseif( is_archivepage() ) :
-			$this->pagetitle = 'Page d\'archive - ' . sitename();
+			$this->pagetitle = 'Page d\'archive &laquo; ' . sitename();
 			$this->pagedescr = 'Archive - ' . get_pagetype() . ' - ' . sitename();
 		elseif( is_keywordspage() ) :
-			$this->pagetitle = 'Page des mots clés - ' . sitename();
+			$this->pagetitle = 'Page des mots clés &laquo; ' . sitename();
 			$this->pagedescr = 'Mots clés - ' . get_pageargs(0) . ' - ' . sitename();
 		elseif( is_errorpage() ) :
-			$this->pagetitle = 'Erreur 404 : Page introuvable - ' . sitename();
+			$this->pagetitle = 'Erreur 404 : Page introuvable &laquo; ' . sitename();
 			$this->pagedescr = description() . ' - ' . sitename();
 		endif;
 
