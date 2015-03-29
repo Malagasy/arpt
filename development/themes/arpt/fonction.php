@@ -7,27 +7,35 @@ get_header();
 <div class="container">
 	<div class="row page-header">
 		<div class="col-md-8 content">
+			<?php
+			$prototype = qproperty( 'prototype' );
+			$return = qproperty( 'return' );
+			$example = qproperty( 'example' )
+
+			echo strlen( $prototype ) + strlen( $return ) + strlen( $example );
+
+			?>
 		<h1> Fonction - <?php echo qtitle(); ?> </h1>
 		<p>
 			<?php echo qcontent(); ?>
 		</p>
 		<p>
-		<?php if( $party = qproperty( 'prototype' ) ) : ?>
+		<?php if( $prototype ) : ?>
 			<h3>Prototype</h3>
-			<?php echo $party; ?>
+			<?php echo $prototype; ?>
 		<?php endif; ?>
 		</p>
 		<p>
-		<?php if( $party = qproperty( 'return' ) ) : ?>
+		<?php if( $return ) : ?>
 			<h3>Valeurs de retour</h3>
-			<?php echo $party; ?>
+			<?php echo $return; ?>
 		<?php endif; ?>
 		</p>
 
 		<p>
-		<?php if( $party = qproperty( 'example' ) ) : ?>
+		<?php if( $example ) : ?>
 			<h3>Cas d'utilisation</h3>
-			<?php echo $party; ?>
+			<?php echo $example; ?>
 		<?php endif; ?>
 		</p>
 		
