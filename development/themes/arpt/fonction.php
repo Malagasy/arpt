@@ -16,7 +16,7 @@ get_header();
 		<h1> Fonction - <?php echo qtitle(); ?> </h1><?php
 		if( $c < 800 ){ ?>
 			<div class="panel panel-default padding-10">
-				Cette page ne semble pas assez complète. Si vous souhaitez obtenir des informations supplémentaires, <a href="#" id="ask">faites une demande</a>.
+				Cette page ne semble pas assez complète. Si vous souhaitez obtenir des informations supplémentaires, <a href="#" data-toggle="modal" data-target="ask">faites une demande</a>.
 			</div>
 			<div class="modal fade" id="ask" tabindex="-1" role="dialog" aria-labelledby="Faire une demande" aria-hidden="true">
 				<div class="modal-dialog">
