@@ -14,12 +14,31 @@ get_header();
 			$c = strlen( $prototype ) + strlen( $return ) + strlen( $example );
 			?>
 		<h1> Fonction - <?php echo qtitle(); ?> </h1><?php
-			if( $c < 800 ){ ?>
-				<div class="panel panel-default padding-10">
-					Cette page ne semble pas assez complète. Si vous souhaitez obtenir des informations supplémentaires, faites une demande.
+		if( $c < 800 ){ ?>
+			<div class="panel panel-default padding-10">
+				Cette page ne semble pas assez complète. Si vous souhaitez obtenir des informations supplémentaires, <a href="#" id="ask">faites une demande</a>.
+			</div>
+			<div class="modal fade" id="ask" tabindex="-1" role="dialog" aria-labelledby="Faire une demande" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">Demander des renseignements</h4>
+						</div>
+						<div class="modal-body">
+							<p>
+								Utilisez ce champ pour obtenir des informations sur un sujet spécifique.
+							</p>
+							<textarea name="reason_ask" class="form-control"></textarea>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary">Valider</button>
+						</div>
+					</div>
 				</div>
-			<?php
-			} ?>
+			</div>
+		<?php
+		} ?>
 		<p>
 			<?php echo qcontent(); ?>
 		</p>
