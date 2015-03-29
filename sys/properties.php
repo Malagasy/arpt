@@ -12,7 +12,9 @@
 
 */
 function insert_new_property( $where , $pid , $label , $value ){
-
+	
+	$label = addslashes( $label );
+	$value = addslashes( $value );
 
 	$where = 'arpt_'.$where.'_properties';
 
@@ -31,6 +33,8 @@ function insert_new_property( $where , $pid , $label , $value ){
 
 */
 function get_property( $where , $pid , $label ){	
+
+	$label = addslashes( $label );
 
 	$where = 'arpt_'.$where.'_properties';
 	$q = new_query( 'select' , $where , array( 'where' => ' parent_id=\''. $pid .'\' AND label=\''.$label.'\'' , 'selection' => 'value') );
@@ -62,6 +66,9 @@ function get_property( $where , $pid , $label ){
 
 function update_property( $where , $pid , $label , $value ){
 
+	$label = addslashes( $label );
+	$value = addslashes( $value );
+
 	$to = 'arpt_'.$where.'_properties';
 	
 	if( get_property( $where , $pid , $label ) === false ) 
@@ -84,6 +91,7 @@ function update_property( $where , $pid , $label , $value ){
 
 function delete_property( $where , $pid , $label ){
 
+	$label = addslashes( $label );
 
 	$where = 'arpt_'.$where.'_properties';
 
