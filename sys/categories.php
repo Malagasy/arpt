@@ -30,6 +30,10 @@ class Categories extends Queries{
 			$specificities = array_merge( $default , (array)$specificities );
 
 			$specificities = $this->clean( $specificities );
+			
+			logr($specificities);
+			die();
+
 
 			$query['set'] = clause_where( 'id' , '=' , $specificities['id'] ) . clause_where( 'name' , '=' , $specificities['name'] , ',' ) . clause_where( 'description' , '=' , $specificities['description'] , ',' );
 			$query['where'] = clause_where( 'id' , '=' , $specificities['id'] );
