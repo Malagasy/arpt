@@ -12,8 +12,13 @@ get_header();
 			$return = qproperty( 'return' );
 			$example = qproperty( 'example' );
 			$c = strlen( $prototype ) + strlen( $return ) + strlen( $example );
-			echo $c;
 
+			if( $c < 800 ){ ?>
+				<div class="panel panel-default">
+					Cette page ne semble pas assez complète. Si vous souhaite des informations supplémentaires n'hésitez pas à faire une demande.
+				</div>
+			<?php
+			}
 
 			?>
 		<h1> Fonction - <?php echo qtitle(); ?> </h1>
