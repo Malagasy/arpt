@@ -221,7 +221,7 @@ function get_prototype_functions(){
 
 
 	foreach( $f as $function ){
-		logr($function);
+		
 		$the_args['title'] = $function['FunctionName'];
 		if( $function['PHPDoc']['Summary'] )
 			$the_args['message'] = '<p>'. $function['PHPDoc']['Summary'] .'</p>';
@@ -299,8 +299,7 @@ function get_prototype_functions(){
 
 				echo 'CustomChamps édités.' . '<br>';
 			}
-			die();
-		//redirect( get_admin_url('arpt-tools' ) );
+		redirect( get_admin_url('arpt-tools' ) );
 		
 	
 }

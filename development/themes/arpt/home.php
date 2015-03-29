@@ -5,7 +5,7 @@ get_header();
 ?>
 <div class="jumbotron">
 	<div class="container">
-		<h1>Un CMS simple et évolutif</h1>
+		<h1>ARpt, un CMS simple et évolutif</h1>
 		<p>
 			ARpt est un CMS simple et OpenSource. Il permet aux utilisateurs de réaliser leur site de manitère intuitive et personnalisable tout en offrant aux développeurs la capacité d'ajouter de nouvelles fonctionnalités.	
 		</p>
@@ -33,9 +33,9 @@ get_header();
 	<div class="well well-lg">
 		<div class="row">
 			<div class="col-md-9">
-				<h1>
+				<h2>
 					Un petit CMS français
-				</h1>
+				</h2>
 				<p class="lead">
 					ARpt est un système de gestion de contenus simple. Il permet à un utilisateur de créer son site simplement et rapidement.
 				</p>
@@ -58,7 +58,7 @@ get_header();
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<h1>Installation</h1>
+				<h2>Installation</h2>
 				<ol>
 					<li>Téléchargez et décompressez ARpt en cliquant sur le lien ci-contre.</li>
 					<li>Placez ARpt à la racine de votre serveur Web. En utilisant un environnement de développement (par exemple, WAMP) il vous suffira de le placer sur la racine du serveur local ( <i>/www/ sur WAMP</i> ).</li>
