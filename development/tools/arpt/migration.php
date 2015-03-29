@@ -58,7 +58,6 @@ function get_prototype_functions(){
 			$tmp = array();
 
 			$tmp['FunctionName'] = $f_name;
-			$tmp['Prototype'] = $arg[0];
 			$tmp['Line'] = $arg[1];
 
 			preg_match('#\((.*?)\)#', $arg[0], $tmp_params);
@@ -79,6 +78,18 @@ function get_prototype_functions(){
 			}else{
 				$params_2 = false;
 			}
+
+
+			$tmp['Prototype'] = $f_name . '( ';
+			if( $params_2 ){
+				foreach( $params_2 as $param_2 ){
+					$tmp['Prototype'] .= $param_2['paramName'] . ' , ';
+				}
+				$tmp['Prototype'] = substr( $tmp['Prototype'] , 0 , -2 );
+			}
+			
+			$tmp['Prototype'] .= ')';
+			
 
 			$tmp['Parameters'] = $params_2;
 			$tmp['File'] = 'sys/' . $the_file;
@@ -262,7 +273,7 @@ function get_prototype_functions(){
 								$value .= $parameter['Description'];
 
 							if( $function['Parameters'][$i]['optional'] == true )
-								$value .=  "<br>Défaut: " . strtoupper( $function['Parameters'][$i]['default'] );
+								$value .=  "<br>Défaut: " . ( $function['Parameters'][$i]['default'] );
 
 							$value .= "  </li>";
 							$i++;
@@ -275,7 +286,7 @@ function get_prototype_functions(){
 						foreach( $function['Parameters'] as $parameter ){
 							$value .= "<li><strong>" . $parameter['paramName'] . "</strong>";
 							if( $parameter['optional'] == true ){
-								$value .= " (Optionnel) <br> Défaut: " . strtoupper( $parameter['default'] );
+								$value .= " (Optionnel) <br> Défaut: " . ( $parameter['default'] );
 							}
 							$value .= "  </li>";
 						}

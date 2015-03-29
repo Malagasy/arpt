@@ -13,7 +13,7 @@ get_header();
 			$example = qproperty( 'example' );
 			$c = strlen( $prototype ) + strlen( $return ) + strlen( $example );
 			?>
-		<h1> Fonction - <?php echo qtitle(); ?> </h1><?php
+		<h1> Fonction &laquo; <?php echo qtitle(); ?> </h1><?php
 		if( $c < 800 ){ ?>
 			<div class="panel panel-default padding-10">
 				Cette page ne semble pas assez complète. Si vous souhaitez obtenir des informations supplémentaires, <a href="#" data-toggle="modal" data-target="#ask">faites une demande</a>.
