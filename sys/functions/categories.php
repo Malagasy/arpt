@@ -16,7 +16,7 @@ function get_categories( $specificities = null ){
 	* @param String $label Le filtre à utiliser. 
 	* Valeurs possibles : id|name|type
 	* @param String $value Valeur correspond à $label.
-	* @param String $what Element à récupérer dans les catégories.
+	* @param String $what Element à récupérer dans les résultats.
 	*
 	* @return Mixed
 	* Retourne FALSE si aucune catégorie n'est récupéré.
