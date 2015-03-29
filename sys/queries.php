@@ -44,6 +44,17 @@ class Queries{
 	}
 	
 	private function update( $table , $specificities ){
+		$set = '';
+		if( is_array( $specificities['set'] ) ){
+			$specificities['set'] = $this->clean( $specificities['set'] );
+			foreach( $specificities['set'] as $k => $v ){
+				$set .= $k . '=\'' . $v . '\',';
+			}
+			unset( $specificities['set'] );
+			$specificities['set'] = substr( $set, 0 , -1 );
+		}
+
+
 		$set = ( isset( $specificities['set'] ) ) ? ' SET ' . $specificities['set'] : '';
 		$where = ( isset( $specificities['where'] ) ) ? ' WHERE ' . $specificities['where'] : '';
 		$this->query = "UPDATE {$table} {$set} {$where} ";

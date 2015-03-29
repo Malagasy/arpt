@@ -5,8 +5,28 @@ function get_categories( $specificities = null ){
 	return new Categories( $specificities );
 }
 
+/**
+	* Récupère une ou plusieurs catégories.
+	*
+	* Récupérer une ou plusieurs catégories à partir de l'ID, du nom ou du type de la catégorie.
+	* Rechercher à l'aide du type de la catégorie peut vous permettre de récupérer plusieurs résultats.
+	*
+	* Rechercher sur l'ID ou le nom retourne au mieux une seule catégorie.
+	*
+	* @param String $label Le filtre à utiliser. 
+	* Valeurs possibles : id|name|type
+	* @param String $value Valeur correspond à $label.
+	* @param String $what Element à récupérer dans les catégories.
+	*
+	* @return Mixed
+	* Retourne FALSE si aucune catégorie n'est récupéré.
+	* Retourne String si $what spécifié et qu'une seule catégorie récupérée.
+	* Sinon, retourne objet Categories.
+*/
 function get_category_by( $label , $value , $what = '*' ){
 	if( $value == '' ) return false;
+
+	$label = ( samestr( $label , 'type' ) ) ? 'content_type' : $label;
 
 	$r = get_categories( array( $label => $value , 'selection' => $what ) );
 
@@ -24,7 +44,17 @@ function get_category_by( $label , $value , $what = '*' ){
 
 	return false;
 }
-
+/**
+	* Récupère l'ID de la catégorie.
+	*
+	* Récuperer l'ID de la catégorie du contenu spécifié par $cid.
+	*
+	* @param int $cid ID du contenu.
+	*
+	* @return Mixed
+	* Retourne FALSE si le contenu n'a pas de catégorie.
+	* Sinon, retourne l'ID de la catégorie.
+*/
 
 function get_content_category( $cid ){
 	$cat = new_query( 'select' , 'arpt_contents_categories' , array( 'selection' => 'cat_id' , 'where' => 'content_id=\''.$cid.'\'' ) );
