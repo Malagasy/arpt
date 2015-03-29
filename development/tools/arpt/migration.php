@@ -234,7 +234,7 @@ function get_prototype_functions(){
 			$content->qnext();
 
 			if( diffstr( $content->qtype() , 'fonction' ) ) continue;
-			//if( strtotime( $content->qproperty('last_edit') ) >=  filemtime( './' . $function['File'] ) ) continue;
+			if( strtotime( $content->qproperty('last_edit') ) >=  filemtime( './' . $function['File'] ) ) continue;
 
 			echo 'Mise à jour de ' . $function['FunctionName'] . '<br>';
 			update_content( $content->qid() , $the_args );
