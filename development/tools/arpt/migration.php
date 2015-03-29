@@ -296,7 +296,6 @@ function get_prototype_functions(){
 
 				echo 'CustomChamps édités.' . '<br>';
 			}
-			die();
 		
 	
 }

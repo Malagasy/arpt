@@ -14,7 +14,7 @@ function get_categories( $specificities = null ){
 	* Rechercher sur l'ID ou le nom retourne au mieux une seule catégorie.
 	*
 	* @param String $label Le filtre à utiliser. 
-	* Valeurs possibles : id|name|type.
+	* Valeurs possibles : id|name|type
 	* @param String $value Valeur correspond à $label.
 	* @param String $what Element à récupérer dans les résultats.
 	*
