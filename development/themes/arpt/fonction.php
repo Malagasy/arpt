@@ -11,8 +11,8 @@ get_header();
 			$prototype = qproperty( 'prototype' );
 			$return = qproperty( 'return' );
 			$example = qproperty( 'example' );
-
-			echo strlen( $prototype ) + strlen( $return ) + strlen( $example );
+			$c = strlen( $prototype ) + strlen( $return ) + strlen( $example );
+			echo $c;
 
 
 			?>
