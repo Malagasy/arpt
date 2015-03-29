@@ -15,8 +15,8 @@ get_header();
 			?>
 		<h1> Fonction - <?php echo qtitle(); ?> </h1><?php
 			if( $c < 800 ){ ?>
-				<div class="panel panel-default">
-					Cette page ne semble pas assez complète. Si vous souhaite des informations supplémentaires n'hésitez pas à faire une demande.
+				<div class="panel panel-default padding-10">
+					Cette page ne semble pas assez complète. Si vous souhaitez obtenir des informations supplémentaires, faites une demande.
 				</div>
 			<?php
 			} ?>

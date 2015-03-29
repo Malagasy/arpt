@@ -6,6 +6,10 @@
 .bottom-buffer-30 { margin-bottom:30px; }
 .bottom-buffer-40 { margin-bottom:40px; }
 .bottom-buffer-50 { margin-bottom:50px; }
+.padding-5{ padding:5px;}
+.padding-10{ padding:10px;}
+.padding-15{ padding:15px;}
+.padding-20{ padding:20px;}
 .lightgray{ color: #ccc; }
 .darkgray{ color: #333333; }
 .navbar-nav li:hover a{ color: #2C3D51; }
