@@ -52,7 +52,7 @@ var jumbotronEffect = function(){
 var transformToFunctionLink = function(){
 	jQuery("p").each( function(e){
 		var old = jQuery(this).html();
-		var new_ = old.replace(#(\w+)\(\)#g,"<a href='http://arpt.fr/$1/'>$1</a>");
+		var new_ = old.replace(/(\w+)\(\)/g,"<a href='http://arpt.fr/$1/'>$1</a>");
 		jQuery(this).html(new_);
 	});
 
