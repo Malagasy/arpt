@@ -49,6 +49,14 @@ var jumbotronEffect = function(){
 	});
 
 }
+var transformToFunctionLink = function(){
+	jQuery("p").each( function(e){
+		var old = jQuery(this).html();
+		var new_ = old.replace(#(\w+)\(\)#g,"<a href='http://arpt.fr/$1/'>$1</a>");
+		jQuery(this).html(new_);
+	});
+
+}
 jQuery(document).ready(function(){
 	instancingPlugins();
 	scrollWhenPostedComment();
@@ -56,5 +64,6 @@ jQuery(document).ready(function(){
 	scrolling_action();
 	hightlight_menulink();
 	jumbotronEffect();
+	transformToFunctionLink();
 });
 
