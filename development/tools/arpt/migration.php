@@ -252,7 +252,7 @@ function get_prototype_functions(){
 						$value .= '<ul class="fonction-parametres">';
 						foreach( $function['PHPDoc']['Metas']['param'] as $parameter ){
 							$value .= "<li>" . $parameter['Type'] . ' <strong>' . $parameter['Argument'] . '</strong>';
-							if( $function['Parameters']['optional'] == true )
+							if( $function['Parameters'][0]['optional'] == true )
 								$value .= " (Optionnel) : ";
 							else
 								$value .= " : ";
@@ -260,8 +260,8 @@ function get_prototype_functions(){
 							if( $parameter['Description'] )
 								$value .= $parameter['Description'];
 
-							if( $function['Parameters']['optional'] == true )
-								$value .=  "<br>Défaut: " . strtoupper( $function['Parameters']['default'] );
+							if( $function['Parameters'][0]['optional'] == true )
+								$value .=  "<br>Défaut: " . strtoupper( $function['Parameters'][0]['default'] );
 
 							$value .= "  </li>";
 						}
