@@ -9,7 +9,8 @@ function get_categories( $specificities = null ){
 	* Récupère une ou plusieurs catégories.
 	*
 	* Récupérer une ou plusieurs catégories à partir de l'ID, du nom ou du type de la catégorie.
-	* Rechercher à l'aide du type de la catégorie peut vous permettre de récupérer plusieurs résultats.
+	* Rechercher à l'aide du type de la catégorie peut vous permettre de récupérer plusieurs résultats. Il correspond
+	* à un type de contenu.
 	*
 	* Rechercher sur l'ID ou le nom retourne au mieux une seule catégorie.
 	*

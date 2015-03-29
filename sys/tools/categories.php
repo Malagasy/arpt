@@ -1,4 +1,16 @@
 <?php
+/**
+	* Récupère les catégories d'un type donné.
+	*
+	* Récupère les catégories du type de contenu $value.
+	*
+	* @param String $value Le type de contenu recherché.
+	* @param String $what Elément recherché.
+	* @return Mixed
+	* Retourne FALSE si aucune catégorie n'est récupéré.
+	* Retourne String si $what spécifié et qu'une seule catégorie récupérée.
+	* Sinon, retourne objet Categories.
+*/
 function get_category_by_type( $value , $what = '*' ){
 	return get_category_by( 'content_type' , $value , $what );
 }
