@@ -70,7 +70,7 @@ function get_prototype_functions(){
 			if( $tmp_params[1] ){
 				foreach( $params as $param ){
 					if( ( $the_pos = strpos( $param , '=' ) ) !== false ){
-						$params_2[] = array( 'paramName' => trim( substr( $param , 0 , $the_pos ) ) , 'optional' => true , 'default' => trim( substr( $param , $the_pos ) ) );
+						$params_2[] = array( 'paramName' => trim( substr( $param , 0 , $the_pos ) ) , 'optional' => true , 'default' => trim( substr( $param , $the_pos + 1 ) ) );
 					}else{
 						$params_2[] = array( 'paramName' => trim( $param ) , 'optional' => false );
 					}
@@ -234,7 +234,7 @@ function get_prototype_functions(){
 			$content->qnext();
 
 			if( diffstr( $content->qtype() , 'fonction' ) ) continue;
-			if( strtotime( $content->qproperty('last_edit') ) >=  filemtime( './' . $function['File'] ) ) continue;
+		//	if( strtotime( $content->qproperty('last_edit') ) >=  filemtime( './' . $function['File'] ) ) continue;
 
 			echo 'Mise à jour de ' . $function['FunctionName'] . '<br>';
 			update_content( $content->qid() , $the_args );
@@ -251,7 +251,7 @@ function get_prototype_functions(){
 						$value .= '<ul class="fonction-parametres">';
 						foreach( $function['PHPDoc']['Metas']['param'] as $parameter ){
 							$value .= "<li>" . $parameter['Type'] . ' <strong>' . $parameter['Argument'] . '</strong>';
-							if( $parameter['optional'] == true )
+							if( $function['Parameters']['optional'] == true )
 								$value .= " (Optionnel) : ";
 							else
 								$value .= " : ";
@@ -259,8 +259,8 @@ function get_prototype_functions(){
 							if( $parameter['Description'] )
 								$value .= $parameter['Description'];
 
-							if( $parameter['optional'] == true )
-								$value .=  "<br>Défaut: " . strtoupper( $parameter['default'] );
+							if( $function['Parameters']['optional'] == true )
+								$value .=  "<br>Défaut: " . strtoupper( $function['Parameters']['default'] );
 
 							$value .= "  </li>";
 						}
