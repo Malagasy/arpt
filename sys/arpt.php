@@ -338,16 +338,17 @@ class Arpt{
 						$this->load( page_dir('index.php') );
 					break;
 				case filter_is_active_content( $page ):
-					if( $this->queried->total == 1 && $this->queried->qmodel() && file_exists( page_dir( $this->queried->qmodel() ) ) )
+					if( $this->queried->total == 1 && $this->queried->qmodel() && file_exists( page_dir( $this->queried->qmodel() ) ) ) :
 
 						die('bbb');
 						$this->load( page_dir( $this->queried->qmodel() ) );
-					elseif( ( is_paginate() || $this->queried->total > 1 ) && file_exists( page_dir( 'archive.php' ) ) )
+					elseif( ( is_paginate() || $this->queried->total > 1 ) && file_exists( page_dir( 'archive.php' ) ) ) :
 						$this->load( page_dir( 'archive.php' ) );
-					elseif( file_exists( page_dir( $page . '.php' ) ) )
+					elseif( file_exists( page_dir( $page . '.php' ) ) ) :
 						$this->load( page_dir( $page . '.php' ) );
-					else
+					else:
 						$this->load( page_dir('contents.php') );
+					endif;
 					break;
 				case routing_search():
 					$this->load( page_dir( 'search.php' ) );
