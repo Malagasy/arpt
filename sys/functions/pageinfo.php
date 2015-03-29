@@ -126,6 +126,11 @@ function is_failure(){
 	if( get_lastarg() == 'failure' ) return true;
 	return false;
 }
+function is_paginate(){
+	if( isset( $_GET['p'] ) )
+		return true;
+	return false;
+}
 
 function sitetitle(){
 	return get_pageinfo()->get_pagetitle();

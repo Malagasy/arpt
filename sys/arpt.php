@@ -340,7 +340,7 @@ class Arpt{
 				case filter_is_active_content( $page ):
 					if( $this->queried->total == 1 && $this->queried->qmodel() && file_exists( page_dir( $this->queried->qmodel() ) ) )
 						$this->load( page_dir( $this->queried->qmodel() ) );
-					elseif( $this->queried->total > 1 && file_exists( page_dir( 'archive.php' ) ) )
+					elseif( ( is_paginate() || $this->queried->total > 1 ) && file_exists( page_dir( 'archive.php' ) ) )
 						$this->load( page_dir( 'archive.php' ) );
 					elseif( file_exists( page_dir( $page . '.php' ) ) )
 						$this->load( page_dir( $page . '.php' ) );
@@ -373,7 +373,7 @@ class Arpt{
 						$this->load( page_dir( $this->queried->qmodel() ) );
 					elseif( file_exists( page_dir( $page . '.php' ) ) && get_pageargs(0) )
 						$this->load( page_dir( $page . '.php' ) );
-					elseif( $this->queried->total > 1 && file_exists( page_dir( 'archive.php' ) ) )
+					elseif( ( is_paginate() || $this->queried->total > 1 ) && file_exists( page_dir( 'archive.php' ) ) )
 						$this->load( page_dir( 'archive.php' ) );
 					elseif( file_exists( page_dir( 'category.php' ) ) )
 						$this->load( page_dir( 'category.php' ) );
