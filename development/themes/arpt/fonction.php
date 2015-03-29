@@ -10,9 +10,10 @@ get_header();
 			<?php
 			$prototype = qproperty( 'prototype' );
 			$return = qproperty( 'return' );
-			$example = qproperty( 'example' )
+			$example = qproperty( 'example' );
 
 			echo strlen( $prototype ) + strlen( $return ) + strlen( $example );
+
 
 			?>
 		<h1> Fonction - <?php echo qtitle(); ?> </h1>
