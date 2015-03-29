@@ -221,7 +221,7 @@ function get_prototype_functions(){
 
 
 	foreach( $f as $function ){
-
+		logr($function);
 		$the_args['title'] = $function['FunctionName'];
 		if( $function['PHPDoc']['Summary'] )
 			$the_args['message'] = '<p>'. $function['PHPDoc']['Summary'] .'</p>';
@@ -235,7 +235,7 @@ function get_prototype_functions(){
 			$content->qnext();
 
 			if( diffstr( $content->qtype() , 'fonction' ) ) continue;
-		//	if( strtotime( $content->qproperty('last_edit') ) >=  filemtime( './' . $function['File'] ) ) continue;
+			if( strtotime( $content->qproperty('last_edit') ) >=  filemtime( './' . $function['File'] ) ) continue;
 
 			echo 'Mise à jour de ' . $function['FunctionName'] . '<br>';
 			update_content( $content->qid() , $the_args );
@@ -299,7 +299,8 @@ function get_prototype_functions(){
 
 				echo 'CustomChamps édités.' . '<br>';
 			}
-		redirect( get_admin_url('arpt-tools' ) );
+			die();
+		//redirect( get_admin_url('arpt-tools' ) );
 		
 	
 }
