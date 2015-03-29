@@ -221,7 +221,7 @@ function get_prototype_functions(){
 
 
 	foreach( $f as $function ){
-		logr($function);
+		
 		$the_args['title'] = $function['FunctionName'];
 		if( $function['PHPDoc']['Summary'] )
 			$the_args['message'] = '<p>'. $function['PHPDoc']['Summary'] .'</p>';
@@ -250,9 +250,10 @@ function get_prototype_functions(){
 				if( isset( $function['PHPDoc']['Metas']['param'] ) ){
 					if( $function['PHPDoc']['Metas']['param'] != false ){
 						$value .= '<ul class="fonction-parametres">';
+						$i=0;
 						foreach( $function['PHPDoc']['Metas']['param'] as $parameter ){
 							$value .= "<li>" . $parameter['Type'] . ' <strong>' . $parameter['Argument'] . '</strong>';
-							if( $function['Parameters'][0]['optional'] == true )
+							if( $function['Parameters'][$i]['optional'] == true )
 								$value .= " (Optionnel) : ";
 							else
 								$value .= " : ";
@@ -260,10 +261,11 @@ function get_prototype_functions(){
 							if( $parameter['Description'] )
 								$value .= $parameter['Description'];
 
-							if( $function['Parameters'][0]['optional'] == true )
+							if( $function['Parameters'][$i]['optional'] == true )
 								$value .=  "<br>Défaut: " . strtoupper( $function['Parameters'][0]['default'] );
 
 							$value .= "  </li>";
+							$i++;
 						}
 						$value .= "</ul>";
 					}
@@ -297,8 +299,7 @@ function get_prototype_functions(){
 
 				echo 'CustomChamps édités.' . '<br>';
 			}
-			die();
-			//redirect( get_admin_url('arpt-tools' ) );
+		redirect( get_admin_url('arpt-tools' ) );
 		
 	
 }
