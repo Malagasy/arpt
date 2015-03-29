@@ -106,7 +106,7 @@ class Queries{
 	}
 	
 	
-	private function clean( $specificities ){ 
+	protected function clean( $specificities ){ 
 		if( !is_array( $specificities ) ) return $this->mysqli->real_escape_string( $specificities );
 		foreach( $specificities as $key => $value )
 			$array[$key] = $this->mysqli->real_escape_string( $value );
