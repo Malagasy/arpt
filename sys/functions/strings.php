@@ -39,6 +39,10 @@ function clause_where( $label , $comparator , $value , $before = null , $after =
 	if( $label == '' || $comparator == '' || $value == '' ) return;
 	if( substr( $value , 0 , 4 ) == 'NOT-' ) return clause_where( $label , '<>' , substr( $value , 4 ) , $before , $after );
 	if( substr( $value , 0 , 5 ) == 'LIKE-' ) return clause_like( $label , substr( $value , 5 ) , $before , $after );
+	if( substr( $value , 0 , 4 ) == 'SUP-' ) return clause_where( $label , '>' , substr( $value , 4 ) , $before , $after );
+	if( substr( $value , 0 , 4 ) == 'INF-' ) return clause_where( $label , '<' , substr( $value , 4 ) , $before , $after );
+	if( substr( $value , 0 , 6 ) == 'SUPEQ-' ) return clause_where( $label , '>=' , substr( $value , 6 ) , $before , $after );
+	if( substr( $value , 0 , 6 ) == 'INFEQ-' ) return clause_where( $label , '<=' , substr( $value , 6 ) , $before , $after );
 	return $before . ' ' . $label . ' ' . $comparator . ' ' . quote( $value ) . ' ' . $after;
 }
 

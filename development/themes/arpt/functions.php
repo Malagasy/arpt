@@ -36,7 +36,7 @@ function breadcrumb_layer( $breadcrumb ){
 	if( $breadcrumb['title'] == '' ) $breadcrumb['title'] = 'Tous';
 	$breadcrumb['title'] = $separator . $breadcrumb['title'];
 	
-	$output = '<h5>' . a( get_site_url() , $breadcrumb['home'] ) . $separator . a( get_url( '/' . $breadcrumb['type'] . '/' ) , undo_slug( ucwords( $breadcrumb['type'] ) ) ) . $parent_title_and_separator . $breadcrumb['title'] . '</h5>';
+	$output = a( get_site_url() , $breadcrumb['home'] ) . $separator . a( get_url( '/' . $breadcrumb['type'] . '/' ) , undo_slug( ucwords( $breadcrumb['type'] ) ) ) . $parent_title_and_separator . $breadcrumb['title'];
 	return $output;
 }
 

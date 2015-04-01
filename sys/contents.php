@@ -3,6 +3,7 @@
 class Contents extends Queries{
 
 	public function __construct( $specificities = null , $action = 'select' ){ 
+		$this->table = 'arpt_contents';
 		if( !is_array( $specificities ) ) :
 			$tmp = $specificities;
 			unset( $specificities );
@@ -28,7 +29,8 @@ class Contents extends Queries{
 								'month' => null,
 								'day' => null,
 								'search' => null,
-								'category' => null
+								'category' => null,
+								'property' => null
 								 );
 			$specificities = array_merge( $clean , $specificities);
 
@@ -41,6 +43,7 @@ class Contents extends Queries{
 
 			$where = ' 1 = 1  ' .clause_where( 'id' , '=' , $specificities['id'] , ' AND ' ) . clause_where( 'content_type' , '=' , $specificities['type'] , ' AND ' , clause_where( 'parent_id', '=' , $specificities['parent_id'] , ' AND ' ) ) . clause_where( 'content_slug' , '=' , $specificities['slug'] , ' AND ' ) . clause_where( 'user_id' , '=' , $specificities['userid'] , ' AND ' ) . clause_where( 'content_status' , '=' , $specificities['status'] , ' AND ' ) . clause_where( 'content_title' , '=' , $specificities['title'] , ' AND ' );
 			$where .= clause_in( 'id' , $specificities['specified_ids'] , ' AND ');
+			$where .= clause_where( 'acp.label' , '=' , $specificities['property'] , ' AND ' );
 			$where .= clause_where('YEAR(content_date)' , '=' , $specificities['year'] , ' AND ' ) . clause_where( 'MONTH(content_date)' , '=' , $specificities['month'] , ' AND ' ) . clause_where( 'DAY(content_date)' , '=' , $specificities['day'] , ' AND ' );
 			$where .= clause_orderby( $specificities['orderby'] , '' , '' , '' , ' ' . $specificities['ob_suffix'] . ' ');				
 			$where .= clause_limit( $specificities['limit'] , ($specificities['offset'])*$specificities['limit'] );
@@ -53,7 +56,7 @@ class Contents extends Queries{
 		elseif( $action == 'update' ) :
 			$default = array(
 				'id' => null,
-				'parent_id' => null,
+				'parentid' => null,
 				'content_model' => null,
 				'title' => null,
 				'slug' => null,
@@ -63,7 +66,7 @@ class Contents extends Queries{
 
 			$specificities = $this->clean( $specificities );
 
-			$query['set'] = clause_where( 'id' , '=' , $specificities['id'] ) . clause_where( 'parent_id' , '=' , $specificities['parent_id'] , ',' ) . clause_where( 'content_model' , '=' , $specificities['content_model'] , ',' ) . clause_where( 'content_title' , '=' , $specificities['title'] , ',' ) . clause_where( 'content_slug' , '=' , $specificities['slug'] , ',' ) . clause_where( 'content_content' , '=' , $specificities['message']  , ',' );
+			$query['set'] = clause_where( 'id' , '=' , $specificities['id'] ) . clause_where( 'parent_id' , '=' , $specificities['parentid'] , ',' ) . clause_where( 'content_model' , '=' , $specificities['content_model'] , ',' ) . clause_where( 'content_title' , '=' , $specificities['title'] , ',' ) . clause_where( 'content_slug' , '=' , $specificities['slug'] , ',' ) . clause_where( 'content_content' , '=' , $specificities['message']  , ',' );
 			$query['where'] = clause_where( 'id' , '=' , $specificities['id'] );
 
 			$specificities = $query;
@@ -79,10 +82,13 @@ class Contents extends Queries{
 
 			$specificities['where'] = clause_where( 'id' , '=' , $id );
 		endif;
-		parent::__construct($action,'arpt_contents',$specificities);
+		parent::__construct($action,$this->table,$specificities);
 	}
 
 	private function internal_process( $specificities ){
+		if( $specificities['property'] ){
+			$this->table .= ' ac LEFT JOIN arpt_contents_properties acp ON ac.id = acp.parent_id ';
+		}
 
 		if( $specificities['status'] == 'all' )
 			$specificities['status'] = null;

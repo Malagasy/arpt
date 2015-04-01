@@ -10,7 +10,7 @@ admin_header();
 
 	admin_add_submenu( 'general-list' , 'dashboard' , '<span class="glyphicon glyphicon-dashboard"></span> Tableau de bord' , 'adminpage_overview' , 'view-backend' );
 	admin_add_submenu( 'general-list' , 'general' , '<span class="glyphicon glyphicon-cog"></span> Paramètres généraux' , 'adminpage_option_general' , 'manage-settings' );
-	admin_add_submenu( 'general-list' , 'tools' , '<span class="glyphicon glyphicon-folder-open"></span> Outils préchargés' , 'adminpage_tools' , 'manage-options' );
+	admin_add_submenu( 'general-list' , 'tools' , '<span class="glyphicon glyphicon-folder-open"></span> Plugins' , 'adminpage_tools' , 'manage-options' );
 	admin_add_submenu( 'general-list' , 'multimedia' , '<span class="glyphicon glyphicon-film"></span> Multimédia' , 'adminpage_multimedia' , 'manage-users' );
 	admin_add_submenu( 'general-list' , 'users' , '<span class="glyphicon glyphicon-user"></span> Utilisateurs' , 'adminpage_list_users' , 'manage-users' );
 
@@ -809,7 +809,7 @@ function adminpage_list_users(){
 
 
 function adminpage_tools(){
-	echo '<p>Sur cette page vous pouvez gérer les Outils à précharger sur votre site.</p>';
+	echo '<p>Sur cette page vous pouvez gérer les outils à précharger sur votre site.</p>';
 
 	$tools = get_available_tools();
 	$active_tools = get_active_tools();

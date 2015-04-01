@@ -1,6 +1,5 @@
 <?php
 
-
 function insert_contentproperty( $contentid , $label , $value ){
 	return insert_new_property( 'contents' , $contentid , $label , $value );
 }
