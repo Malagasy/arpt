@@ -327,9 +327,13 @@ class Arpt{
 		$this->checkurl();
 
 		call_triggers( 'before_routing' );
+
 		$this->pageinfo->seo();
 
-		if( $this->mvc_mod == false )
+		if( $this->mvc_mod == false ){
+
+			call_triggers( 'the_routing' );
+
 			switch( $page = $this->pageinfo->get_pagetype() ) {
 				case routing_home():
 					if( file_exists( page_dir( HOME_FILE ) ) )
@@ -400,8 +404,9 @@ class Arpt{
 						$this->load( page_dir( 'error.php' ) );
 
 			}
-		else
+		}else{
 			$this->load( controllers_dir() . '/' . $page . '.php' );
+		}
 		call_triggers( 'after_routing' );
 	}
 	
