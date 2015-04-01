@@ -19,7 +19,7 @@ function init_arpt_theme(){
 	add_layer( 'widget_title_layer' , 'arpt_widget_title' );
 	add_layer( 'widget_last_articles_delimiter_layer' , 'widget_last_articles_delimiter_layer' );
 
-	add_layer( 'the_routing' , 'arpt_the_routing_layer' );
+	add_trigger( 'the_routing' , 'arpt_the_routing_layer' );
 
 }
 
@@ -65,7 +65,9 @@ function arpt_logo_link( $params = null ){
 
 function arpt_the_routing_layer(){
 
-	if( is_paginate() || get_queried()->total > 1 )
+	if( is_paginate() || get_queried()->total > 1 ){
 		$this->load( page_dir( 'archive.php' ) );
+		exit();
+	}
 
 }
