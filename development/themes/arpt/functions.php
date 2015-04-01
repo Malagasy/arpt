@@ -19,6 +19,8 @@ function init_arpt_theme(){
 	add_layer( 'widget_title_layer' , 'arpt_widget_title' );
 	add_layer( 'widget_last_articles_delimiter_layer' , 'widget_last_articles_delimiter_layer' );
 
+	add_layer( 'checkurl_layer' , 'arpt_checkurl_layer' );
+
 }
 
 function newsletters_title_layer( $title ){
@@ -59,4 +61,14 @@ function get_arpt_logo( $params = null ){
 
 function arpt_logo_link( $params = null ){
 	return a( get_home_url() , get_arpt_logo( $params ) );
+}
+
+function arpt_checkurl_layer( $pageinfo , $queried ){
+
+	if( is_paginate() || $queried->total > 1 ){
+		$pageinfo->set_pagetype( routing_author() );
+		return $pageinfo;
+	}
+	return $pageinfo;
+
 }

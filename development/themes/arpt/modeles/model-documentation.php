@@ -7,8 +7,6 @@ get_header();
 <div class="container">
 	<div class="row page-header">
 		<div class="col-md-8 content">
-			<?php
-			logr( get_queried() ); ?>
 		<h1> <?php echo qtitle(); ?> </h1>
 
 		<p>
