@@ -75,7 +75,7 @@ function js_delete_media( $filename ){
 }
 
 function init_attachment_media_tinymce( $specificities , $label , $content ){
-	if( !is_tinymceable() ) return;
+	if( !is_tinymceable( get_pageargs(0) ) ) return;
 	echo '<p data-toggle="modal" data-target="#window-medias-' . $specificities['id'] . '" class="btn btn-default">Chercher un média</p>'; ?>
 	<div class="modal fade" id="window-medias-<?php echo $specificities['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
