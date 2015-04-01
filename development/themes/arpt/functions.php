@@ -64,9 +64,9 @@ function arpt_logo_link( $params = null ){
 }
 
 function arpt_the_routing_layer(){
-
+	global $arpt;
 	if( is_paginate() || get_queried()->total > 1 ){
-		$this->load( page_dir( 'archive.php' ) );
+		$arpt->load( page_dir( 'archive.php' ) );
 		exit();
 	}
 
