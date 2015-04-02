@@ -1085,7 +1085,7 @@ function adminpage_editor(){
 	</div>
 
 	<script type="text/javascript">
-	jQuery(".editor-textarea").keydown(function(e) {
+	jQuery(document).on("keydown",".editor-textarea",(function(e) {
 	    if(e.keyCode === 9) { // tab was pressed
 	        // get caret position/selection
 	        var start = this.selectionStart;
