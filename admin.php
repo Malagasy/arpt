@@ -553,7 +553,7 @@ function adminpage_category(){
 	else :
 	 	echo '</tbody>';
 	 	echo '</table>';
-		echo 'Pas de résultats.';
+		echo ' Pas de résultats.';
 	endif;
 	div_close();
 	fieldset_close();

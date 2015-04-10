@@ -85,8 +85,6 @@ get_header();
 	<div class="row" id="comments">
 		<?php load_part( 'commentaires' ); ?>
 	</div>
-
-	<?php endif; ?>
 </div>
 <?php
 get_footer();
