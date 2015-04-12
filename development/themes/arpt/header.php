@@ -28,7 +28,6 @@
 						<?php foreach( $header_links as $page_id ) : ?>
 						<?php $page = get_contents( $page_id ); ?>
 						<?php $page->next(); ?>
-						<?php $current_slugpage = get_pageargs(0); ?>
 						<li>
 							<?php echo $page->qtitlelink(); ?>
 						</li>
