@@ -12,3 +12,9 @@ function visitor_can_comment(){
 		return true;
 	return false;
 }
+
+function is_pagetype_hide(){
+	if( get_option('hide_content_type_on_url') == 1 )
+		return true;
+	return false;
+}

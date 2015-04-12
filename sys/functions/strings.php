@@ -116,6 +116,8 @@ function filter_exists( $var ){
 }
 
 function trimslash( $string ){
+	if( is_null( $string ) )
+		return null;
 	return trim( $string , '/' );
 }
 

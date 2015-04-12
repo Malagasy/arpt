@@ -117,6 +117,12 @@ function is_systempage( $value = null ){
 	return false;
 }
 
+function one_queried(){
+	if( get_queried()->total > 1 )
+		return false;
+	return true;
+}
+
 function is_success(){
 	if( get_lastarg() == 'success' ) return true;
 	return false;

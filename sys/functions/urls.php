@@ -84,7 +84,7 @@ function get_site_url( $string = null ){
 */
 
 function get_url( $name ){
-	return get_site_url() . clean_path( '/' . $name . '/' );;
+	return get_site_url() . clean_path( '/' . $name . '/' );
 }
 
 function get_search_url(){

@@ -485,7 +485,7 @@ class Arpt{
 					$userdatas['pass'] = $_POST['password'];
 					$userdatas['email'] = $_POST['email'];
 					update_user( $userdatas , 1 );
-					$this->redirect( get_clean_url() . '/?step=end' );
+					$this->redirect( get_clean_url() . '?step=end' );
 				}
 
 			}

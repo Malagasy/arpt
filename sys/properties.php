@@ -1,16 +1,6 @@
 <?php
 
-/* 
-	** Insert a new property to a subject
 
-	** Params : - ( String ), the subject of the property, should be 'users' or 'contents'.
-				- ( Int ) , the ID of the subject.
-				- ( String ), the title  (or label) ofthe property.
-				- ( String ), its value.
-
-	** Return Queries Object
-
-*/
 function insert_new_property( $where , $pid , $label , $value ){
 	
 	$label = addslashes( $label );
@@ -21,17 +11,6 @@ function insert_new_property( $where , $pid , $label , $value ){
 	return new_query( 'insert' , $where , array( 'parent_id' => $pid , 'label' => $label , 'value' => $value ) );
 }
 
-/*
-	** Get the property of a subject
-
-	** Params : - ( String ), the subject of the property, should be 'users' or 'contents'.
-				- ( Int ), the ID of the subject.
-				- ( String ), the title (or label) of the property.
-
-	** Return Mixed : 	- ( Mixed ), the property's value
-						- ( Boolean ), 'false' if property doesn't exist.
-
-*/
 function get_property( $where , $pid , $label ){	
 
 	$label = addslashes( $label );

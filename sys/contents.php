@@ -318,4 +318,13 @@ class Contents extends Queries{
 		if( !$this->qhas() ) return false;
 		return get_contentproperty( $this->qid() , $name );
 	}
+	public function menufy(){
+		$content_for_menu = array();
+		while( $this->qnext() )
+			$content_for_menu[ $this->qslug() ] = array( $this->qslug() => $this->datas );
+
+		$r = new Menu;
+		$r->set( $content_for_menu );
+		return $r;
+	}
 }

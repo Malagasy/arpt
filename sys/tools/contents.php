@@ -2,7 +2,7 @@
 
 function get_contenttype( $id = null ){
 	if( $id == null )
-		if( is_contentpage() || is_categorypage() )
+		if( ( is_contentpage() || is_categorypage() ) && one_queried() )
 			$id = get_currentcontentid();
 		else
 			return false;
@@ -15,9 +15,9 @@ function get_contenttype( $id = null ){
 function get_contentid( $slug = null ){
 	if( $slug == null && !is_contentpage() && !is_categorypage() ) return false;
 
-	$r = ( $slug == null ) ? get_pageargs(0) : $slug;
+	$r = ( $slug == null ) ? qslug() : $slug;
 	
-	if( empty( $r ) ) return false;
+	if( empty( $r ) || !one_queried() ) return false;
 	//($r);
 	$return = get_contentinfo( $r , 'id' );
 	if( $return->next() )
@@ -26,7 +26,7 @@ function get_contentid( $slug = null ){
 }
 function get_contentslug( $id = null){
 	if( $id == null )
-		if( is_contentpage() )
+		if( is_contentpage() && one_queried() )
 			$id = get_currentcontentid();
 		else
 			return false;
@@ -44,11 +44,15 @@ function get_currentcontentid(){
 
 function get_contentname( $id = null ){
 
-	if( $id == null )
-		if( ( is_contentpage() || is_categorypage() ) && get_pageargs(0) )
-			$id = get_pageargs(0);
+	if( $id == null ){
+		
+		if( ( is_contentpage() || is_categorypage() ) && one_queried() )
+			$id = qid();
 		else
 			return false;
+
+	}
+
 		//logr($id);
 	
 	$return = get_contentinfo( $id , 'content_title' );

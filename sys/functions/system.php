@@ -4,7 +4,7 @@
 function get_base_var( $separator = null ){
 	global $arpt;
 	if( !$arpt->get_base_url() ) return false;
-	return $separator . $arpt->get_base_url() . $separator;
+	return $separator . $arpt->get_base_url();
 }
 
 function get_modelspage(){
