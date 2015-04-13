@@ -107,9 +107,9 @@ class Queries{
 	
 	
 	protected function clean( $specificities ){ 
-		if( !is_array( $specificities ) ) return addslashes( $specificities );
+		if( !is_array( $specificities ) ) return sanitize_str( $specificities );
 		foreach( $specificities as $key => $value )
-			$array[$key] = addslashes( $value );
+			$array[$key] = sanitize_str( $value );
 		return $array;
 	}
 	public function get(){

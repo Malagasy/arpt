@@ -48,7 +48,7 @@ function set_setting( $name , $value ){
 }
 
 function db_slug_exists( $table , $slug_label , $slug ){
-	$slug_count = new_query( 'select' , $table , array( 'where' => $slug_label . '=\''. addslashes( $slug ) .'\'' ) );
+	$slug_count = new_query( 'select' , $table , array( 'where' => $slug_label . '=\''. sanitize_str( $slug ) .'\'' ) );
 	if( $slug_count->next() )
 		return true;
 	return false;

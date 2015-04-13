@@ -271,7 +271,7 @@ function sanitize_POSTvar(){
 	foreach( $_POST as $key => $value ) :
 		setcookie( 'postvar_' . $key , $value , time()+10 );
 		$_POST[$key] = nl2br( sanitize_str( $value ) );
-		$_REQUEST[$key] =  addslashes( htmlentities( $value ) );
+		$_REQUEST[$key] =  sanitize_str( htmlentities( $value ) );
 	endforeach;
 }
 function pre_delete_category(){

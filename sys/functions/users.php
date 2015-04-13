@@ -101,7 +101,7 @@ function authenticate_user( $name , $password ){
 		return $user_datas;
 	return false;
 
-/*	$user = new_query( 'select' , 'arpt_users', array( 'where' => '( username=\'' . addslashes( $name ). '\' AND pass=\'' . md5( addslashes( $password ) , true ) . '\' ) OR ( email=\'' . addslashes( $name ) . '\' AND pass=\'' . md5( addslashes( $password ) , true ) . '\' )' ) );
+/*	$user = new_query( 'select' , 'arpt_users', array( 'where' => '( username=\'' . sanitize_str( $name ). '\' AND pass=\'' . md5( sanitize_str( $password ) , true ) . '\' ) OR ( email=\'' . sanitize_str( $name ) . '\' AND pass=\'' . md5( sanitize_str( $password ) , true ) . '\' )' ) );
 	
 	if( $user->next() )
 		return $user->qdatas();
