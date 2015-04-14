@@ -21,7 +21,7 @@ get_header();
 				<div class="col-md-3">
 					<div class="more-info-buttons" style="display:none">
 						<a class="btn btn-info btn-lg" href="a-propos/" role="button">Qui suis-je ?</a>
-						<a class="btn btn-primary btn-lg" href="#" role="button">Télécharger</a>
+						<a class="btn btn-primary btn-lg" href="https://github.com/Malagasy/arpt/archive/master.zip" role="button">Télécharger</a>
 					</div>
 				</div>
 			</div>
