@@ -53,7 +53,7 @@ get_header();
 			<div class="col-md-3">
 
 				<img src="<?php echo get_upload_dir() . '/arpt-logo.png'; ?>" class="img-responsive"/>
-				<a href="#" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-download-alt"></span> Télécharger ARpt v1.0</a>-
+				<a href="https://github.com/Malagasy/arpt/archive/master.zip" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-download-alt"></span> Télécharger ARpt v1.0</a>-
 			</div>
 		</div>
 		<div class="row">

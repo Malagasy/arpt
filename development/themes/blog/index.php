@@ -1,11 +1,9 @@
 <?php get_header(); ?>
 
-    <!-- Page Content -->
     <div class="container">
 
         <div class="row">
 
-            <!-- Blog Entries Column -->
             <div class="col-md-8">
     <?php echo get_admin_url(); ?>
                 <h1 class="page-header">
@@ -50,33 +48,26 @@
                 qfree();
                 ?>
 
-                <!-- Pager -->
                 <?php qpagination(); ?>
 
             </div>
-            <!-- Blog Sidebar Widgets Column -->
             <div class="col-md-4">
                 <?php load_part('menu-right'); ?>
            </div>
 
         </div>
-        <!-- /.row -->
 
         <hr>
 
-        <!-- Footer -->
         <footer>
             <div class="row">
                 <div class="col-lg-12">
                     <p>Copyright &copy; Your Website 2014</p>
                 </div>
-                <!-- /.col-lg-12 -->
             </div>
-            <!-- /.row -->
         </footer>
 
     </div>
-    <!-- /.container -->
 
 </body>
 
