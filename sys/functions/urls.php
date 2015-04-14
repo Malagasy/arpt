@@ -118,7 +118,7 @@ function get_theme_dir(){
 	* @return String
 */
 function get_upload_dir(){
-	return './development/themes/uploads';
+	return './development/uploads';
 }
 
 function get_tool_dir(){
