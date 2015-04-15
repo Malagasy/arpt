@@ -76,7 +76,7 @@ var formValidation = function(){
 				e.preventDefault();
 			}
 
-		}),
+		})
 	}
 }
 jQuery(document).ready(function(){
@@ -87,5 +87,6 @@ jQuery(document).ready(function(){
 	hightlight_menulink();
 	jumbotronEffect();
 	transformToFunctionLink();
+	formValidation();
 });
 
