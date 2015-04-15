@@ -102,7 +102,7 @@ var formValidation = function(){
 				e.preventDefault();
 			}else{
 				e.preventDefault();
-				jQuery("#contact_form .btn-submit").parent().html("Envoi en cours..");
+				jQuery("#contact_form .btn-submit").parent().html('<span class="btn-submit">Envoi en cours..</span>');
 				jQuery.ajax({
 					url:"ajax.php", 
 					type: "POST",
@@ -113,11 +113,11 @@ var formValidation = function(){
 						param3: _message
 					},
 					success: function(data){
-						if( data == "true" ){
+						if( data == "1" ){
 							jQuery("#contact_email").parent().parent().addClass("has-success");
 							jQuery("#contact_sujet").parent().parent().addClass("has-success");
 							jQuery("#contact_message").parent().parent().addClass("has-success");
-							jQuery("#contact_form .btn-submit").parent().html('<span class="btn-submit">Le message a bien été envoyé ! :)</span>');
+							jQuery("#contact_form .btn-submit").parent().html('Le message a bien été envoyé ! :)');
 						}else{
 							jQuery("#contact_form .btn-submit").parent().html('<button type="cancel" class="btn btn-default btn-cancel">Annuler</button><button type="submit" class="btn btn-primary btn-submit">Réessayer</button>');
 						}
