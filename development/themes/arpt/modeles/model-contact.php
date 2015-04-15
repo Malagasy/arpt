@@ -13,7 +13,7 @@ get_header();
 				</p><?php
 			endwhile; 
 			?>
-			<form class="form-horizontal" method="post" id="form_contact">
+			<form class="form-horizontal" method="post" id="contact_form">
 				<fieldset>
 					<legend>Formulaire de contact</legend>
 					<div class="form-group">

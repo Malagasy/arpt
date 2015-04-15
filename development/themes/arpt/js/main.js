@@ -59,8 +59,8 @@ var transformToFunctionLink = function(){
 }
 
 var formValidation = function(){
-	if( jQuery("#form_contact").length ){
-		jQuery("#form_contact").on("submit",function(e){
+	if( jQuery("#contact_form").length ){
+		jQuery("#contact_form").on("submit",function(e){
 
 			if( !is_email( jQuery("#contact_email").val() ) ){
 				if( !jQuery("#contact_email").parent().parent().hasClass("has-warning") ){
@@ -95,9 +95,10 @@ var formValidation = function(){
 				}
 			}
 
-			if( jQuery("#form_contact .has-warning").length ){
+			if( jQuery("#contact_form .has-warning").length ){
 				e.preventDefault();
 			}else{
+				e.preventDefault();
 				jQuery("#contact_form .btn-submit").parent().html("Envoi en cours..");
 				jQuery("#contact_email").parent().parent().addClass("has-success");
 				jQuery("#contact_sujet").parent().parent().addClass("has-success");
