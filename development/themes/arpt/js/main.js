@@ -59,7 +59,25 @@ var transformToFunctionLink = function(){
 }
 
 var formValidation = function(){
-	
+	if( jQuery("#form_contact").length ){
+		jQuery("#form_contact").on("submit",function(e){
+			var form_is_valid = true;
+
+			if( !is_email( jQuery("#contact_email").val() ) ){
+				if( !jQuery("#contact_email").parent().parent().hasClass("has-error") ){
+					jQuery("#contact_email").parent().parent().addClass("has-error");
+					form_is_valid = false;
+				}
+
+			}
+
+
+			if( !form_is_valid ){
+				e.preventDefault();
+			}
+
+		}),
+	}
 }
 jQuery(document).ready(function(){
 	instancingPlugins();

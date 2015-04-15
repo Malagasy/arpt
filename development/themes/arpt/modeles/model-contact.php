@@ -17,9 +17,9 @@ get_header();
 				<fieldset>
 					<legend>Formulaire de contact</legend>
 					<div class="form-group">
-						<label for="inputEmail" class="col-lg-2 control-label">Email</label>
+						<label for="contact_email" class="col-lg-2 control-label">Email</label>
 						<div class="col-lg-10">
-							<input type="text" class="form-control" name="email" id="inputEmail" placeholder="toto@dudule.com">
+							<input type="text" class="form-control" name="contact_email" id="contact_email" placeholder="toto@dudule.com">
 						</div>
 					</div>
 					<div class="form-group">
@@ -38,7 +38,7 @@ get_header();
 						<div class="col-lg-10 col-lg-offset-2">
 
 							<button type="cancel" class="btn btn-default btn-cancel">Annuler</button>
-							<button type="submit" class="btn btn-primar btn-submit">Envoyer</button>
+							<button type="submit" class="btn btn-primary btn-submit">Envoyer</button>
 						</div>
 					</div>
 				</fieldset>
