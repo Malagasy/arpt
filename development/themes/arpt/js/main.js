@@ -61,12 +61,10 @@ var transformToFunctionLink = function(){
 var formValidation = function(){
 	if( jQuery("#form_contact").length ){
 		jQuery("#form_contact").on("submit",function(e){
-			var form_is_valid = true;
 
 			if( !is_email( jQuery("#contact_email").val() ) ){
 				if( !jQuery("#contact_email").parent().parent().hasClass("has-error") ){
 					jQuery("#contact_email").parent().parent().addClass("has-error");
-					form_is_valid = false;
 				}
 
 			}else{
@@ -78,7 +76,6 @@ var formValidation = function(){
 			if( jQuery("#contact_sujet").val() == "" ){
 				if( !jQuery("#contact_sujet").parent().parent().hasClass("has-error") ){
 					jQuery("#contact_sujet").parent().parent().addClass("has-error");
-					form_is_valid = false;
 				}
 
 			}else{
@@ -90,7 +87,6 @@ var formValidation = function(){
 			if( jQuery("#contact_message").val() == "" ){
 				if( !jQuery("#contact_message").parent().parent().hasClass("has-error") ){
 					jQuery("#contact_message").parent().parent().addClass("has-error");
-					form_is_valid = false;
 				}
 
 			}else{
@@ -99,7 +95,7 @@ var formValidation = function(){
 				}
 			}
 
-			if( !form_is_valid ){
+			if( jQuery("#form_contact .has-error").length ){
 				e.preventDefault();
 			}
 
