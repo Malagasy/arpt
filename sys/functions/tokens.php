@@ -10,10 +10,10 @@ function create_token( $name , $userid = null ){
 	$tokens = unserialize( get_userproperty( $userid , 'tokens' ) );
 
 	if( $userid ){
-		unset( $tokens[$name] );
+		if( isset( $tokens[$name] ) ) unset( $tokens[$name] );
 		$tokens[$name] = $v;
 	}else{
-		unset( $tokens[$_SERVER['REMOTE_ADDR']][$name] );
+		if( isset( $tokens[$_SERVER['REMOTE_ADDR']][$name] ) ) unset( $tokens[$_SERVER['REMOTE_ADDR']][$name] );
 		$tokens[$_SERVER['REMOTE_ADDR']][$name] = $v;
 	}
 

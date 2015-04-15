@@ -63,40 +63,45 @@ var formValidation = function(){
 		jQuery("#form_contact").on("submit",function(e){
 
 			if( !is_email( jQuery("#contact_email").val() ) ){
-				if( !jQuery("#contact_email").parent().parent().hasClass("has-error") ){
-					jQuery("#contact_email").parent().parent().addClass("has-error");
+				if( !jQuery("#contact_email").parent().parent().hasClass("has-warning") ){
+					jQuery("#contact_email").parent().parent().addClass("has-warning");
 				}
 
 			}else{
-				if( jQuery("#contact_email").parent().parent().hasClass("has-error") ){
-					jQuery("#contact_email").parent().parent().removeClass("has-error");
+				if( jQuery("#contact_email").parent().parent().hasClass("has-warning") ){
+					jQuery("#contact_email").parent().parent().removeClass("has-warning");
 				}
 			}
 
 			if( jQuery("#contact_sujet").val() == "" ){
-				if( !jQuery("#contact_sujet").parent().parent().hasClass("has-error") ){
-					jQuery("#contact_sujet").parent().parent().addClass("has-error");
+				if( !jQuery("#contact_sujet").parent().parent().hasClass("has-warning") ){
+					jQuery("#contact_sujet").parent().parent().addClass("has-warning");
 				}
 
 			}else{
-				if( jQuery("#contact_sujet").parent().parent().hasClass("has-error") ){
-					jQuery("#contact_sujet").parent().parent().removeClass("has-error");
+				if( jQuery("#contact_sujet").parent().parent().hasClass("has-warning") ){
+					jQuery("#contact_sujet").parent().parent().removeClass("has-warning");
 				}
 			}
 
 			if( jQuery("#contact_message").val() == "" ){
-				if( !jQuery("#contact_message").parent().parent().hasClass("has-error") ){
-					jQuery("#contact_message").parent().parent().addClass("has-error");
+				if( !jQuery("#contact_message").parent().parent().hasClass("has-warning") ){
+					jQuery("#contact_message").parent().parent().addClass("has-warning");
 				}
 
 			}else{
-				if( jQuery("#contact_message").parent().parent().hasClass("has-error") ){
-					jQuery("#contact_message").parent().parent().removeClass("has-error");
+				if( jQuery("#contact_message").parent().parent().hasClass("has-warning") ){
+					jQuery("#contact_message").parent().parent().removeClass("has-warning");
 				}
 			}
 
-			if( jQuery("#form_contact .has-error").length ){
+			if( jQuery("#form_contact .has-warning").length ){
 				e.preventDefault();
+			}else{
+				jQuery("#contact_form .btn-submit").parent().html("Envoi en cours..");
+				jQuery("#contact_email").parent().parent().addClass("has-success");
+				jQuery("#contact_sujet").parent().parent().addClass("has-success");
+				jQuery("#contact_message").parent().parent().addClass("has-success");
 			}
 
 		})
