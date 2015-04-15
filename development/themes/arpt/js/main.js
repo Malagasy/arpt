@@ -60,9 +60,12 @@ var transformToFunctionLink = function(){
 
 var formValidation = function(){
 	if( jQuery("#contact_form").length ){
-		jQuery("#contact_form").on("submit",function(e){
+		jQuery(document).on("submit",,"#contact_form",function(e){
+			var _email = jQuery("#contact_email").val();
+			var _sujet = jQuery("#contact_sujet").val();
+			var _message = jQuery("#contact_message").val();
 
-			if( !is_email( jQuery("#contact_email").val() ) ){
+			if( !is_email( _email ) ){
 				if( !jQuery("#contact_email").parent().parent().hasClass("has-warning") ){
 					jQuery("#contact_email").parent().parent().addClass("has-warning");
 				}
@@ -73,7 +76,7 @@ var formValidation = function(){
 				}
 			}
 
-			if( jQuery("#contact_sujet").val() == "" ){
+			if( _sujet == "" ){
 				if( !jQuery("#contact_sujet").parent().parent().hasClass("has-warning") ){
 					jQuery("#contact_sujet").parent().parent().addClass("has-warning");
 				}
@@ -84,7 +87,7 @@ var formValidation = function(){
 				}
 			}
 
-			if( jQuery("#contact_message").val() == "" ){
+			if( _message == "" ){
 				if( !jQuery("#contact_message").parent().parent().hasClass("has-warning") ){
 					jQuery("#contact_message").parent().parent().addClass("has-warning");
 				}
@@ -100,9 +103,26 @@ var formValidation = function(){
 			}else{
 				e.preventDefault();
 				jQuery("#contact_form .btn-submit").parent().html("Envoi en cours..");
-				jQuery("#contact_email").parent().parent().addClass("has-success");
-				jQuery("#contact_sujet").parent().parent().addClass("has-success");
-				jQuery("#contact_message").parent().parent().addClass("has-success");
+				jQuery.ajax({
+					url:"ajax.php", 
+					type: "POST",
+					data:{
+						action: "contact_form_email",
+						param1: _email,
+						param2: _sujet,
+						param3: _message
+					},
+					success: function(data){
+						if( data == "true" ){
+							jQuery("#contact_email").parent().parent().addClass("has-success");
+							jQuery("#contact_sujet").parent().parent().addClass("has-success");
+							jQuery("#contact_message").parent().parent().addClass("has-success");
+							jQuery("#contact_form .btn-submit").parent().html('<span class="btn-submit">Le message a bien été envoyé ! :)</span>');
+						}else{
+							jQuery("#contact_form .btn-submit").parent().html'<button type="cancel" class="btn btn-default btn-cancel">Annuler</button><button type="submit" class="btn btn-primary btn-submit">Réessayer</button>');
+						}
+					}
+				});
 			}
 
 		})
