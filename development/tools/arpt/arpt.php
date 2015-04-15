@@ -3,6 +3,7 @@
 define('ARPT_TOOLS' , get_tool_dir() . '/arpt' );
 
 require_once( ARPT_TOOLS . '/migration.php' );
+require_once( ARPT_TOOLS . '/emails.php' );
 
 add_trigger( 'dev_activation' , 'init_arpt_plugin' );
 function init_arpt_plugin(){
