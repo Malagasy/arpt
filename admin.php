@@ -1054,11 +1054,8 @@ function adminpage_multimedia(){
 }
 
 function adminpage_editor(){
-	$base = '.';
-	if( get_base_var() )
-		$base .= get_base_var('/');
-	else
-		$base .= '/';
+	
+	$base = './';
 
 	$beforeleaving_message = "Le fichier a été modifié et ne sera pas enregistré.";
 	?>

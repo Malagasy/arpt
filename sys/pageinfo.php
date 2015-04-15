@@ -69,6 +69,14 @@ class Pageinfo{
 			$this->pagedescr = 'Mots clés - ' . get_pageargs(0) . ' - ' . sitename();
 		elseif( is_errorpage() ) :
 			$this->pagetitle = 'Erreur 404 : Page introuvable &laquo; ' . sitename();
+			$this->pagedescr = description() . ' - ' . sitename();		elseif( is_errorpage() ) :
+			$this->pagetitle = 'Erreur 404 : Page introuvable &laquo; ' . sitename();
+			$this->pagedescr = description() . ' - ' . sitename();
+		elseif( is_adminpage() ) :
+			$this->pagetitle = 'Administration &laquo; ' . sitename();
+			$this->pagedescr = description() . ' - ' . sitename();
+		elseif( is_signuppage() ) :
+			$this->pagetitle = 'Administration &laquo; ' . sitename();
 			$this->pagedescr = description() . ' - ' . sitename();
 		endif;
 
