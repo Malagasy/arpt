@@ -119,7 +119,7 @@ var formValidation = function(){
 							jQuery("#contact_message").parent().parent().addClass("has-success");
 							jQuery("#contact_form .btn-submit").parent().html('<span class="btn-submit">Le message a bien été envoyé ! :)</span>');
 						}else{
-							jQuery("#contact_form .btn-submit").parent().html'<button type="cancel" class="btn btn-default btn-cancel">Annuler</button><button type="submit" class="btn btn-primary btn-submit">Réessayer</button>');
+							jQuery("#contact_form .btn-submit").parent().html('<button type="cancel" class="btn btn-default btn-cancel">Annuler</button><button type="submit" class="btn btn-primary btn-submit">Réessayer</button>');
 						}
 					}
 				});
