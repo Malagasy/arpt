@@ -22,6 +22,8 @@ function arpt_new_contents(){
 	add_new_content('fonction');
 	add_new_content('fichier');
 
+	add_new_content('question');
+
 	add_field_content( 'fonction' , array( 'type' => 'textarea' , 'id' => 'prototype' , 'name' => 'prototype' , 'label' => 'Usage et paramètres' ) );
 	add_field_content( 'fonction' , array( 'type' => 'textarea' , 'id' => 'return' , 'name' => 'return' , 'label' => 'Valeurs de retour' ) );
 	add_field_content( 'fonction' , array( 'type' => 'textarea' , 'id' => 'example' , 'name' => 'example' , 'label' => 'Exemples' ) );
