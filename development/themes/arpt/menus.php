@@ -12,7 +12,7 @@
 	<?php endif; ?>
 	<div class="well well-lg">
 		<?php
-		echo '<a class="btn btn-lg btn-info btn-block"><span class="glyphicon glyphicon-download-alt"></span> ARpt v1.0.0 en ZIP</a>'; 
+		echo '<a class="btn btn-lg btn-info btn-block" href="https://github.com/Malagasy/arpt/archive/master.zip"><span class="glyphicon glyphicon-download-alt"></span> ARpt v1.0.0 en ZIP</a>'; 
 		?>  
 	</div>
 	<?php output_widgets( '<div class="well well-lg">' , '</div>' , array('1') ); ?>
