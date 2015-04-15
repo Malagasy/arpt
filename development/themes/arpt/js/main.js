@@ -60,7 +60,7 @@ var transformToFunctionLink = function(){
 
 var formValidation = function(){
 	if( jQuery("#contact_form").length ){
-		jQuery(document).on("submit",,"#contact_form",function(e){
+		jQuery(document).on("submit","#contact_form",function(e){
 			var _email = jQuery("#contact_email").val();
 			var _sujet = jQuery("#contact_sujet").val();
 			var _message = jQuery("#contact_message").val();
