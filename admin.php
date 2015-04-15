@@ -1059,6 +1059,7 @@ function adminpage_editor(){
 		$base .= get_base_var('/');
 	else
 		$base .= '/';
+	$base = './';
 
 	$beforeleaving_message = "Le fichier a été modifié et ne sera pas enregistré.";
 	?>
