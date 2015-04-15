@@ -69,8 +69,35 @@ var formValidation = function(){
 					form_is_valid = false;
 				}
 
+			}else{
+				if( jQuery("#contact_email").parent().parent().hasClass("has-error") ){
+					jQuery("#contact_email").parent().parent().removeClass("has-error");
+				}
 			}
 
+			if( jQuery("#contact_sujet").val() == "" ){
+				if( !jQuery("#contact_sujet").parent().parent().hasClass("has-error") ){
+					jQuery("#contact_sujet").parent().parent().addClass("has-error");
+					form_is_valid = false;
+				}
+
+			}else{
+				if( jQuery("#contact_sujet").parent().parent().hasClass("has-error") ){
+					jQuery("#contact_sujet").parent().parent().removeClass("has-error");
+				}
+			}
+
+			if( jQuery("#contact_message").val() == "" ){
+				if( !jQuery("#contact_message").parent().parent().hasClass("has-error") ){
+					jQuery("#contact_message").parent().parent().addClass("has-error");
+					form_is_valid = false;
+				}
+
+			}else{
+				if( jQuery("#contact_message").parent().parent().hasClass("has-error") ){
+					jQuery("#contact_message").parent().parent().removeClass("has-error");
+				}
+			}
 
 			if( !form_is_valid ){
 				e.preventDefault();

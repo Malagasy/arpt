@@ -17,25 +17,25 @@ get_header();
 				<fieldset>
 					<legend>Formulaire de contact</legend>
 					<div class="form-group">
-						<label for="contact_email" class="col-lg-2 control-label">Email</label>
-						<div class="col-lg-10">
-							<input type="text" class="form-control" name="contact_email" id="contact_email" placeholder="toto@dudule.com">
+						<label for="contact_email" class="col-lg-4 control-label">Votre adresse e-mail</label>
+						<div class="col-lg-8">
+							<input type="text" class="form-control" name="contact_email" id="contact_email" placeholder="toto@gmail.com">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputSubject" class="col-lg-2 control-label">Objet</label>
-						<div class="col-lg-10">
-							<input type="text" class="form-control" name="subject" id="inputSubject" placeholder="Signaler un bug...">
+						<label for="contact_sujet" class="col-lg-4 control-label">Sujet</label>
+						<div class="col-lg-8">
+							<input type="text" class="form-control" name="contact_sujet" id="contact_sujet" placeholder="Signaler..">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="corps" class="col-lg-2 control-label">Message</label>
-						<div class="col-lg-10">
-							<textarea class="form-control" rows="7" id="corps"></textarea>
+						<label for="contact_message" class="col-lg-4 control-label">Votre message</label>
+						<div class="col-lg-8">
+							<textarea class="form-control" name="contact_message" id="contact_message" rows="7"></textarea>
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-lg-10 col-lg-offset-2">
+						<div class="col-lg-8 col-lg-offset-4">
 
 							<button type="cancel" class="btn btn-default btn-cancel">Annuler</button>
 							<button type="submit" class="btn btn-primary btn-submit">Envoyer</button>
