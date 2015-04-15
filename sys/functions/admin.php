@@ -43,9 +43,7 @@ function admin_header(){
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 
 		<?php admin_head(); ?>
-		<title>
-			<?php echo 'Panel d\'administration - ' . sitename() ; ?>
-		</title>
+		<title><?php echo sitetitle(); ?></title>
 	</head>	
 	<body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">

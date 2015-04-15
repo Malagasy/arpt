@@ -13,7 +13,7 @@ get_header();
 				</p><?php
 			endwhile; 
 			?>
-			<form class="form-horizontal">
+			<form class="form-horizontal" method="post" id="form_contact">
 				<fieldset>
 					<legend>Formulaire de contact</legend>
 					<div class="form-group">
@@ -36,7 +36,9 @@ get_header();
 					</div>
 					<div class="form-group">
 						<div class="col-lg-10 col-lg-offset-2">
-							<button type="submit" class="btn btn-primary">Envoyer</button>
+
+							<button type="cancel" class="btn btn-default btn-cancel">Annuler</button>
+							<button type="submit" class="btn btn-primar btn-submit">Envoyer</button>
 						</div>
 					</div>
 				</fieldset>

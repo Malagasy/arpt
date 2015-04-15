@@ -57,6 +57,10 @@ var transformToFunctionLink = function(){
 	});
 
 }
+
+var formValidation = function(){
+	
+}
 jQuery(document).ready(function(){
 	instancingPlugins();
 	scrollWhenPostedComment();
