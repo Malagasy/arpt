@@ -9,12 +9,12 @@ set_queried( array( 'type' => 'article' ) );
 		<div class="col-md-8 content">
 			<?php
 			while( qnext() ) : ?>
-				<h2><?php echo qtitlelink() ?><span class="date"><?php echo qdate(); ?></span></h2>
+				<h2><?php echo qtitle() ?><span class="date"><?php echo 'Le ' . qdate(); ?></span></h2>
 				<p class="contentdata">
 					<?php echo 'Publié le ' . qdate() . ' par ' . qauthor() . '. Dans la catégorie ' . qcategory(); ?>
 				</p>
 				<p class="content">
-					<?php echo qcontent(); ?>
+					<?php echo qsumup(); ?>
 				</p><?php
 			endwhile;
 			?>
