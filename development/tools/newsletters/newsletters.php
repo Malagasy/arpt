@@ -214,6 +214,8 @@ function newsletters_adminpage_options(){
 function newsletters_sendToAll( $tos , $subject , $message ){
 
 	if( empty( $tos ) ) return;
+
+	$subject = sitename() . ' - Newsletters - ' . $subject;
 	
 	arpt_email( $tos , $subject , $message );
 }

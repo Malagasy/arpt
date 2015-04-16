@@ -56,6 +56,10 @@ textarea.form-control{
 
 .content h2{ border-bottom: 1px solid #dadada;}
 
+.content h2 .date{
+	text-align: right;
+}
+
 
 .view_code_block{
 	height: 700px !important;
