@@ -38,6 +38,9 @@ footer{ margin-bottom: 40px; }
 textarea.form-control{
 	background-color: #F9F9F9 !important;
 }
+.content{
+	padding-top:20px;
+}
 .content h1{
 	font-size: 42px;
 }
@@ -57,10 +60,10 @@ textarea.form-control{
 .content h2{ position:relative; border-bottom: 1px solid #dadada;}
 
 .content h2 .date{
-	float: right;
-	font-size: 11px;
+	font-size: 12px;
 	position: absolute;
 	bottom:1px;
+	right:3px;
 }
 
 
