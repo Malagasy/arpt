@@ -58,6 +58,7 @@ textarea.form-control{
 }
 
 .content h2{ position:relative; border-bottom: 1px solid #dadada;}
+.content h1{ position: relative;}
 
 .content h2 .date, .content h1 .date{
 	font-size: 12px;
