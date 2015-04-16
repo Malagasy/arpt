@@ -204,7 +204,7 @@ function newsletters_adminpage_options(){
 		div( array( 'class' => 'form-group') );
 		form_input( array( 'class' => 'form-control' , 'type' => 'text' , 'name' => 'newsletters_subject' , 'placeholder' => 'Sujet du mail' ) , null , 'required' );
 		div_close();
-		form_textarea( array( 'class' => 'form-control' , 'name' => 'newsletters_message' ) , null , null , 'required' );
+		form_textarea( array( 'class' => 'form-control' , 'name' => 'newsletters_message' ) , null , null );
 		form_submit( array( 'value' => 'Envoyer' , 'class' => 'btn btn-default' ) );
 		form_close();
 
