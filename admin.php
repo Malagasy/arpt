@@ -468,7 +468,7 @@ function adminpage_category(){
 	 	div_close();
 
 		div( array( 'class' => 'form-group' ) );
-	 	form_select( array( 'class' => 'form-control' , 'name' => 'cattype' ) , 'Type de contenus' , $r );
+	 	form_select( array( 'class' => 'form-control' , 'name' => 'cattype' ) , 'Type de contenu' , $r );
 	 	div_close();
 
 		form_submit( array( 'value' => 'Ajouter' , 'class' => 'btn btn-primary' ) );
