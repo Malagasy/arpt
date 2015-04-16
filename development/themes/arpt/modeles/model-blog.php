@@ -14,7 +14,7 @@ set_queried( array( 'type' => 'article' ) );
 					<?php echo 'Publié le ' . qdate() . ' par ' . qauthor() . '. Dans la catégorie ' . qcategory(); ?>
 				</p>
 				<p class="content">
-					<?php echo qsumup(); ?>
+					<?php echo qcontent(); ?>
 				</p><?php
 			endwhile;
 			?>

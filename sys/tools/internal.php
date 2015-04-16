@@ -234,6 +234,9 @@ function pre_add_new_category(){
 	$validator->required( 'catname' );
 	$validator->notequals( 'cattype' , 0 );
 
+	logr($validator);
+	exit();
+
 	if( $validator->isValid() ) :
 		if( insert_new_category( $_POST['catname'] , $_POST['cattype'] , $_POST['catdescr'] ) ) :
 			redirect_success();

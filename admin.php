@@ -408,7 +408,7 @@ function adminpage_contents(){
 }
 
 function adminpage_category(){
-	$r[0] = 'Choisissez une catégorie';
+	$r[0] = 'Choisissez un type de contenu';
  	foreach (get_active_contents() as $value)
  		if( $value != 'commentaire' )
  			$r[$value] = ucwords( $value );
@@ -458,7 +458,7 @@ function adminpage_category(){
 		div( array( 'class' => 'panel-body' ) );
 
 		div( array( 'class' => 'form-group' ) );
-		form_input( array( 'class' => 'form-control' , 'name' => 'catname' , 'value' => last_value('catname') , 'placeholder' => 'Nom de la catégorie') , null , 'required' );
+		form_input( array( 'class' => 'form-control' , 'name' => 'catname' , 'value' => last_value('catname') , 'placeholder' => 'Nom de la catégorie') , null );
 
 		span( array( 'id' => 'helpBlock' , 'class' => 'help-block' ) , 'Soyez le plus concis possible, pour des raisons de lisibilités je vous conseille de nommer votre catégorie par un mot.' );
 		div_close();
@@ -468,7 +468,7 @@ function adminpage_category(){
 	 	div_close();
 
 		div( array( 'class' => 'form-group' ) );
-	 	form_select( array( 'class' => 'form-control' , 'name' => 'cattype' ) , 'Type de catégorie' , $r );
+	 	form_select( array( 'class' => 'form-control' , 'name' => 'cattype' ) , 'Type de contenus' , $r );
 	 	div_close();
 
 		form_submit( array( 'value' => 'Ajouter' , 'class' => 'btn btn-primary' ) );
