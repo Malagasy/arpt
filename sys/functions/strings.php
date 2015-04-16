@@ -123,6 +123,8 @@ function trimslash( $string ){
 
 function breadcrumb( $separator = ' >> ' ){
 
+	/*
+
 	$element['home'] = 'Home';
 
 	if( !is_errorpage() ){
@@ -134,6 +136,25 @@ function breadcrumb( $separator = ' >> ' ){
 	}
 
 	$default = array( 'home' => 'Home' , 'type' => null , 'parent_title' => null , 'title' => null );
+
+	*/
+
+	$element['home']= sitename();
+
+	$element['type'] = qtype();
+
+	$element['title'] = qtitle();
+
+	if( $category = qcategory() ){
+		$element['category'] = $category;
+	}
+
+	if( ( $qpid = qpid() ) > 0 ){
+		$element['parent']= $qpid;
+	}
+
+	$element['separator'] = $separator;
+
 	return call_layers( 'breadcrumb_layer' , array_merge( $default , $element ) );
 }
 

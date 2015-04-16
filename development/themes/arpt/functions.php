@@ -30,15 +30,19 @@ function newsletters_title_layer( $title ){
 
 function breadcrumb_layer( $breadcrumb ){
 	if( is_errorpage() ) return '';
-	$separator = ' <span class="lightgray">/</span> ';
-	if( $breadcrumb['parent_title'] === null )
-		$parent_title_and_separator = '';
-	else
-		$parent_title_and_separator = $separator . $breadcrumb['parent_title'];
-	if( $breadcrumb['title'] == '' ) $breadcrumb['title'] = 'Tous';
-	$breadcrumb['title'] = $separator . $breadcrumb['title'];
-	
-	$output = a( get_site_url() , $breadcrumb['home'] ) . $separator . a( get_url( '/' . $breadcrumb['type'] . '/' ) , undo_slug( ucwords( $breadcrumb['type'] ) ) ) . $parent_title_and_separator . $breadcrumb['title'];
+	$breadcrumb['separator'] = ' <span class="lightgray">/</span> ';
+
+	$output = a( get_site_url() , $breadcrumb['home'] ) . $breadcrumb['separator'];
+	$output .= a( get_url('/'.$breadcrumb['type'].'/') , undo_slug( ucwords( $breadcrumb['type'] ) ) ) . $breadcrumb['separator'];
+	if( isset( $breadcrumb['category'] ) ){
+		$output .= a( get_url('/'.$breadcrumb['category'].'/') , undo_slug( ucwords( $breadcrumb['category'] ) ) ) . $breadcrumb['separator'];
+	}
+	if( isset( $breadcrumb['parent'] ) ){
+		$output .= a( content_link( $breadcrumb['parent'] ) , get_contentname( $breadcrumb['parent'] ) ) . $breadcrumb['separator'];
+	}
+
+	$output .= $breadcrumb['title'];
+
 	return $output;
 }
 
