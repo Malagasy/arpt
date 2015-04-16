@@ -54,10 +54,13 @@ textarea.form-control{
 	font-size: 6px;
 }
 
-.content h2{ border-bottom: 1px solid #dadada;}
+.content h2{ position:relative; border-bottom: 1px solid #dadada;}
 
 .content h2 .date{
-	text-align: right;
+	float: right;
+	font-size: 11px;
+	position: absolute;
+	bottom:1px;
 }
 
 
