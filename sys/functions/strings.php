@@ -138,8 +138,8 @@ function breadcrumb( $separator = ' >> ' ){
 	$default = array( 'home' => sitename() , 'type' => null , 'parent_title' => null , 'title' => null );
 
 	$element['type'] = qtype();
-	
-	if( get_queried()->qtotal() > 1 )
+
+	if( get_queried()->total > 1 )
 		$element['title'] = 'Tous';
 	else
 		$element['title'] = qtitle();
