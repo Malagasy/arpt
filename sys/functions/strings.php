@@ -134,12 +134,8 @@ function breadcrumb( $separator = ' >> ' ){
 	}else{
 		$element['type'] = 'Page introuvable';
 	}
-
-	$default = array( 'home' => 'Home' , 'type' => null , 'parent_title' => null , 'title' => null );
-
 	*/
-
-	$element['home']= sitename();
+	$default = array( 'home' => sitename() , 'type' => null , 'parent_title' => null , 'title' => null );
 
 	$element['type'] = qtype();
 
