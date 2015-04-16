@@ -10,7 +10,7 @@ get_header();
 			<h1> <?php echo qtitle(); ?><span class="date"><?php echo 'Le ' . qdate(); ?></span></h1>
 			<p>
 				<?php echo qcontent(); ?>
-			</p><?php
+			</p<?php
 		endif;
 		?>
 		

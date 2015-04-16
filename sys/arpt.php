@@ -374,8 +374,8 @@ class Arpt{
 				case filter_is_category( $page ) :
 					if( $this->queried->qmodel() && file_exists( page_dir( $this->queried->qmodel() ) ) )
 						$this->load( page_dir( $this->queried->qmodel() ) );
-					elseif( file_exists( page_dir( $page . '.php' ) ) && get_pageargs(0) )
-						$this->load( page_dir( $page . '.php' ) );
+					elseif( file_exists( page_dir( 'category-' . $page . '.php' ) ) )
+						$this->load( page_dir( 'category-' . $page . '.php' ) );
 					elseif( file_exists( page_dir( 'category.php' ) ) )
 						$this->load( page_dir( 'category.php' ) );
 					else
