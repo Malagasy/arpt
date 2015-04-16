@@ -7,20 +7,7 @@ get_header();
 <div class="container">
 	<div class="row page-header">
 		<div class="col-md-8 content">
-		<?php
-		if( get_queried()->total > 1) :
-			echo '<h1>Où souhaitez-vous aller ?</h1>';
-			div( array( 'class' => 'list-group' ) );
-			while( qnext() ) :
-				echo a( content_link( qid() ) , null , array( 'class' => 'list-group-item' ) );
-				echo '<h4 class="list-group-item-heading">' . qtitle() . '</h4>';
-				echo '<p class="list-group-item-text">' . qsumup() . '</p>';
-				echo a_close();
-			endwhile;
-			div_close();
-		else :
-			qnext(); ?>
-			<h1> <?php echo qtitle(); ?> </h1>
+			<h1> <?php echo qtitle(); ?><span class="date"><?php echo 'Le ' . qdate(); ?></span></h1>
 			<p>
 				<?php echo qcontent(); ?>
 			</p><?php
