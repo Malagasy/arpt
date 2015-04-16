@@ -7,17 +7,7 @@ get_header();
 <div class="container">
 	<div class="row page-header">
 		<div class="col-md-8 content">
-			<?php
-			$prototype = qproperty( 'prototype' );
-			$return = qproperty( 'return' );
-			$example = qproperty( 'example' );
-			$c = strlen( $prototype ) + strlen( $return ) + strlen( $example );
-			?>
-		<h1> Fonction &laquo; <?php echo qtitle(); ?> </h1><?php
-		if( $c < 800 ){ ?>
-			<div class="panel panel-default padding-10">
-				Cette page ne semble pas assez complète. Si vous souhaitez obtenir des informations supplémentaires, <a href="#" data-toggle="modal" data-target="#ask">faites une demande</a>.
-			</div>
+			
 			<div class="modal fade" id="ask" tabindex="-1" role="dialog" aria-labelledby="Faire une demande" aria-hidden="true">
 				<div class="modal-dialog">
 					<div class="modal-content">

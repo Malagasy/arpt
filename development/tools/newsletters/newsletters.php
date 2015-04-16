@@ -204,7 +204,7 @@ function newsletters_adminpage_options(){
 		div( array( 'class' => 'form-group') );
 		form_input( array( 'class' => 'form-control' , 'type' => 'text' , 'name' => 'newsletters_subject' , 'placeholder' => 'Sujet du mail' ) , null , 'required' );
 		div_close();
-		form_textarea( array( 'name' => 'newsletters_message' ) , null , null , 'required' );
+		form_textarea( array( 'class' => 'form-control' , 'name' => 'newsletters_message' ) , null , null , 'required' );
 		form_submit( array( 'value' => 'Envoyer' , 'class' => 'btn btn-default' ) );
 		form_close();
 
@@ -214,8 +214,8 @@ function newsletters_adminpage_options(){
 function newsletters_sendToAll( $tos , $subject , $message ){
 
 	if( empty( $tos ) ) return;
-logr('bbbbb');
-	logr( arpt_email( $tos , $subject , $message ) );
+	
+	arpt_email( $tos , $subject , $message );
 }
 
 function newsletters_get_emails( $offset = null , $limit = null ){
