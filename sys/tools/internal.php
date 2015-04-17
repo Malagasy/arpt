@@ -232,7 +232,7 @@ function pre_add_new_category(){
 		return;
 	$validator = new FormValidation();
 	$validator->required( 'catname' );
-	$validator->notequals( 'cattype' , 0 );
+	$validator->notequals( 'cattype' , '0' );
 
 	if( $validator->isValid() ) :
 		if( insert_new_category( $_POST['catname'] , $_POST['cattype'] , $_POST['catdescr'] ) ) :

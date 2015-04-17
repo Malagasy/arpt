@@ -123,6 +123,8 @@ function trimslash( $string ){
 
 function breadcrumb( $separator = ' >> ' ){
 
+	/*
+
 	$element['home'] = 'Home';
 
 	if( !is_errorpage() ){
@@ -132,8 +134,26 @@ function breadcrumb( $separator = ' >> ' ){
 	}else{
 		$element['type'] = 'Page introuvable';
 	}
+	*/
+	$default = array( 'home' => sitename() , 'type' => null , 'parent_title' => null , 'title' => null );
 
-	$default = array( 'home' => 'Home' , 'type' => null , 'parent_title' => null , 'title' => null );
+	$element['type'] = qtype();
+
+	if( get_queried()->total > 1 )
+		$element['title'] = 'Tous';
+	else
+		$element['title'] = qtitle();
+
+	if( $category = qcategory() ){
+		$element['category'] = $category;
+	}
+
+	if( ( $qpid = qpid() ) > 0 ){
+		$element['parent']= $qpid;
+	}
+
+	$element['separator'] = $separator;
+
 	return call_layers( 'breadcrumb_layer' , array_merge( $default , $element ) );
 }
 
