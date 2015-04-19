@@ -20,7 +20,7 @@
 			
 		form_input( array( 'type' => 'hidden' , 'name' => 'parentid' , 'value' => get_currentcontentid() ) );
 		
-		form_textarea( array( 'name' => 'message' , 'rows' => 7, 'class' => 'form-control fusion-bottom' ) , null , last_value('message') );
+		form_textarea( array( 'name' => 'message' , 'rows' => 7, 'class' => 'form-control fusion-bottom' ) , null );
 		
 		form_close();
 	else :
@@ -41,7 +41,7 @@
 					<samp><?php echo $comments->qcontent() ?></samp>
 				</div>
 					<p class="pull-right">
-						<?php if( $comments->qauthorid() == get_currentuserid() ) :
+						<?php if( $comments->qauthorid() === get_currentuserid() ) :
 						echo get_delete_url( 'comment' , $comments->qid() , null , 'Supprimer mon commentaire' );
 						endif; ?>
 					</p>

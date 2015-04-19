@@ -27,8 +27,6 @@ get_header();
 					</div>
 				</div>
 			</div>
-		<?php
-		} ?>
 		<p>
 			<?php echo qcontent(); ?>
 		</p>

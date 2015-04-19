@@ -1,22 +1,23 @@
 <?php
 
 get_header();
-set_queried( array( 'type' => 'article' ) );
+$articles = get_contents( array( 'type' => 'article' ) );
 ?>
 
 <div class="container">
 	<div class="row page-header">
 		<div class="col-md-8 content">
 			<?php
-			while( qnext() ) : ?>
-				<h2><?php echo qtitle() ?><span class="date"><?php echo 'Le ' . qdate(); ?></span></h2>
+			while( $articles->qnext() ) : ?>
+				<h2><?php echo $articles->qtitle() ?><span class="date"><?php echo 'Le ' . $articles->qdate(); ?></span></h2>
 				<p class="contentdata">
-					<?php echo 'Publié le ' . qdate() . ' par ' . qauthor() . '. Dans la catégorie ' . qcategory(); ?>
+					<?php echo 'Publié le ' . $articles->qdate() . ' par ' . $articles->qauthor() . '. Dans la catégorie ' . $articles->qcategory(); ?>
 				</p>
 				<p class="content">
-					<?php echo qcontent(); ?>
+					<?php echo $articles->qcontent(); ?>
 				</p><?php
 			endwhile;
+			$articles->free();
 			?>
 			<p class="content-bottom top-buffer-40">
 				<?php 
