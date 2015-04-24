@@ -1,61 +1,74 @@
 <?php
 
-include_once 'settings.php';
+$files_system = array();
 
-include_once 'sys/arpt.php';
-include_once 'sys/queries.php';
-include_once 'sys/contents.php';
-include_once 'sys/users.php';
-include_once 'sys/chain.php';
-include_once 'sys/pageinfo.php';
-include_once 'sys/config.php';
-include_once 'sys/siteconfig.php';
-include_once 'sys/errors.php';
-include_once 'sys/form_validation.php';
-include_once 'sys/properties.php';
-include_once 'sys/categories.php';
-include_once 'sys/access.php';
+$files_system[] = 'settings.php';
 
-include_once 'sys/functions/callbacks.php';
-include_once 'sys/functions/queries.php';
-include_once 'sys/functions/urls.php';
-include_once 'sys/functions/strings.php';
-include_once 'sys/functions/contents.php';
-include_once 'sys/functions/form.php';
-include_once 'sys/functions/queried.php';
-include_once 'sys/functions/database.php';
-include_once 'sys/functions/pageinfo.php';
-include_once 'sys/functions/page.php';
-include_once 'sys/functions/users.php';
-include_once 'sys/functions/debug.php';
-include_once 'sys/functions/admin.php';
-include_once 'sys/functions/system.php';
-include_once 'sys/functions/contents-keyword.php';
-include_once 'sys/functions/security.php';
-include_once 'sys/functions/widgets.php';
-include_once 'sys/functions/comments.php';
-include_once 'sys/functions/tokens.php';
-include_once 'sys/functions/medias.php';
-include_once 'sys/functions/scripts.php';
-include_once 'sys/functions/categories.php';
-include_once 'sys/functions/routing.php';
-include_once 'sys/functions/server.php';
-include_once 'sys/functions/ajax.php';
+$files_system[] = 'sys/arpt.php';
+$files_system[] = 'sys/queries.php';
+$files_system[] = 'sys/contents.php';
+$files_system[] = 'sys/users.php';
+$files_system[] = 'sys/chain.php';
+$files_system[] = 'sys/pageinfo.php';
+$files_system[] = 'sys/config.php';
+$files_system[] = 'sys/siteconfig.php';
+$files_system[] = 'sys/errors.php';
+$files_system[] = 'sys/form_validation.php';
+$files_system[] = 'sys/properties.php';
+$files_system[] = 'sys/categories.php';
+$files_system[] = 'sys/access.php';
+
+$files_system[] = 'sys/functions/callbacks.php';
+$files_system[] = 'sys/functions/queries.php';
+$files_system[] = 'sys/functions/urls.php';
+$files_system[] = 'sys/functions/strings.php';
+$files_system[] = 'sys/functions/contents.php';
+$files_system[] = 'sys/functions/form.php';
+$files_system[] = 'sys/functions/queried.php';
+$files_system[] = 'sys/functions/database.php';
+$files_system[] = 'sys/functions/pageinfo.php';
+$files_system[] = 'sys/functions/page.php';
+$files_system[] = 'sys/functions/users.php';
+$files_system[] = 'sys/functions/debug.php';
+$files_system[] = 'sys/functions/admin.php';
+$files_system[] = 'sys/functions/system.php';
+$files_system[] = 'sys/functions/contents-keyword.php';
+$files_system[] = 'sys/functions/security.php';
+$files_system[] = 'sys/functions/widgets.php';
+$files_system[] = 'sys/functions/comments.php';
+$files_system[] = 'sys/functions/tokens.php';
+$files_system[] = 'sys/functions/medias.php';
+$files_system[] = 'sys/functions/scripts.php';
+$files_system[] = 'sys/functions/categories.php';
+$files_system[] = 'sys/functions/routing.php';
+$files_system[] = 'sys/functions/server.php';
+$files_system[] = 'sys/functions/ajax.php';
 
 
-include_once get_tool_sysdir() . '/form.php';
-include_once get_tool_sysdir() . '/widgets.php';
-include_once get_tool_sysdir() . '/admin_menus.php';
-include_once get_tool_sysdir() . '/extrafields.php';
-include_once get_tool_sysdir() . '/users-properties.php';
-include_once get_tool_sysdir() . '/contents-properties.php';
-include_once get_tool_sysdir() . '/contents.php';
-include_once get_tool_sysdir() . '/options.php';
-include_once get_tool_sysdir() . '/navmenus.php';
-include_once get_tool_sysdir() . '/users.php';
-include_once get_tool_sysdir() . '/categories.php';
-include_once get_tool_sysdir() . '/tinymce.php';
-include_once get_tool_sysdir() . '/admin.php';
-include_once get_tool_sysdir() . '/editor.php';
-include_once get_tool_sysdir() . '/email.php';
-include_once get_tool_sysdir() . '/internal.php';
+$files_system[] = get_tool_sysdir() . '/form.php';
+$files_system[] = get_tool_sysdir() . '/widgets.php';
+$files_system[] = get_tool_sysdir() . '/admin_menus.php';
+$files_system[] = get_tool_sysdir() . '/extrafields.php';
+$files_system[] = get_tool_sysdir() . '/users-properties.php';
+$files_system[] = get_tool_sysdir() . '/contents-properties.php';
+$files_system[] = get_tool_sysdir() . '/contents.php';
+$files_system[] = get_tool_sysdir() . '/options.php';
+$files_system[] = get_tool_sysdir() . '/navmenus.php';
+$files_system[] = get_tool_sysdir() . '/users.php';
+$files_system[] = get_tool_sysdir() . '/categories.php';
+$files_system[] = get_tool_sysdir() . '/tinymce.php';
+$files_system[] = get_tool_sysdir() . '/admin.php';
+$files_system[] = get_tool_sysdir() . '/editor.php';
+$files_system[] = get_tool_sysdir() . '/email.php';
+$files_system[] = get_tool_sysdir() . '/internal.php';
+
+
+foreach( $files_system as $file_system ){
+	if( !file_exists( $file_system ) ){
+		if( $file_system == 'settings.php' )
+			die( 'Le fichier <strong>settings.php</strong> n\'existe pas. Lisez le manuel d\'installation.' );
+		die('Le fichier systeme <strong>' . $file_system . '</strong> n\'existe pas.' );
+	}
+
+	require_once $file_system;
+}
