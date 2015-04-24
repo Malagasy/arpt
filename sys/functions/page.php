@@ -30,16 +30,8 @@ function redirect_failure( $get = null ){
 
 function load( $file ){
 	global $arpt;
-	if( !MVC_MOD )
-		if( file_exists( page_dir( $file ) ) )
-			$arpt->load( page_dir( $file ) );
-		elseif( file_exists( vues_dir( $file ) ) )
-			$arpt->load( vues_dir( $file ) );
-	else
-		if( file_exists( vues_dir( $file ) ) )
-			$arpt->load( vues_dir( $file ) );
-		elseif( file_exists( page_dir( $file ) ) )
-			$arpt->load( page_dir( $file ) );
+	if( file_exists( page_dir( $file ) ) )
+		$arpt->load( page_dir( $file ) );
 }
 
 function load_part( $name ){

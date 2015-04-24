@@ -3,7 +3,6 @@
 class Arpt{
 	
 	private function __construct(){
-		$this->mvc_mod = MVC_MOD;
 		$this->systempage = array( 'admin', 'signup' , 'quit' );
 		$this->systemtable = array( 'arpt_categories' , 'arpt_contents' , 'arpt_contents_categories' , 'arpt_contents_properties' , 'arpt_general' , 'arpt_keywords' , 'arpt_options' , 'arpt_users' , 'arpt_users_properties' );
 		$this->entity = array();
@@ -421,8 +420,6 @@ class Arpt{
 	}
 
 	private function is_installed(){
-		if( !file_exists( './settings.php' ) )
-			die('Le fichier <strong>settings.php</strong> n\'existe pas. Lisez le manuel d\'installation.');
 
 		try{
 			$link = new mysqli(MYSQLI_LOCALHOST,MYSQLI_ROOT,MYSQLI_PASSWORD);
