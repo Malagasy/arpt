@@ -1,16 +1,15 @@
 <?php
 
 get_header();
+$prototype = qproperty( 'prototype' );
+$return = qproperty( 'return' );
+$example = qproperty( 'example' );
 
 ?>
 
 <div class="container">
 	<div class="row page-header">
-		<div class="col-md-8 content"><?php
-			$prototype = qproperty( 'prototype' );
-			$return = qproperty( 'return' );
-			$example = qproperty( 'example' );
-			?>
+		<div class="col-md-8 content">
 			<h1> Fonction &laquo; <?php echo qtitle(); ?> </h1>
 			<div class="modal fade" id="ask" tabindex="-1" role="dialog" aria-labelledby="Faire une demande" aria-hidden="true">
 				<div class="modal-dialog">

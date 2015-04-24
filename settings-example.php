@@ -6,5 +6,3 @@ define('MYSQLI_PASSWORD' , 'YourPassword');
 define('MYSQLI_DATABASE' , 'YourDatabase');
 
 define( 'HOME_FILE' , 'home.php' );
-
-define( 'ROOT_DIR' , getcwd() );

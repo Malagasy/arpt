@@ -330,82 +330,76 @@ class Arpt{
 
 		$this->pageinfo->seo();
 
-		if( $this->mvc_mod == false ){
+		call_triggers( 'the_routing' );
 
-			call_triggers( 'the_routing' );
-
-			switch( $page = $this->pageinfo->get_pagetype() ) {
-				case routing_home():
-					if( file_exists( page_dir( HOME_FILE ) ) )
-						$this->load( page_dir( HOME_FILE ) );
-					else
-						$this->load( page_dir('index.php') );
-					break;
-				case filter_is_active_content( $page ):
-					if( $this->queried->total == 1 && $this->queried->qmodel() && file_exists( page_dir( $this->queried->qmodel() ) ) ) :	
-						$this->load( page_dir( $this->queried->qmodel() ) );
-					elseif( file_exists( page_dir( $page . '.php' ) ) ) :
-						$this->load( page_dir( $page . '.php' ) );
-					else:
-						$this->load( page_dir('contents.php') );
-					endif;
-					break;
-				case routing_search():
-					$this->load( page_dir( 'search.php' ) );
-					break;
-				case routing_keywords():
-					if( file_exists( page_dir( 'keywords.php' ) ) )
-						$this->load( page_dir( 'keywords.php' ) );
-					else
-						$this->load( page_dir( 'error.php' ) );
-					break;				
-				case routing_author():
-					if( file_exists( page_dir( 'archive.php' ) ) )
-						$this->load( page_dir( 'archive.php' ) );
-					else
-						$this->load( page_dir( 'error.php' ) );
-					break;
-				case filter_is_year( $page ) :
-					if( file_exists( page_dir( 'archive.php' ) ) )
-						$this->load( page_dir( 'archive.php' ) );
-					else
-						$this->load( page_dir( 'error.php' ) );
-					break;
-				case filter_is_category( $page ) :
-					if( $this->queried->qmodel() && file_exists( page_dir( $this->queried->qmodel() ) ) )
-						$this->load( page_dir( $this->queried->qmodel() ) );
-					elseif( file_exists( page_dir( 'category-' . $page . '.php' ) ) )
-						$this->load( page_dir( 'category-' . $page . '.php' ) );
-					elseif( file_exists( page_dir( 'category.php' ) ) )
-						$this->load( page_dir( 'category.php' ) );
-					else
-						$this->load( page_dir( 'contents.php') );
-					break;
-				case 'admin':
-					$this->load( 'admin.php' );
-					break;
-				case 'signup':
-					if( !is_user_online() )
-						$this->load( 'signup.php' );
-					else
-						$this->redirect( get_home_url() );
-					break;
-				case 'error':
-					 $this->load( page_dir( 'error.php' ) );
-					break;
-				case 'quit':
-					session_destroy();
+		switch( $page = $this->pageinfo->get_pagetype() ) {
+			case routing_home():
+				if( file_exists( page_dir( HOME_FILE ) ) )
+					$this->load( page_dir( HOME_FILE ) );
+				else
+					$this->load( page_dir('index.php') );
+				break;
+			case filter_is_active_content( $page ):
+				if( $this->queried->total == 1 && $this->queried->qmodel() && file_exists( page_dir( $this->queried->qmodel() ) ) ) :	
+					$this->load( page_dir( $this->queried->qmodel() ) );
+				elseif( file_exists( page_dir( $page . '.php' ) ) ) :
+					$this->load( page_dir( $page . '.php' ) );
+				else:
+					$this->load( page_dir('contents.php') );
+				endif;
+				break;
+			case routing_search():
+				$this->load( page_dir( 'search.php' ) );
+				break;
+			case routing_keywords():
+				if( file_exists( page_dir( 'keywords.php' ) ) )
+					$this->load( page_dir( 'keywords.php' ) );
+				else
+					$this->load( page_dir( 'error.php' ) );
+				break;				
+			case routing_author():
+				if( file_exists( page_dir( 'archive.php' ) ) )
+					$this->load( page_dir( 'archive.php' ) );
+				else
+					$this->load( page_dir( 'error.php' ) );
+				break;
+			case filter_is_year( $page ) :
+				if( file_exists( page_dir( 'archive.php' ) ) )
+					$this->load( page_dir( 'archive.php' ) );
+				else
+					$this->load( page_dir( 'error.php' ) );
+				break;
+			case filter_is_category( $page ) :
+				if( $this->queried->qmodel() && file_exists( page_dir( $this->queried->qmodel() ) ) )
+					$this->load( page_dir( $this->queried->qmodel() ) );
+				elseif( file_exists( page_dir( 'category-' . $page . '.php' ) ) )
+					$this->load( page_dir( 'category-' . $page . '.php' ) );
+				elseif( file_exists( page_dir( 'category.php' ) ) )
+					$this->load( page_dir( 'category.php' ) );
+				else
+					$this->load( page_dir( 'contents.php') );
+				break;
+			case 'admin':
+				$this->load( 'admin.php' );
+				break;
+			case 'signup':
+				if( !is_user_online() )
+					$this->load( 'signup.php' );
+				else
 					$this->redirect( get_home_url() );
-					break;
-				default:
-					if( $this->queried->total == 1 && file_exists( get_theme_dir() . '/' . $page . '.php' ) )
-						$this->load( get_theme_dir() . '/' . $page . '.php' );
-					else
-						$this->load( page_dir( 'error.php' ) );
-
-			}
-		}else{
-			$this->load( controllers_dir() . '/' . $page . '.php' );
+				break;
+			case 'error':
+				 $this->load( page_dir( 'error.php' ) );
+				break;
+			case 'quit':
+				session_destroy();
+				$this->redirect( get_home_url() );
+				break;
+			default:
+				if( $this->queried->total == 1 && file_exists( get_theme_dir() . '/' . $page . '.php' ) )
+					$this->load( get_theme_dir() . '/' . $page . '.php' );
+				else
+					$this->load( page_dir( 'error.php' ) );
 		}
 		call_triggers( 'after_routing' );
 	}
@@ -427,17 +421,19 @@ class Arpt{
 	}
 
 	private function is_installed(){
-		mysqli_report(MYSQLI_REPORT_STRICT);
+		if( !file_exists( './settings.php' ) )
+			die('Le fichier <strong>settings.php</strong> n\'existe pas. Lisez le manuel d\'installation.');
+
 		try{
 			$link = new mysqli(MYSQLI_LOCALHOST,MYSQLI_ROOT,MYSQLI_PASSWORD);
 		}catch(Exception $e){
-			die('Nous ne pouvons pas vous connecter, vérifiez vos informations de connexion.' );
+			die('Nous ne pouvons pas vous connecter, verifiez vos informations de connexion.' );
 		}
 
 		if( MYSQLI_DATABASE == null ) die( 'Spécifiez une base de données pour votre site.' );
 		else $check_db = $link->query( "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '". MYSQLI_DATABASE ."' ");
 
-		if( $check_db->num_rows == 0 ) die( 'La base de données spécifiée dans le fichier settings.php n\'existe pas.' );
+		if( $check_db->num_rows == 0 ) die( 'La base de donnees specifiee dans le fichier settings.php n\'existe pas.' );
 
 		$link->select_db( MYSQLI_DATABASE );
 
