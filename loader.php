@@ -45,22 +45,22 @@ $files_system[] = 'sys/functions/server.php';
 $files_system[] = 'sys/functions/ajax.php';
 
 
-$files_system[] = get_tool_sysdir() . '/form.php';
-$files_system[] = get_tool_sysdir() . '/widgets.php';
-$files_system[] = get_tool_sysdir() . '/admin_menus.php';
-$files_system[] = get_tool_sysdir() . '/extrafields.php';
-$files_system[] = get_tool_sysdir() . '/users-properties.php';
-$files_system[] = get_tool_sysdir() . '/contents-properties.php';
-$files_system[] = get_tool_sysdir() . '/contents.php';
-$files_system[] = get_tool_sysdir() . '/options.php';
-$files_system[] = get_tool_sysdir() . '/navmenus.php';
-$files_system[] = get_tool_sysdir() . '/users.php';
-$files_system[] = get_tool_sysdir() . '/categories.php';
-$files_system[] = get_tool_sysdir() . '/tinymce.php';
-$files_system[] = get_tool_sysdir() . '/admin.php';
-$files_system[] = get_tool_sysdir() . '/editor.php';
-$files_system[] = get_tool_sysdir() . '/email.php';
-$files_system[] = get_tool_sysdir() . '/internal.php';
+$files_system[] = 'sys/tools/form.php';
+$files_system[] = 'sys/tools/widgets.php';
+$files_system[] = 'sys/tools/admin_menus.php';
+$files_system[] = 'sys/tools/extrafields.php';
+$files_system[] = 'sys/tools/users-properties.php';
+$files_system[] = 'sys/tools/contents-properties.php';
+$files_system[] = 'sys/tools/contents.php';
+$files_system[] = 'sys/tools/options.php';
+$files_system[] = 'sys/tools/navmenus.php';
+$files_system[] = 'sys/tools/users.php';
+$files_system[] = 'sys/tools/categories.php';
+$files_system[] = 'sys/tools/tinymce.php';
+$files_system[] = 'sys/tools/admin.php';
+$files_system[] = 'sys/tools/editor.php';
+$files_system[] = 'sys/tools/email.php';
+$files_system[] = 'sys/tools/internal.php';
 
 
 foreach( $files_system as $file_system ){
