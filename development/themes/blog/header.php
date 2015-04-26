@@ -40,7 +40,7 @@
                         $page = get_contents( array( 'id' => $id ) );
                         $page->next();
                         echo '<li><a href="' . $page->qlink() . '">' . $page->qtitle() . '</a></li>';
-                        //$page->free();
+                        $page->free();
                     }
                     echo '</ul>';
                 }
