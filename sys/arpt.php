@@ -244,14 +244,14 @@ class Arpt{
 				endif;
 			endif;
 
-			/*$content->qnext();
+			$content->qnext();
 
 			// doing some test here
 			if( $content->qstatus() == 'not-public' )
 				$content = new_content( array( 'slug' => 'thisIsAPrivateContent' ) );
 
 
-			$content->qreset();*/
+			$content->qreset();
 
 
 
