@@ -61,7 +61,8 @@ function get_content_category( $cid ){
 	$cat = new_query( 'select' , 'arpt_contents_categories' , array( 'selection' => 'cat_id' , 'where' => 'content_id=\''.$cid.'\'' ) );
 
 	if( $cat->next() )
-		return $cat->datas->cat_id;
+		if( category_exists( $cat->qid() ) )
+			return $cat->qid();
 	return false;
 }
 
