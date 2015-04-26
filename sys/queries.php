@@ -154,7 +154,7 @@ class Queries{
 	}
 
 	public function free(){
-	
+		logr(debug_backtrace());
 		return $this->result->free();
 	}
 
