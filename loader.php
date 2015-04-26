@@ -66,7 +66,7 @@ $files_system[] = 'sys/tools/internal.php';
 foreach( $files_system as $file_system ){
 	if( !file_exists( $file_system ) ){
 		if( $file_system == 'settings.php' )
-			die( 'Le fichier <strong>settings.php</strong> n\'existe pas. Lisez le manuel d\'installation.' );
+			die( 'Le fichier <strong>settings.php</strong> n\'existe pas. <a href="http://arpt.fr/">Lisez le manuel d\'installation</a>.' );
 		die('Le fichier systeme <strong>' . $file_system . '</strong> n\'existe pas.' );
 	}
 
