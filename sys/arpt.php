@@ -573,7 +573,7 @@ class Arpt{
 			echo '<h1>C\'est presque terminé..</h1>';
 			echo '<p>Les modifications ont été effectuées.</p>';
 			if( false != ( $base_url = get_setting( 'base_url' ) ) ) :
-				echo '<p>ARpt a détecté un dossier persistent sur votre adresse. Ajoutez/modifiez dans votre fichier <b>settings.php</b> la ligne suivante : </p>';
+				echo '<p>ARpt a détecté un dossier persistent sur votre adresse. Ajoutez dans votre fichier <b>settings.php</b> la ligne suivante : </p>';
 				echo '<code> define( \'BASE_URL\' , \'' . $base_url . '\' ); </code>';
 			else :
 				echo '<p>Votre site est casiment prêt, il ne vous reste plus qu\'à valider ! :-) </p>';
