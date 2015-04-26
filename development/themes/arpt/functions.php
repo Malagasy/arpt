@@ -75,3 +75,8 @@ function arpt_the_routing_layer(){
 	}
 
 }
+
+function arpt_before_loading_script(){
+	echo '<link rel="icon" type="image/png" href="' . get_arpt_logo() . '"/>';
+}
+add_trigger('before_loading_script' , 'arpt_before_loading_script' );
