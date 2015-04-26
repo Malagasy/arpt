@@ -32,7 +32,7 @@ class Arpt{
 
 		$this->currentuser = new Users( get_currentuserid() );
 
-		call_triggers('tools_activated');
+		call_triggers('arpt_actived');
 
 	}
 
@@ -42,6 +42,7 @@ class Arpt{
 			if( file_exists( get_tool_dir() . '/' . $tool . '/' . $tool . '.php' ) )
 				$this->load( get_tool_dir() . '/' . $tool . '/' . $tool . '.php' );
 		}
+		call_triggers('tools_activated');
 	}
 
 	public function pageinfo(){
@@ -421,16 +422,15 @@ class Arpt{
 
 	private function is_installed(){
 
-		try{
-			$link = new mysqli(MYSQLI_LOCALHOST,MYSQLI_ROOT,MYSQLI_PASSWORD);
-		}catch(Exception $e){
+		@$link = new mysqli(MYSQLI_LOCALHOST,MYSQLI_ROOT,MYSQLI_PASSWORD,null);
+		if( !@$link->ping() )
 			die('Nous ne pouvons pas vous connecter, verifiez vos informations de connexion.' );
-		}
+
 
 		if( MYSQLI_DATABASE == null ) die( 'Spécifiez une base de données pour votre site.' );
 		else $check_db = $link->query( "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '". MYSQLI_DATABASE ."' ");
 
-		if( $check_db->num_rows == 0 ) die( 'La base de donnees specifiee dans le fichier settings.php n\'existe pas.' );
+		if( $check_db->num_rows == 0 ) die( 'La base de donnees specifiee dans le fichier <strong>settings.php</strong> n\'existe pas.' );
 
 		$link->select_db( MYSQLI_DATABASE );
 
@@ -521,21 +521,25 @@ class Arpt{
 			if( $message_error ){
 				echo '<p class="text-danger">Tous les champs doivent être renseignés correctement.</p>';
 			}
+			$f_sitename = get_setting( 'sitename' ) ? get_setting( 'sitename' ) : last_value( 'sitename' );
+			$f_description = get_setting( 'description' ) ? get_setting( 'description' ) : last_value( 'sitedescription' );
+			$f_email = get_setting( 'admin_email' ) ? get_setting( 'admin_email' ) : last_value( 'email' );
+
 			form_open();
 			fieldset_open('Infos générales de votre site');
 
 			form_hidden( array( 'name' => 'step_config' ) );
 
 			div( array( 'class' => 'form-group' ) );
-			form_input( array( 'class' => 'form-control' , 'name' => 'sitename' , 'value' => get_setting( 'sitename' ) ) , 'Nom de votre site' );
+			form_input( array( 'class' => 'form-control' , 'name' => 'sitename' , 'value' => $f_sitename ) , 'Nom de votre site' );
 			div_close();
 
 			div( array( 'class' => 'form-group' ) );
-			form_input( array( 'class' => 'form-control' ,  'name' => 'sitedescription' , 'value' => get_setting( 'description' ) ) , 'Description de votre site' );
+			form_input( array( 'class' => 'form-control' ,  'name' => 'sitedescription' , 'value' => $f_description ) , 'Description de votre site' );
 			div_close();
 
 			div( array( 'class' => 'form-group' ) );
-			form_input( array( 'class' => 'form-control' ,  'name' => 'email' , 'value' => get_setting( 'admin_email' ) ) , 'Adresse email du Webmaster' );
+			form_input( array( 'class' => 'form-control' ,  'name' => 'email' , 'value' => $f_email ) , 'Adresse email du Webmaster' );
 			div_close();
 
 			fieldset_close();
@@ -571,8 +575,6 @@ class Arpt{
 			if( false != ( $base_url = get_setting( 'base_url' ) ) ) :
 				echo '<p>ARpt a détecté un dossier persistent sur votre adresse. Ajoutez/modifiez dans votre fichier <b>settings.php</b> la ligne suivante : </p>';
 				echo '<code> define( \'BASE_URL\' , \'' . $base_url . '\' ); </code>';
-				echo '<p>Mais également sur votre <b>.htaccess.</b> : ';
-				echo '<code> RewriteBase ' . $base_url . ' </code>';
 			else :
 				echo '<p>Votre site est casiment prêt, il ne vous reste plus qu\'à valider ! :-) </p>';
 			endif;

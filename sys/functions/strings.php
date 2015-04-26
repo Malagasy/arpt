@@ -78,7 +78,7 @@ function clause_orderby( $label, $value = null , $func = null, $before = null , 
 }
 
 function last_value( $name ){
-	return isset( $_COOKIE['postvar_' . $name] ) ?  $_COOKIE['postvar_' . $name] : '';
+	return isset( $_POST[$name] ) ? $_REQUEST[$name] : $_COOKIE['postvar_' . $name];
 }
 
 function a( $link , $msg = null , $specificities = null ){

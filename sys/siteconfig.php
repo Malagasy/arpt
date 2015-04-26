@@ -129,7 +129,7 @@ class Siteconfiguration{
 	}
 
 	private function security_mecanism(){
-		add_trigger( 'dev_activation' , 'sanitize_POSTvar' );
+		add_trigger( 'tools_activated' , 'sanitize_POSTvar' );
 	}
 
 	private function critical_error(){
