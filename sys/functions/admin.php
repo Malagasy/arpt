@@ -167,6 +167,9 @@ function update_content( $cid , $datas ){
 	$datas_2 = filter_extrafields( $datas );
 	
 	update_contentsproperties( $datas_2 , $cid );
+
+	if( isset( $datas['delete_miniature'] ) )
+		rm_miniature( $cid );
 	
 	if( isset( $_FILES['miniature'] ) && !empty( $_FILES['miniature']['name'] ) ) 
 		if( !upload_miniature( $cid , $_FILES['miniature'] ) ) return false; // todo Upload class...
