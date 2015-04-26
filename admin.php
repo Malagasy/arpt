@@ -153,7 +153,7 @@ function adminpage_add_edit_contents(){
 
 		if( $img = get_miniature( 'content' , $cid ) ){
 
-			form_radio( array( 'name' => 'delete_miniature' , 'value' => 1 ) , 'Supprimer la miniature' );
+			form_checkbox( array( 'name' => 'delete_miniature' , 'value' => 1 ) , 'Supprimer la miniature' );
 			echo img( $img , get_format('miniature-small') + array( 'alt' => 'Miniature du contenu' , 'class' => 'img-responsive' ) );
 		}
 		echo '<br>';

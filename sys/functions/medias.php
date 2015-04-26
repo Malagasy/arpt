@@ -38,6 +38,7 @@ function has_miniature( $type = 'content' , $id = null ){
 
 function rm_miniature( $cid ){
 	$c = new_content( $cid );
+	$c->qnext();
 	return unlink( $c->qminiature() );
 }
 

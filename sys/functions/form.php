@@ -112,8 +112,16 @@ function form_radio( $specificities , $label = null , $extras = null ){
 	form_input( $specificities , null , $extras );
 	echo $label;
 	echo '</label>';
-
 }
+
+function form_checkbox( $specificities , $label = null , $extras = null ){
+	$specificities['type'] = 'checkbox';
+	echo '<label>';
+	form_input( $specificities , null , $extras );
+	echo $label;
+	echo '</label>';
+}
+
 
 function form_submit( $specificities = null ){
 	if( !is_array( $specificities ) && !empty( $specificities ) ) :
