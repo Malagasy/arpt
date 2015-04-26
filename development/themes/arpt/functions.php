@@ -60,11 +60,11 @@ function arpt_widget_title( $title , $cleantitle ){
 }
 
 function get_arpt_logo( $params = null ){
-	return img(get_upload_dir() . '/arpt-logo.png' , $params );
+	return get_upload_dir() . '/arpt-logo.png';
 }
 
 function arpt_logo_link( $params = null ){
-	return a( get_home_url() , get_arpt_logo( $params ) );
+	return a( get_home_url() , img(get_upload_dir() . '/arpt-logo.png' , $params ) );
 }
 
 function arpt_the_routing_layer(){
