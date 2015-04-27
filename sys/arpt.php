@@ -215,7 +215,7 @@ class Arpt{
 										'category' => get_pagetype()
 											);	
 
-				return new_content( $default );
+				$content = new_content( $default );
 			else :
 				$default = array( 	'selection' => '*',
 										'type' 	=> null,
@@ -235,15 +235,28 @@ class Arpt{
 										'category' => null
 											);	
 				$content = new_content($default);
-				if( $content->qhas( ) ) :
+				if( $content->qhas() ) :
 					$content->qnext();
 					$this->pageinfo->set_pagetype( $content->qtype() );
 					$content->qreset();
 				else :
 					$this->pageinfo->set_pagetype( 'error' );
 				endif;
-				return $content;
 			endif;
+
+			$content->qnext();
+
+			// doing some test here
+			if( $content->qstatus() == 'not-public' )
+				$content = new_content( array( 'slug' => 'thisIsAPrivateContent' ) );
+
+
+			$content->qreset();
+
+
+
+
+			return $content;
 	}
 
 	public function get_systempage(){

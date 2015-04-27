@@ -103,7 +103,6 @@ function content_link( $id ){
 	endif;
 	$link = get_url( strtolower( $slugtype ) . '/' . $infos->qslug() );
 
-
 	return call_layers( 'content_link_layer' , $link , $id );
 }
 

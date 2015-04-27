@@ -54,11 +54,12 @@ class Contents extends Queries{
 			
 		//logr($where);
 		elseif( $action == 'update' ) :
-			$default = array(
+				$default = array(
 				'id' => null,
 				'parentid' => null,
 				'content_model' => null,
 				'title' => null,
+				'status' => 'public',
 				'slug' => null,
 				'message' => null );
 
@@ -66,7 +67,7 @@ class Contents extends Queries{
 
 			$specificities = $this->clean( $specificities );
 
-			$query['set'] = clause_where( 'id' , '=' , $specificities['id'] ) . clause_where( 'parent_id' , '=' , $specificities['parentid'] , ',' ) . clause_where( 'content_model' , '=' , $specificities['content_model'] , ',' ) . clause_where( 'content_title' , '=' , $specificities['title'] , ',' ) . clause_where( 'content_slug' , '=' , $specificities['slug'] , ',' ) . clause_where( 'content_content' , '=' , $specificities['message']  , ',' );
+			$query['set'] = clause_where( 'id' , '=' , $specificities['id'] ) . clause_where( 'parent_id' , '=' , $specificities['parentid'] , ',' ) . clause_where( 'content_model' , '=' , $specificities['content_model'] , ',' ) . clause_where( 'content_status' , '=' , $specificities['status'] , ',' ) . clause_where( 'content_title' , '=' , $specificities['title'] , ',' ) . clause_where( 'content_slug' , '=' , $specificities['slug'] , ',' ) . clause_where( 'content_content' , '=' , $specificities['message']  , ',' );
 			$query['where'] = clause_where( 'id' , '=' , $specificities['id'] );
 
 			$specificities = $query;
@@ -90,7 +91,7 @@ class Contents extends Queries{
 			$this->table .= ' ac LEFT JOIN arpt_contents_properties acp ON ac.id = acp.parent_id ';
 		}
 
-		if( $specificities['status'] == 'all' )
+		if( $specificities['status'] == 'all' || isset( $specificities['id'] ) || isset( $specificities['slug'] ) )
 			$specificities['status'] = null;
 
 		if( $specificities['category'] != null ) :

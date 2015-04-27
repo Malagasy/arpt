@@ -16,7 +16,7 @@ function init_tinymce(){
 	 	entity_encoding : "raw",
 	 	<?php
 	 	if( get_base_var() ) : ?>
-	 		document_base_url: <?php echo get_base_var('/');
+	 		document_base_url: <?php echo get_base_var('/') . '/';
 	 	else : ?>
 	 		document_base_url: "/"<?php
 	 	endif; ?>

@@ -1,7 +1,7 @@
 <?php
 
 function upload_miniature( $cid , $files , $maxsize = null ){
-	if( !is_null( $maxsize) ) $maxsize = maxsize_upload_files();
+	if( is_null( $maxsize) ) $maxsize = maxsize_upload_files();
 
 	if( $files['size'] > $maxsize ) return false;
 	elseif( !is_image( $files['tmp_name'] ) ) return false;
@@ -34,6 +34,12 @@ function has_miniature( $type = 'content' , $id = null ){
 	if( get_miniature( $type , $id ) == null )
 		return false;
 	return true;
+}
+
+function rm_miniature( $cid ){
+	$c = new_content( $cid );
+	$c->qnext();
+	return unlink( $c->qminiature() );
 }
 
 function get_miniature( $type = 'content' , $id = null ){

@@ -59,9 +59,10 @@ function get_category_by( $label , $value , $what = '*' ){
 
 function get_content_category( $cid ){
 	$cat = new_query( 'select' , 'arpt_contents_categories' , array( 'selection' => 'cat_id' , 'where' => 'content_id=\''.$cid.'\'' ) );
-
+	
 	if( $cat->next() )
-		return $cat->datas->cat_id;
+		if( category_exists( $cat->datas->cat_id ) )
+			return $cat->datas->cat_id;
 	return false;
 }
 

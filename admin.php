@@ -151,7 +151,14 @@ function adminpage_add_edit_contents(){
 	div( array( 'class' => 'panel-heading' ) , 'Informations complémentaires' );
 	div( array( 'class' => 'panel-body' ) );
 
-		echo '<p>' . img( get_miniature( 'content' , $cid ) , get_format('miniature-small') + array( 'alt' => 'Miniature du contenu' , 'class' => 'img-responsive' ) ) . '</p>';
+		if( $img = get_miniature( 'content' , $cid ) ){
+
+			form_checkbox( array( 'name' => 'delete_miniature' , 'value' => 1 ) , 'Supprimer la miniature' );
+			echo img( $img , get_format('miniature-small') + array( 'alt' => 'Miniature du contenu' , 'class' => 'img-responsive' ) );
+		}
+		echo '<br>';
+
+		div( array( 'class' => 'form-group' ) );
 		div( array( 'class' => 'form-group' ) );
 		form_input( array( 'type' => 'hidden' , 'name' => 'MAX_FILE_SIZE' , 'value'  => maxsize_upload_files() ) );
 		form_input( array( 'type' => 'file' , 'name' => 'miniature' ) , null );
@@ -173,7 +180,7 @@ function adminpage_add_edit_contents(){
 		div_close();	
 
 		div( array( 'class' => 'form-group' ) );
-		form_select( array( 'class' => 'form-control' , 'name' => 'status' ) , 'Statut de la page' , array( 'public' => 'Public' , 'not-public' => 'Non pulic' ) , $status );
+		form_select( array( 'class' => 'form-control' , 'name' => 'status' ) , 'Statut de la page' , array( 'public' => 'Public' , 'not-public' => 'Privé' ) , $status );
 		div_close();
 
 		if( $act == 'edit-content' ) :
