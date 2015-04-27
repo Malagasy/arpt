@@ -5,7 +5,6 @@
         <div class="row">
 
             <div class="col-md-8">
-    <?php echo get_admin_url(); ?>
                 <h1 class="page-header">
                     <?php echo sitename(); ?>
                     <small><?php echo description(); ?></small>
