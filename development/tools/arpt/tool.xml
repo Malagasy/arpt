@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<tool>
+<name>The ARpt Tools</name>
+<author>Andy RAL</author>
+<description>Il s'agit d'un plugin ARpt, j'espère qu'il fera bien son travail :p</description>
+<date>Février 2015</date>
+<version>1.0</version>
+<link>http://arpt.fr</link>
+</tool>
