@@ -4,7 +4,7 @@ get_header();
 
 <div class="container">
 	<div class="row page-header">
-		<div class="col-md-8">
+		<div class="col-md-8 content">
 			<?php
 			while( qnext() ) : ?>
 				<h1><?php echo qtitle() ?></h1>

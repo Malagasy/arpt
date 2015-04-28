@@ -12,7 +12,7 @@ get_header();
 
 <div class="container">
 	<div class="row page-header">
-		<div class="col-md-8"><?php
+		<div class="col-md-8 content"><?php
 
 			$slug = do_slug( implode( '/' , get_pageargs() ) );
 			set_queried( array( 'slug' => $slug ) );
