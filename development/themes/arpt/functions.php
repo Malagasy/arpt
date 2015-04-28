@@ -33,9 +33,9 @@ function breadcrumb_layer( $breadcrumb ){
 	$breadcrumb['separator'] = ' <span class="lightgray">/</span> ';
 
 	$output = a( get_site_url() , $breadcrumb['home'] ) . $breadcrumb['separator'];
-	$output .= a( get_url('/'.$breadcrumb['type'].'/') , undo_slug( ucwords( $breadcrumb['type'] ) ) ) . $breadcrumb['separator'];
+	$output .= a( get_url('/'. strtolower( $breadcrumb['type'] ) .'/') , undo_slug( ucwords( $breadcrumb['type'] ) ) ) . $breadcrumb['separator'];
 	if( isset( $breadcrumb['category'] ) ){
-		$output .= a( get_url('/'.$breadcrumb['category'].'/') , undo_slug( ucwords( $breadcrumb['category'] ) ) ) . $breadcrumb['separator'];
+		$output .= a( get_url('/'.strtolower( $breadcrumb['category'] ) .'/') , undo_slug( ucwords( $breadcrumb['category'] ) ) ) . $breadcrumb['separator'];
 	}
 	if( isset( $breadcrumb['parent'] ) ){
 		$output .= a( content_link( $breadcrumb['parent'] ) , get_contentname( $breadcrumb['parent'] ) ) . $breadcrumb['separator'];
