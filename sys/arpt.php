@@ -563,6 +563,7 @@ class Arpt{
 			form_input( array( 'class' => 'form-control' , 'name' => 'username' , 'value' => last_value('username') ) , 'Nom de compte' );
 			span( array( 'id' => 'helpBlock' , 'class' => 'help-block' ) , 'Un nom simple sans espace, ni caractères spéciaux.' );
 			div_close();
+			
 
 			div( array( 'class' => 'form-group' ) );
 			form_password( array( 'class' => 'form-control' , 'name' => 'password' ) , 'Mot de passe' );
