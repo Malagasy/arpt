@@ -562,6 +562,7 @@ class Arpt{
 			div( array( 'class' => 'form-group' ) );
 			form_input( array( 'class' => 'form-control' , 'name' => 'username' , 'value' => last_value('username') ) , 'Nom de compte' );
 			div_close();
+			
 
 			div( array( 'class' => 'form-group' ) );
 			form_password( array( 'class' => 'form-control' , 'name' => 'password' ) , 'Mot de passe' );
