@@ -602,12 +602,19 @@ class Arpt{
 
 				$args['parentid'] = 0;
 				$args['userid'] = 1;
-				$args['title'] = 'Faux texte';
+				$args['title'] = 'Bienvenue sur votre site !';
 				$args['modelpage'] = 0;
-				$args['message'] = '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare interdum augue, quis sollicitudin risus semper nec. Quisque nec scelerisque sem, venenatis molestie magna. Maecenas consequat sodales elit, ac elementum nulla gravida vel. Nulla vehicula facilisis justo, non imperdiet tellus sollicitudin eu. Phasellus at nibh nec tortor euismod commodo. Aliquam magna sapien, lacinia et facilisis in, fringilla a lorem. Suspendisse mollis odio at urna mollis pretium. <br>In ac odio at nunc mattis porttitor. Etiam tempor, tortor eget bibendum facilisis, ante lacus aliquam lectus, non elementum sapien urna congue turpis. Integer bibendum gravida diam, vel dictum felis vestibulum in. Suspendisse vestibulum ante ligula, nec lobortis enim vestibulum sed. Phasellus aliquam augue quis ipsum pulvinar varius. Nunc tempor nisl quis turpis sodales, non tempor eros finibus. Mauris non condimentum justo. Duis justo mi, tempor a cursus vel, blandit facilisis purus.</p>';
-				$args['message'] .= '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare interdum augue, quis sollicitudin risus semper nec. Quisque nec scelerisque sem, venenatis molestie magna. Maecenas consequat sodales elit, ac elementum nulla gravida vel. Nulla vehicula facilisis justo, non imperdiet tellus sollicitudin eu. Phasellus at nibh nec tortor euismod commodo. Aliquam magna sapien, lacinia et facilisis in, fringilla a lorem. Suspendisse mollis odio at urna mollis pretium.</p><p>In ac odio at nunc mattis porttitor. Etiam tempor, tortor eget bibendum facilisis, ante lacus aliquam lectus, non elementum sapien urna congue turpis. Integer bibendum gravida diam, vel dictum felis vestibulum in. Suspendisse vestibulum ante ligula, nec lobortis enim vestibulum sed. Phasellus aliquam augue quis ipsum pulvinar varius. Nunc tempor nisl quis turpis sodales, non tempor eros finibus. Mauris non condimentum justo. Duis justo mi, tempor a cursus vel, blandit facilisis purus.</p>';
+				$args['message'] = '<p>Ce site a été crée le ' . date('d-m-Y') . ', c\'est une date importante !</p>';
 				$cid = insert_new_content( 'article' , $args );
-				insert_contentproperty( $cid , 'extrafields_comments_actived' , 1 );
+				insert_contentproperty( $cid , 'extrafields_comments_actived' , 1 );	
+
+				$args['parentid'] = 2;
+				$args['userid'] = 1;
+				$args['title'] = 'Commentaire pour le premier article';
+				$args['modelpage'] = 0;
+				$args['message'] = '<p>Un commentaire pour le premier article du site !..</p>';
+				$cid = insert_new_content( 'commentaire' , $args );
+				insert_contentproperty( $cid , 'extrafields_comments_actived' , 0 );
 
 				$args['parentid'] = 0;
 				$args['userid'] = 1;
@@ -620,21 +627,13 @@ class Arpt{
 				$cid = insert_new_content( 'article' , $args );
 				insert_contentproperty( $cid , 'extrafields_comments_actived' , 1 );	
 
-				$args['parentid'] = 2;
-				$args['userid'] = 1;
-				$args['title'] = 'Commentaire pour le premier article';
-				$args['modelpage'] = 0;
-				$args['message'] = '<p>Un commentaire comme les autres..</p>';
-				$cid = insert_new_content( 'commentaire' , $args );
-				insert_contentproperty( $cid , 'extrafields_comments_actived' , 0 );
-
 				$args['parentid'] = 0;
 				$args['userid'] = 1;
-				$args['title'] = 'Première page';
+				$args['title'] = 'Exemple de page';
 				$args['modelpage'] = 0;
 				$args['message'] = '<p>Ceci est une page, vous pouvez utiliser les pages pour différentes raisons : expliquer les objectifs de votre site par exemple.</p>';
 				$args['message'] .= '<p>Chaque page possède sa propre entité, elles respectent tous un format standard mais il vous est possible de les personnaliser.</p>';
-				$args['message'] .= '<p>Prenez le temps de comprendre le fonctionnement du CMS en visitant le site.</p>';
+				$args['message'] .= '<p>Prenez le temps de comprendre le fonctionnement du CMS en visitant le site officiel.</p>';
 				$args['message'] .= '<p><b>L\'équipe</b></p>';
 				$cid = insert_new_content( 'page' , $args );
 				insert_contentproperty( $cid , 'extrafields_comments_actived' , 1 );
@@ -642,7 +641,7 @@ class Arpt{
 
 				$args['parentid'] = 0;
 				$args['userid'] = 1;
-				$args['title'] = 'Deuxième page';
+				$args['title'] = 'A propos';
 				$args['modelpage'] = 0;
 				$args['message'] = '<p>Voici la deuxième page. Rassurez-vous, toutes les pages de votre site ne sont pas affichés ici :p Cette page appartient au menu de navigation d\'en tête !</p>';
 				$args['message'] .= '<p>Pourquoi ne pas parler de vous ici par exemple ?</p>';
@@ -656,6 +655,7 @@ class Arpt{
 				add_widgetmenu( 'widget_last_articles' );
 				set_option( 'widget_last_articles_articlestodisplay' , 5 );
 				add_widgetmenu( 'widget_last_comments' );
+				add_widgetmenu( 'widget_navsearchform' );
 				set_option( 'widget_last_comments_commentstodisplay' , 5 );
 				set_option( 'widget_last_12_months_contents_monthstodisplay' , 12 );
 			endif;

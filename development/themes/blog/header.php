@@ -34,15 +34,18 @@
                 <?php 
                 $header = get_navmenu_links('header');
 
-                if( $header ){
-                    echo '<ul class="nav navbar-nav">';
+                if( $header ){ ?>
+                    <ul class="nav navbar-nav">
+                        <?php
                     foreach( $header as $id ){
                         $page = get_contents( array( 'id' => $id ) );
-                        $page->next();
-                        echo '<li><a href="' . $page->qlink() . '">' . $page->qtitle() . '</a></li>';
+                        $page->next(); ?>
+                        <li><a href="<?php echo $page->qlink() ?>"><?php echo $page->qtitle() ?></a></li>
+                        <?php
                         $page->free();
-                    }
-                    echo '</ul>';
+                    } ?>
+                    </ul>
+                    <?php
                 }
                 ?>
             </div>

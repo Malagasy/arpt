@@ -8,9 +8,7 @@
             <!-- Blog Entries Column -->
             <div class="col-md-8">
 
-            	<?php 
-            	qnext();
-            	?>
+            	<?php qnext(); ?>
 
                 <h1 class="page-header">
                 	Vous êtes entrain de lire
@@ -35,9 +33,11 @@
                 <?php echo qcontent(); ?>
 
                 <hr>
-                <p>
-                    <a href="<?php echo get_edit_content_url(); ?>">Editer ce contenu</a>
-                </p>
+                <?php if( is_user_admin() ) : ?>
+                    <p>
+                        <a href="<?php echo get_edit_content_url(); ?>">Editer</a>
+                    </p>
+                <?php endif; ?>
                 <hr>
                 
                 <?php

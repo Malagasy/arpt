@@ -43,7 +43,7 @@ function search_form( $placeholder = 'Votre recherche...'){
 	form_input( array( 'type' => 'hidden' , 'name' => 'doArequest' ) );
 	
 	div( array( 'class' => 'form-group' ) );
-	form_input( array( 'type' => 'text' , 'name' => 'search' , 'value' => last_value( 'search' ) , 'placeholder' => $placeholder ) );
+	form_input( array( 'type' => 'text' , 'class' => 'form-control' , 'name' => 'search' , 'value' => last_value( 'search' ) , 'placeholder' => $placeholder ) );
 	div_close();
 	
 	form_submit( array( 'class' => 'btn btn-primary' , 'value' => 'Go' ) ) ;

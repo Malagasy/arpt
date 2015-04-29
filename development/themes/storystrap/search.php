@@ -9,8 +9,8 @@
             <div class="col-md-8">
 
                 <h1 class="page-header">
-                    Recherche sur mot clé
-                    <small>"<?php echo get_pageargs(0); ?>"</small>
+                    Vous avez recherché
+                    <small><?php echo last_value( 'search' ); ?></small>
                 </h1>
 
 
@@ -65,7 +65,13 @@
 
         <!-- Footer -->
         <footer>
-            <?php get_footer(); ?>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
         </footer>
 
     </div>
