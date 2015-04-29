@@ -1,81 +1,46 @@
 <?php get_header(); ?>
 
-    <!-- Page Content -->
-    <div class="container">
+<div class="container">
 
-        <div class="row">
+    <div class="row">
 
-            <!-- Blog Entries Column -->
-            <div class="col-md-8">
+        <div class="col-md-12"> 
+          
+          <div class="panel">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-8 storystrap-body">
+                        <h1 class="page-header">Recherche sur : <small><?php echo last_value('search'); ?></small></h1>
+                        <div class="well well-lg">
+                        <?php while( qnext() ) : ?>
 
-                <h1 class="page-header">
-                    Vous avez recherché
-                    <small><?php echo last_value( 'search' ); ?></small>
-                </h1>
+                            <h3> <?php echo qtitlelink(); ?> <br> <small> <span class="glyphicon glyphicon-time"></span> <?php echo qdate(); ?> • <?php echo qauthorlink(); ?> </small> </h3>
+                        
+                        <?php endwhile; ?>
+                        </div>
 
+                        <?php qfree(); ?>
 
-                <?php
+                        <?php qpagination(); ?>
 
-                if( qhas() ) {
-	                while( qnext() ){
-	                    ?>
-	                    <h2><?php echo a( qlink() , qtitle() ); ?></h2>
-
-	                    <p class="lead">
-	                        par <?php echo qauthorlink(); ?>
-	                    </p>
-
-	                    <p><span class="glyphicon glyphicon-time"></span> Publié le <?php echo qdate(); ?></p>
-
-	                    <hr>
-
-	                    <?php
-	                    if( has_miniature() ){
-	                        echo '<img class="img-responsive" src="' . qminiature() .'" alt="Miniature">';
-	                        echo '<hr>';
-	                    }
-	                    ?>
-
-	                    <?php echo qcontent(); ?>
-
-	                    <hr>
-	                    <?php
-	                }
-	                qfree();
-	            }else{
-	            	echo '<p>Pas de résultat.</p>';
-	            }
-                ?>
-
-                <hr>
-
-                <!-- Pager -->
-                <?php qpagination(); ?>
-
-            </div>
-            <!-- Blog Sidebar Widgets Column -->
-            <div class="col-md-4">
-                <?php load_part('menu-right'); ?>
-           </div>
-
-        </div>
-        <!-- /.row -->
-
-        <hr>
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    </div>
+                    <div class="col-md-4">
+                        <?php load_part( 'menu-right' ); ?>
+                    </div>
                 </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-        </footer>
 
+            </div>
+         </div>
+
+        </div><!-- col-md-12 -->
     </div>
-    <!-- /.container -->
+</div>
+
+<hr>
+
+<footer>
+    <?php get_footer(); ?>
+</footer>
 
 </body>
 
