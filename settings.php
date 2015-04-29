@@ -1,5 +1,5 @@
 <?php
-
+/*
 define('MYSQLI_LOCALHOST' , 'db569955704.db.1and1.com');
 define('MYSQLI_ROOT' , 'dbo569955704');
 define('MYSQLI_PASSWORD' , 'rarara91');
@@ -9,18 +9,17 @@ define( 'HOME_FILE' , 'home.php' );
 
 define( 'BASE_URL' , null );
 
-define( 'MVC_MOD' , false );
-/*
+define( 'MVC_MOD' , false );*/
 define('MYSQLI_LOCALHOST' , 'localhost' );
 define('MYSQLI_ROOT' , 'root');
 define('MYSQLI_PASSWORD' , '');
-define('MYSQLI_DATABASE' , 'projet');
+define('MYSQLI_DATABASE' , 'arpt');
 
 define( 'HOME_FILE' , 'home.php' );
 define( 'BASE_URL' , 'arpt' );
 
 define( 'MVC_MOD' , false );
-*/
+
 //u80395823
 //425358025
 //s569780241.onlinehome.fr
