@@ -22,7 +22,7 @@
 				<samp><?php echo $comments->qcontent() ?></samp>
 			</div>
 				<p class="pull-right">
-					<?php if( $comments->qauthorid() == get_currentuserid() ) :
+					<?php if( $comments->qauthorid() == get_currentuserid() || is_user_admin() ) :
 					echo get_delete_url( 'comment' , $comments->qid() , null , 'Supprimer mon commentaire' );
 					endif; ?>
 				</p>
