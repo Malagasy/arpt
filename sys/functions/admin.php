@@ -22,7 +22,7 @@ function admin_routing(){
 
 	if( isset( $datas ) ) :
 		if( currentusercan( $datas['access'] ) ) :
-			echo '<div class="admin-' . $datas['slug'] . '">';
+			echo '<div class="admin-' . $datas['slug'] . '" data-route="'.$datas['slug'].'">';
 			echo '<h1 class="page-header">' . get_realname_submenu( $datas['name'] ) . '</h1>';
 			call_user_func( $datas['function'] );
 			echo '</div>';
@@ -104,14 +104,18 @@ function load_css_script(){
 function load_js_script(){
 	add_js_script( '//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js' );
 	add_js_script( get_admin_js( 'tinymce/js/tinymce/tinymce.min.js' ) );
+	add_js_script( get_admin_js( 'jquery-ui-1.11.3/jquery-ui.min.js' ) );
 	add_js_script( get_admin_js( 'bootstrap/bootstrap.min.js' ) );
 	add_js_script( get_admin_js( 'admin.js' ) );
 }
 
 function admin_message(){
-	if( is_success() ) echo '<p class="alert alert-success">Les modifications ont bien été apportées.</p>';
-	elseif( is_failure() ) echo '<p class="alert alert-danger">Une erreur s\'est produite.</p>';
+	if( is_success() ) echo '<p class="admin-message alert alert-success">Les modifications ont bien été apportées.</p>';
+	else echo '<p class="admin-message alert alert-success" style="display:none;">Les modifications ont bien été apportées.</p>';
 	
+	if( is_failure() ) echo '<p class="admin-message alert alert-danger" display="none">Une erreur s\'est produite.</p>';
+	else echo '<p class="admin-message alert alert-danger" style="display:none;">Une erreur s\'est produite.</p>';
+
 }
 
 
@@ -370,7 +374,7 @@ function get_delete_url( $type , $id , $token = null , $output = '<span class="g
 	if( is_null( $token ) )
 		$token = create_token( 'delete_' . $type . '_' . $id );
 		
-	return a( get_clean_url( '/?delete=' . $id . '&token=' . $token . '&type=' . $type ) , $output , $css );
+	return a( get_clean_url( '/?delete=' . $id . '&token=' . $token . '&type=' . $type ) , $output , $css + array( 'title' => 'Supprimer' ) );
 }
  
 function get_edit_content_url( $cid = null){
@@ -432,5 +436,47 @@ function edit_user( $datas ){
 
 	update_usersproperties( $datas , $userid );
 
+	return true;
+}
+
+function reorganise_navmenu( $slug , $cids ){
+
+	$is_ajaxcall = Arpt::is_ajaxcall();
+
+	$cids = json_decode( $cids );
+
+	if( !$cids ){
+		if( $is_ajaxcall )
+			die("false");
+		return false;
+	}
+
+	set_option( 'navmenu_'.$slug , serialize( array() ) );
+
+	foreach( $cids as $cid ) add_navmenu( $slug , $cid );
+
+	if( $is_ajaxcall )
+		die("true");
+	return true;
+}
+
+function reorganise_widgetmenu( $widgets_id ){
+	
+	$is_ajaxcall = Arpt::is_ajaxcall();
+
+	$widgets_id = json_decode( $widgets_id );
+
+	if( !$widgets_id ){
+		if( $is_ajaxcall )
+			die("false");
+		return false;
+	}
+
+	set_option( 'widgetmenu' , serialize( array() ) );
+
+	foreach( $widgets_id as $wid ) add_widgetmenu( $wid );
+
+	if( $is_ajaxcall )
+		die("true");
 	return true;
 }

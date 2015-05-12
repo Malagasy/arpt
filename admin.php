@@ -226,7 +226,7 @@ function adminpage_widgets(){
 	div( array( 'class' => 'row' ) );
 
 	$r = array();
-	div( array( 'class' => 'col-md-4' ) );
+	div( array( 'class' => 'col-md-3' ) );
 	div( array( 'class' => 'panel panel-primary' ) );
 	div( array( 'class' => 'panel-heading' ) , 'Gestion des Widgets' );
 	div( array( 'class' => 'panel-body' ) );
@@ -234,33 +234,22 @@ function adminpage_widgets(){
 	form_input( array( 'type' => 'hidden' , 'name' => 'widgetmenu-add' ) );
 	form_select( array( 'class' => 'fusion-bottom form-control' , 'name' => 'widget-add' ) , null , array( '0' => 'Selectionner un Widget' ) + get_available_widgets() );
 	
-	form_submit( array( 'class' => 'btn btn-default btn-sm btn-block fusion-top' , 'value' => 'Ajouter ce widget' ) );
+	form_submit( array( 'class' => 'btn btn-default btn-sm btn-block fusion-top' , 'value' => 'Ajouter' ) );
 	form_close();
 
-	echo '<hr/>';
-
-	form_open();
-	foreach( get_widgetmenu() as $widget ){
-		$r[$widget] = get_widgets( $widget );
-	}
-	form_input( array( 'type' => 'hidden' , 'name' => 'widgetmenu-remove' ) );
-	form_select( array( 'class' => 'fusion-bottom form-control' , 'name' => 'widget-remove' ) , null ,  array( 0 => 'Selectionner un Widget' ) + $r );
-	
-	form_submit( array( 'class' => 'btn btn-default btn-sm btn-block fusion-top' ,'value' => 'Supprimer ce widget' ) );
-	form_close();
 	div_close();
 	div_close();
 	div_close();
 
 
-	div( array( 'class' => 'col-md-8' ) );
+	div( array( 'class' => 'col-md-9 active-widgets' ) );
 	div( array( 'class' => 'panel panel-info' ) );
 	div( array( 'class' => 'panel-heading' ) , 'Configuration des Widgets actifs' );
 	div( array( 'class' => 'panel-body' ) );
 	if( $gwm = get_widgetmenu() ) :
 		foreach( $gwm as $value ) : $r[$value] = get_widgets( $value );
 
-			fieldset_open( get_widgets( $value ) , null , array('class' => 'hoverable' ));
+			fieldset_open( get_widgets( $value ) , null , array('class' => 'hoverable' ,  'data-widget-id' => $value ) );
 
 
 			div( array( 'class' => 'fade hidden' ) );
@@ -269,7 +258,11 @@ function adminpage_widgets(){
 			<?php
 			if( call_user_func( $value ) === false )
 				echo 'Ce widget n\'est pas paramétrable.';
+
+			echo get_delete_url( 'widgetmenu' , $value );
+
 			div_close();
+
 
 			fieldset_close();
 		endforeach;
@@ -279,7 +272,8 @@ function adminpage_widgets(){
 	div_close();
 
 
-	div_close();
+	div_close(); 
+
 }
 
 function adminpage_menus(){
@@ -328,16 +322,16 @@ function adminpage_menus(){
 	echo '<div class="panel panel-default">';
  	echo '<div class="panel-heading">Liens associés au menu</div>';
 	if( $navlist = get_navmenu_links( $slug )  ) : 
-		echo '<ul class="list-group">';
+		echo '<ul class="list-group" data-currentnavmenu="' . $slug . '">';
 		if( $currentnavmenu['contenttype'] == 'category' ) :
 			foreach( $navlist as $value)
 				if( category_exists( $value ) ) :
-					echo '<li href="#" class="list-group-item">' . a( get_edit_content_url( $value ) , get_category_by_id( $value , 'name' ) ) . ' ' . get_delete_url( 'navmenu' , $value ) . '</li>';
+					echo '<li href="#" class="list-group-item" data-content-id="' . $value .'">' . a( get_edit_content_url( $value ) , get_category_by_id( $value , 'name' ) ) . ' ' . get_delete_url( 'navmenu' , $value ) . '</li>';
 				endif;
 		else :
 			foreach( $navlist as $value)
 				if( content_exists( $value ) ) :
-					echo '<li href="#" class="list-group-item">' . a( get_edit_content_url( $value ) , get_contentname( $value )  ) . ' ' . get_delete_url( 'navmenu' , $value ) . '</li>';
+					echo '<li href="#" class="list-group-item" data-content-id="' . $value . '">' . a( get_edit_content_url( $value ) , get_contentname( $value )  ) . ' ' . get_delete_url( 'navmenu' , $value ) . '</li>';
 				endif;
 		endif;
 		echo '</ul>';

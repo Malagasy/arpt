@@ -129,15 +129,19 @@ function pre_add_widgetmenu(){
 }
 
 function pre_remove_widgetmenu(){
-	if( isset( $_POST['widgetmenu-remove'] ) ) :
+	if( !is_arg( 'widgetmenu' ) ) return;
 
-		if( $_POST['widget-remove'] == '0' ) return;
+	if( !isset($_GET['delete']) || !isset( $_GET['token'] ) ) return;
 
-		if( remove_widgetmenu( $_POST['widget-remove'] ) )
-			redirect_success();
-		else
-			redirect_failure();
-	endif;
+	$id = $_GET['delete'];
+	$token = $_GET['token'];
+
+	if( !check_token( 'delete_widgetmenu_' . $id , $token ) ) redirect_failure();
+
+	if( remove_widgetmenu( $id ) )
+		redirect_success();
+	else
+		redirect_failure();
 }
 
 
