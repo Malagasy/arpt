@@ -129,15 +129,19 @@ function pre_add_widgetmenu(){
 }
 
 function pre_remove_widgetmenu(){
-	if( isset( $_POST['widgetmenu-remove'] ) ) :
+	if( !is_arg( 'widgetmenu' ) ) return;
 
-		if( $_POST['widget-remove'] == '0' ) return;
+	if( !isset($_GET['delete']) || !isset( $_GET['token'] ) ) return;
 
-		if( remove_widgetmenu( $_POST['widget-remove'] ) )
-			redirect_success();
-		else
-			redirect_failure();
-	endif;
+	$id = $_GET['delete'];
+	$token = $_GET['token'];
+
+	if( !check_token( 'delete_widgetmenu_' . $id , $token ) ) redirect_failure();
+
+	if( remove_widgetmenu( $id ) )
+		redirect_success();
+	else
+		redirect_failure();
 }
 
 
@@ -399,7 +403,7 @@ function add_upload_directory(){
 
 		$the_dir =  get_upload_dir() . $parent_dir . $directoryname;
 
-		if( file_exists( $the_dir ) ) redirect_failure('/?directoryAlreadyExists=1');
+		if( file_exists( $the_dir ) ) redirect_failure('?directoryAlreadyExists=1');
 		$back = $parent_dir . $directoryname . '/';
 		$back = str_replace( '/', '%2F' , $back);
 		$back = str_replace( ' ', '+' , $back);

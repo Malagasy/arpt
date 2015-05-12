@@ -608,7 +608,7 @@ class Arpt{
 				$cid = insert_new_content( 'article' , $args );
 				insert_contentproperty( $cid , 'extrafields_comments_actived' , 1 );	
 
-				$args['parentid'] = 2;
+				$args['parentid'] = $cid;
 				$args['userid'] = 1;
 				$args['title'] = 'Commentaire pour le premier article';
 				$args['modelpage'] = 0;

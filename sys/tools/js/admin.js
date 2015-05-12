@@ -10,7 +10,7 @@ var designWithJQuery = function(){
 };
 
 var displayMoreFieldset = function(){
-	jQuery(".admin-body fieldset legend.hoverable").on("click" , function(){
+	jQuery(".admin-body").on("click" , "fieldset legend.hoverable" , function(){
 		if( (jQuery(this).next()).hasClass("hidden") ){
 			(jQuery(this).next()).removeClass("hidden").clearQueue();
 			(jQuery(this).next()).delay(150).queue(function(){jQuery(this).addClass("in")});
@@ -90,6 +90,83 @@ simpleConfirmBox = function(){
 	});
 }
 
+dragNdroppWidget = function(){
+
+	if( !jQuery(".admin-widgetmenu").length ) return;
+
+	jQuery(".active-widgets .panel-body").sortable({});
+
+
+	jQuery(".active-widgets .panel-body fieldset").draggable({
+
+		connectToSortable: ".active-widgets .panel-body",
+		cursor: "all-scroll",
+		opacity: 0.7,		
+		stop: function(){
+			var idsIn = [];
+			jQuery(".active-widgets legend").each( function( i ){
+				idsIn[i] = jQuery(this).data("widget-id");
+			});
+			
+			jQuery.ajax({
+				url:"ajax.php", 
+				type: "POST",
+				data:{
+					action: "reorganise_widgetmenu",
+					param1: JSON.stringify( idsIn ) },
+				success: function(data){
+					jQuery(".active-widgets .panel-body fieldset").attr("style","");
+
+					if( jQuery(".admin-message.alert-success").is(":visible") )
+						jQuery(".admin-message.alert-success").effect("shake" , 300);
+					else
+						jQuery(".admin-message.alert-success").show("bounce");
+				}
+			});
+
+		}
+
+	});
+}
+
+dragNdroppMenu = function(){
+
+	if( !jQuery(".admin-navmenu").length ) return;
+
+	jQuery(".list-group").sortable({});
+
+	jQuery(".list-group-item").draggable({
+		connectToSortable: ".list-group",
+		cursor: "all-scroll",
+		opacity: 0.7,
+		stop: function(){
+			var route = jQuery(".list-group").data("currentnavmenu");
+			var idsIn = [];
+			jQuery(".list-group-item").each( function( i ){
+				idsIn[i] = jQuery(this).data("content-id");
+			});
+			
+			jQuery.ajax({
+				url:"ajax.php", 
+				type: "POST",
+				data:{
+					action: "reorganise_navmenu",
+					param1: route,
+					param2: JSON.stringify( idsIn ) },
+				success: function(data){
+					jQuery(".list-group .list-group-item").attr("style","");
+
+					if( jQuery(".admin-message.alert-success").is(":visible") )
+						jQuery(".admin-message.alert-success").effect("shake" , 300);
+					else
+						jQuery(".admin-message.alert-success").show("bounce");
+				}
+			});
+
+		}
+	});
+}
+
 
 function phpajax( action , param1 , param2, param3 , param4 ){
 
@@ -118,4 +195,6 @@ jQuery(document).ready(function(){
 	displayMoreFieldset();
 	activeMediaAction();
 	simpleConfirmBox();
+	dragNdroppWidget();
+	dragNdroppMenu();
 });
