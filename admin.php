@@ -888,7 +888,7 @@ function adminpage_multimedia(){
 		if( $params ) $position .= '/' . end( $params ) . '/'; else $position .= '/';
 	endif;
 
-	echo '<h2><span class="glyphicon glyphicon-map-marker"></span> Vous êtes ici <small> ' . $position . '</small></h2>';
+	echo '<h3><span class="glyphicon glyphicon-map-marker"></span> Vous êtes ici <small> ' . $position . '</small></h3>';
 
 	if( !in_array( utf8_decode( $the_filter ) , array( '/' ) ) ) :
 
@@ -925,16 +925,7 @@ function adminpage_multimedia(){
 
 	endif;
 
-	$dirs = glob_recursive( $upload_dir_str . '/*' , GLOB_ONLYDIR );
-	$dirs_filter['/'] = 'Voir tous';
-	foreach( $dirs as $dir )
-		$dirs_filter[ utf8_encode( substr( $dir , strlen( $upload_dir_str ) ) ) . '/'] = utf8_encode( substr( $dir , strlen( $upload_dir_str ) ) ) . '/';
 
-	form_open( array( 'class' => 'form-inline margin-bottom-20' , 'method' => 'get' , 'action' => get_clean_url() ) );
-		div( array( 'class' => 'form-group' ) );
-			form_select( array( 'name' => 'dir' , 'class' => 'form-control' , 'onChange' => 'this.form.submit()' ) , 'Accès rapide' , $dirs_filter, ( $the_filter ) );
-		div_close();
-	form_close();
 	if( $uploads ) :
 		foreach( $uploads as $upload ) :
 			$col++;
@@ -996,13 +987,26 @@ function adminpage_multimedia(){
 
 		endforeach;
 	else :
-		echo 'Pas de résultats.';
+		echo '<div class="margin-top-20">Pas de résultats.</div>';
 	endif;
 	div_close();
 
 	div( array( 'class' => 'col-md-4' ) );
 
 		div( array('class' => 'alert alert-warning' ) , '<strong>Comportement récursif.</strong> Les médias des sous-dossier du dossier courant sont affichés.' );
+
+			$dirs = glob_recursive( $upload_dir_str . '/*' , GLOB_ONLYDIR );
+	$dirs_filter['/'] = 'Voir tous';
+	foreach( $dirs as $dir )
+		$dirs_filter[ utf8_encode( substr( $dir , strlen( $upload_dir_str ) ) ) . '/'] = utf8_encode( substr( $dir , strlen( $upload_dir_str ) ) ) . '/';
+
+	form_open( array( 'class' => 'form-inline ' , 'method' => 'get' , 'action' => get_clean_url() ) );
+		div( array( 'class' => 'form-group' ) );
+			form_select( array( 'name' => 'dir' , 'class' => 'form-control' , 'onChange' => 'this.form.submit()' ) , 'Accès rapide' , $dirs_filter, ( $the_filter ) );
+		div_close();
+	form_close();
+
+
 		$currentdir = basename( get_upload_dir() . $the_filter );
 		div( array( 'class' => 'panel panel-info' ) );
 		div( array( 'class' => 'panel-heading' ) , 'Navigation dans <strong>' . $currentdir . '</strong>' );
@@ -1021,7 +1025,7 @@ function adminpage_multimedia(){
 		div( array( 'class' => 'panel-heading' ) , 'Créer un nouveau dossier dans <strong>' . $currentdir . '</strong>' );
 			div( array( 'class' => 'panel-body' ) );
 				echo '<p>Le dossier est crée dans l\'emplacement actuel.</p>';
-				form_open( array( 'class' => 'form-inline' , 'action' => get_clean_url() . '/?new_dir=1') );
+				form_open( array( 'class' => 'form-inline' , 'action' => get_clean_url() . '?new_dir=1') );
 				form_hidden( array( 'name' => 'parent_directory' , 'value' => $the_filter ) );
 				div( array( 'class' => 'form-group' ) );
 				form_input( array( 'class' => 'form-control' , 'name' => 'directoryname' , 'placeholder' => 'Nom du dossier' ) );

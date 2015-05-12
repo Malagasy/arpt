@@ -403,7 +403,7 @@ function add_upload_directory(){
 
 		$the_dir =  get_upload_dir() . $parent_dir . $directoryname;
 
-		if( file_exists( $the_dir ) ) redirect_failure('/?directoryAlreadyExists=1');
+		if( file_exists( $the_dir ) ) redirect_failure('?directoryAlreadyExists=1');
 		$back = $parent_dir . $directoryname . '/';
 		$back = str_replace( '/', '%2F' , $back);
 		$back = str_replace( ' ', '+' , $back);

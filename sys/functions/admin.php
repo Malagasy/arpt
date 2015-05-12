@@ -374,7 +374,7 @@ function get_delete_url( $type , $id , $token = null , $output = '<span class="g
 	if( is_null( $token ) )
 		$token = create_token( 'delete_' . $type . '_' . $id );
 		
-	return a( get_clean_url( '/?delete=' . $id . '&token=' . $token . '&type=' . $type ) , $output , $css + array( 'title' => 'Supprimer' ) );
+	return a( get_clean_url( '?delete=' . $id . '&token=' . $token . '&type=' . $type ) , $output , (array)$css + array( 'title' => 'Supprimer' ) );
 }
  
 function get_edit_content_url( $cid = null){
@@ -382,7 +382,7 @@ function get_edit_content_url( $cid = null){
 	$contents = new_content( $cid );
 	if( !$contents->has() ) return false;
 	$contents->next();
-	return get_admin_url('/edit-content/' . $contents->qtype() . '/' . $contents->qslug());
+	return get_admin_url('edit-content/' . $contents->qtype() . '/' . $contents->qslug());
 }
 
 function get_edit_user_url( $uid = null ){
