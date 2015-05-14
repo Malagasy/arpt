@@ -58,6 +58,7 @@ $files_system[] = 'sys/tools/users.php';
 $files_system[] = 'sys/tools/categories.php';
 $files_system[] = 'sys/tools/tinymce.php';
 $files_system[] = 'sys/tools/admin.php';
+$files_system[] = 'sys/tools/medias.php';
 $files_system[] = 'sys/tools/editor.php';
 $files_system[] = 'sys/tools/email.php';
 $files_system[] = 'sys/tools/internal.php';

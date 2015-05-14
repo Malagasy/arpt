@@ -142,11 +142,13 @@ function update_content( $cid , $datas ){
 		'status' => 'public',
 		'message' => null,
 		'category' => null,
-		'keywords' => null
+		'keywords' => null,
+		'miniature' => null
 		);
 
 	$datas = array_merge( $default , $datas );
 	 
+
 	call_triggers('before_edit_content_'.$datas['content_type'] , $datas );
 	$arpt_contents_form['id'] = $cid;
 	$arpt_contents_form['parentid'] = $datas['parentid'];
@@ -174,9 +176,9 @@ function update_content( $cid , $datas ){
 
 	if( isset( $datas['delete_miniature'] ) )
 		rm_miniature( $cid );
-	
-	if( isset( $_FILES['miniature'] ) && !empty( $_FILES['miniature']['name'] ) ) 
-		if( !upload_miniature( $cid , $_FILES['miniature'] ) ) return false; // todo Upload class...
+
+	if( $datas['miniature'] != null ) 
+		if( !upload_miniature( $cid , $datas['miniature'] ) ) return false; // todo Upload class...
 
 	return true;
 }
@@ -193,7 +195,8 @@ function insert_new_content( $content_type , $datas ){
 		'status' => 'public',
 		'message' => null,
 		'category' => null,
-		'keywords' => null
+		'keywords' => null,
+		'miniature' => null
 		);
 
 	$datas = array_merge( $default , $datas );
@@ -228,8 +231,8 @@ function insert_new_content( $content_type , $datas ){
 	
 	insert_contentsproperties( $datas_2 , $id->get() );
 
-	if( isset( $_FILES['miniature'] ) && !empty( $_FILES['miniature']['name'] )  ) 
-		upload_miniature( $cid , $_FILES['miniature'] ); // todo Upload class...
+	if( $datas['miniature'] != null ) 
+		upload_miniature( $cid , $datas['miniature'] ); // todo Upload class...
 
 	call_triggers( 'after_insert_new_content' );
 	call_triggers( 'after_insert_new_content_' . $content_type );
