@@ -6,7 +6,7 @@ get_header();
 
 <div class="container">
 	<div class="row page-header">
-		<div class="col-md-8">
+		<div class="col-md-8 content">
 		<?php
 		if( $count_result = get_queried()->total ) : ?>
 			<?php 
@@ -26,8 +26,16 @@ get_header();
 			endwhile;
 			div_close();
 		else :
-			echo '<h1>Votre recherche n\'a rien donné..</h1>';
-		endif; ?>
+			echo '<h2>Votre recherche n\'a rien donné <small>):</small></h2>'; ?>
+			<p>
+				Vous avez maintenant les possibilités suivantes :
+				<ul>
+					<li>Revenir à la <a href="<?php echo get_home_url(); ?>">page d'accueil</a></li>
+					<li>Réssayer la recherche à l'aide du formulaire ci-dessous.</li>
+				</ul>
+				<?php search_form(); ?>
+			</p>
+		<?php endif; ?>
 		</div>
 		<div class="col-md-4 top-buffer-40">
 			<?php

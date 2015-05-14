@@ -8,7 +8,7 @@ get_header();
 			<?php
 			while( qnext() ) : ?>
 				<h1><?php echo qtitle() ?></h1>
-				<p class="content">
+				<p>
 					<?php echo qcontent(); ?>
 				</p><?php
 			endwhile; 

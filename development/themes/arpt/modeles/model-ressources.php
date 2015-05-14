@@ -8,7 +8,7 @@ get_header();
 			<?php
 			while( qnext() ) : ?>
 				<h1><?php echo qtitle() ?></h1>
-				<p class="content">
+				<p>
 					<?php echo qcontent(); ?>
 				</p><?php
 			endwhile; ?>
@@ -45,6 +45,11 @@ get_header();
 					</div>
 				</div>
 			</div>
+		<p class="content-bottom top-buffer-40">
+			<?php 
+			echo '<i>' . siteslogan() . '</i>';
+			?>
+		</p>
 		</div>
 		<div class="col-md-4 top-buffer-40">
 			<?php

@@ -13,7 +13,7 @@ $articles = get_contents( array( 'type' => 'article' ) );
 				<p class="contentdata">
 					<?php echo 'Publié le ' . $articles->qdate() . ' par ' . $articles->qauthor() . '. Dans la catégorie ' . $articles->qcategory(); ?>
 				</p>
-				<p class="content">
+				<p>
 					<?php echo $articles->qcontent(); ?>
 				</p><?php
 			endwhile;
