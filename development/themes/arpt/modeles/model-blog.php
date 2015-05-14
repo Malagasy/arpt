@@ -14,9 +14,7 @@ $articles = get_contents( array( 'type' => 'article' ) );
 					<?php echo 'Publié le ' . $articles->qdate() . ' par ' . $articles->qauthor() . '. Dans la catégorie ' . a( $articles->qcategory() . '/' , $articles->qcategory() ); ?>
 				</p>
 				<?php
-				echo qminiature();
-				if( $miniature = qminiature() ) : 
-					echo $miniature;
+				if( $miniature = $articles->qminiature() ) : 
 					echo img( $miniature , array( 'class' => 'img-responsive' ) );
 				endif;
 				?>
