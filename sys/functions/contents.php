@@ -73,6 +73,30 @@ function delete_content( $id ){
 	return true;
 }
 
+function delete_contents( $ids ){
+	$is_ajaxcall = Arpt::is_ajaxcall();
+
+	if( $is_ajaxcall )
+		$ids = json_decode( $ids );
+
+	if( !is_array( $ids ) ){
+		$t = $ids;
+		unset( $ids );
+		$ids[] = $t;
+	}
+
+
+	$r = true;
+
+	foreach( $ids as $id )
+		if( !delete_content( $id ) )
+			$r = false;
+
+	if( $is_ajaxcall )
+		die( $r );
+	return $r;
+}
+
 function clean_navmenu_from_content( $cid ){
 	$content = get_contents( $cid );
 	$content->next();

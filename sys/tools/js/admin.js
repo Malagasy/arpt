@@ -167,6 +167,44 @@ dragNdroppMenu = function(){
 	});
 }
 
+deleteSelectionListContents = function(){
+	var mainSelection = jQuery(".admin-list-contents");
+
+
+	if( !mainSelection.length ) return;
+
+	jQuery("input[name=contents_id_all]").change( function(){
+		jQuery('table input[name="contents_id[]"').prop('checked',this.checked);
+	});
+
+	jQuery(".delete-selection").on("click",function(e){
+
+		e.preventDefault();
+
+		var selectionContents_id = jQuery('table input[name="contents_id[]"]:checked');
+		var contents_id = [];
+
+		if( selectionContents_id.length > 0 ){
+
+			if( !confirm('La suppression est définitive.') )
+				return false;
+
+			selectionContents_id.each( function(i){
+				contents_id[ i ] = jQuery(this).val();
+			});
+
+
+			var r = phpajax( "delete_contents" , JSON.stringify( contents_id ) );
+
+			if( r == "false" )
+				window.location = phpajax( "get_admin_url" ) + mainSelection.data('route') + "/failure/";
+			else
+				window.location = phpajax( "get_admin_url" ) + mainSelection.data('route') + "/success/";
+		}
+	});
+
+}
+
 
 function phpajax( action , param1 , param2, param3 , param4 ){
 
@@ -197,4 +235,5 @@ jQuery(document).ready(function(){
 	simpleConfirmBox();
 	dragNdroppWidget();
 	dragNdroppMenu();
+	deleteSelectionListContents();
 });
