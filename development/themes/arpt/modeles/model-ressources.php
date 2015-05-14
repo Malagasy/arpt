@@ -37,7 +37,7 @@ get_header();
 					if( $childs->qhas() ){
 						echo '<div clas="list-group">';
 						while( $childs->next() ){
-							echo $childs->qtitlelink( array( 'btn btn-link' ) );
+							echo $childs->qtitlelink( array( 'class' => 'btn btn-link' ) );
 						}
 						echo '</div>';
 					}
