@@ -20,11 +20,11 @@ get_header();
 					<?php
 					$childs = get_contentchilds( array( 'category' => 'concept' ) );
 					if( $childs->qhas() ){
-						echo '<ul>';
+						echo '<div class="list-group">';
 						while( $childs->next() ){
-							echo '<li>' . $childs->qtitlelink() . '</li>';
+							echo $childs->qtitlelink( array( 'class' => 'btn btn-link' ) );
 						}
-						echo '</ul>';
+						echo '</div>';
 					}
 					$childs->free();
 					?>
@@ -35,11 +35,11 @@ get_header();
 					<?php
 					$childs = get_contentchilds( array( 'category' => 'pratique' ) );
 					if( $childs->qhas() ){
-						echo '<ul>';
+						echo '<div clas="list-group">';
 						while( $childs->next() ){
-							echo '<li>' . $childs->qtitlelink() . '</li>';
+							echo $childs->qtitlelink( array( 'btn btn-link' ) );
 						}
-						echo '</ul>';
+						echo '</div>';
 					}
 					?>
 					</div>
