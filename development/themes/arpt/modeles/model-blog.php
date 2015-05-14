@@ -15,7 +15,7 @@ $articles = get_contents( array( 'type' => 'article' ) );
 				</p>
 				<?php
 				if( $miniature = $articles->qminiature() ) : 
-					echo img( $miniature , array( 'class' => 'img-responsive' , 'style' => 'height:200px' ) );
+					echo img( $miniature , array( 'class' => 'thumbnail pull-right' , 'style' => 'width:300px' ) );
 				endif;
 				?>
 				<p>
