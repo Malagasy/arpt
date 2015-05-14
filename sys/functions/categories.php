@@ -87,8 +87,6 @@ function insert_content_category( $cid , $catid ){
 
 function update_content_category( $cid , $catid ){
 
-	if( get_content_category( $cid ) === false )
-		return insert_content_category( $cid , $catid );
 	return new_query( 'update' , 'arpt_contents_categories' , array( 'set' => 'cat_id=\''.$catid.'\'' , 'where' => 'content_id=\''.$cid.'\'' ) );
 
 }
