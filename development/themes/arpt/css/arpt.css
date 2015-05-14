@@ -67,6 +67,10 @@ textarea.form-control{
 	right:3px;
 }
 
+.content p{
+	font-family: 'Source Sans Pro';
+}
+
 .view_code_block{
 	height: 700px !important;
 	overflow-y:auto;
