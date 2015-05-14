@@ -79,12 +79,12 @@ function authenticate_user( $name , $password ){
 	$crypted_pwd = pwd_crypt( $password );
 
 	if( is_email( $name ) ) :
-		$query = new_user( array( 'selection' => 'id' , 'email' => $name ) );
+		$query = new_user( array( 'selection' => 'id' , 'email' => 'STRICT-'.$name ) );
 		if( !$query->next() ) return false;
 
 		$related_id_name = $query->qid();
 	else :
-		$query = new_user( array( 'selection' => 'id' , 'name' => $name ) );
+		$query = new_user( array( 'selection' => 'id' , 'name' => 'STRICT-'.$name ) );
 		if( !$query->next() ) return false;
 
 		$related_id_name = $query->qid();
