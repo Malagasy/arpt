@@ -22,7 +22,7 @@ get_header();
 					if( $childs->qhas() ){
 						echo '<div class="list-group">';
 						while( $childs->next() ){
-							echo $childs->qtitlelink( array( 'class' => 'btn btn-link' ) );
+							echo $childs->qtitlelink( array( 'class' => 'list-group-item' ) );
 						}
 						echo '</div>';
 					}
@@ -37,7 +37,7 @@ get_header();
 					if( $childs->qhas() ){
 						echo '<div clas="list-group">';
 						while( $childs->next() ){
-							echo $childs->qtitlelink( array( 'class' => 'btn btn-link' ) );
+							echo $childs->qtitlelink( array( 'class' => 'list-group-item' ) );
 						}
 						echo '</div>';
 					}
