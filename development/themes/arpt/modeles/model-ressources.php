@@ -16,7 +16,7 @@ get_header();
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-6">
-						<h3>Concepts et notions</h4>
+						<h3>Concepts et notions</h3>
 					<?php
 					$childs = get_contentchilds( array( 'category' => 'concept' ) );
 					if( $childs->qhas() ){
@@ -31,7 +31,7 @@ get_header();
 					</div>
 
 					<div class="col-md-6">
-						<h4>Exemple pratique</h4>
+						<h3>Exemple pratique</h3>
 					<?php
 					$childs = get_contentchilds( array( 'category' => 'pratique' ) );
 					if( $childs->qhas() ){
