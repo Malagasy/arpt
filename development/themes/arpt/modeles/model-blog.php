@@ -13,6 +13,11 @@ $articles = get_contents( array( 'type' => 'article' ) );
 				<p class="contentdata">
 					<?php echo 'Publié le ' . $articles->qdate() . ' par ' . $articles->qauthor() . '. Dans la catégorie ' . a( $articles->qcategory() . '/' , $articles->qcategory() ); ?>
 				</p>
+				<?php
+				if( $miniature = qminiature() ) : 
+					echo img( $miniature , array( 'class' => 'img-responsive' ) );
+				endif;
+				?>
 				<p>
 					<?php echo $articles->qcontent(); ?>
 				</p><?php
