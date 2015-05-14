@@ -215,6 +215,8 @@ class Contents extends Queries{
 
 	public function qminiature(){
 		if( !$this->qhas() ) return false;
+		logr( $this->qid() );
+		logr( $this->qtitle() );
 		return get_miniature( 'content' , $this->qid() );
 	}
 	public function qid(){
