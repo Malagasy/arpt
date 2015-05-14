@@ -50,8 +50,8 @@ function qpagination( $extension = 3 ){
 	return get_queried()->pagination( $extension );
 }
 
-function qminiature( $formatname = 'classic' ){
-	return get_queried()->qminiature( $formatname );
+function qminiature(){
+	return get_queried()->qminiature();
 }
 
 function qtype(){

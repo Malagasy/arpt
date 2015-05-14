@@ -75,7 +75,7 @@ function get_miniature( $type = 'content' , $id = null ){
 
 	if( $type == 'content' ) :
 		$path = get_upload_dir() . '/.miniature/miniature-' . get_contentslug( $id );
-
+	
 		if( $miniature = glob( $path . '.*') )
 			return $miniature[0];
 

@@ -213,7 +213,7 @@ class Contents extends Queries{
 		endif;
 	}
 
-	public function qminiature( $formatname = 'classic' ){
+	public function qminiature(){
 		if( !$this->qhas() ) return false;
 		return get_miniature( 'content' , $this->qid() );
 	}
