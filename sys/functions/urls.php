@@ -84,6 +84,8 @@ function get_site_url( $string = null ){
 */
 
 function get_url( $name ){
+	if( Arpt::is_ajaxcall() )
+		die( get_site_url() . clean_path( '/' . $name . '/' ) );
 	return get_site_url() . clean_path( '/' . $name . '/' );
 }
 

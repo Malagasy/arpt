@@ -22,7 +22,7 @@ function admin_routing(){
 
 	if( isset( $datas ) ) :
 		if( currentusercan( $datas['access'] ) ) :
-			echo '<div class="admin-' . $datas['slug'] . '" data-route="'.$datas['slug'].'">';
+			echo '<div class="admin-' . strtok( $datas['slug'] , '/' ) . '" data-route="'.$datas['slug'].'">';
 			echo '<h1 class="page-header">' . get_realname_submenu( $datas['name'] ) . '</h1>';
 			call_user_func( $datas['function'] );
 			echo '</div>';

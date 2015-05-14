@@ -601,7 +601,6 @@ function adminpage_option_general(){
 	
 	form_close();
 }
-
 function adminpage_list_contents(){
 	$the_limit = 15;
 
@@ -611,44 +610,53 @@ function adminpage_list_contents(){
 		$contents = get_contents( array( 'type' => get_pageargs(1) , 'ob_suffix' => ' DESC ' ,  'limit' => $the_limit , 'offset' => the_offset() , 'status' => 'all' , 'search' => $s ) );
 	else
 		$contents = get_contents( array( 'type' => get_pageargs(1) , 'ob_suffix' => ' DESC ' ,  'limit' => $the_limit , 'offset' => the_offset() , 'status' => 'all' ) );
-	form_open( array('class' => 'form-inline text-right', 'method' => 'get'  ));
+
+
+
+	form_open( array('class' => 'form-inline pull-right', 'method' => 'get'  ));
 	div( array('class'=>'form-group' ));
 	form_input( array('name'=>'s' , 'class'=>'form-control' , 'placeholder' => 'Recherche un contenu..' ) , null );
 	div_close();
 	form_submit( array('class'=>'btn btn-default' , 'value'=>'Go'));
 	form_close();
 
+
+
+
+	echo a( 'delete-selection' , 'Supprimer la sélection' , array( 'class' => 'btn btn-link margin-bottom-10 delete-selection' ) );
+
+
 	div( array( 'class' => 'panel panel-default' ) );
 	div( array( 'class' => 'panel-heading' ) );
 	echo '<p class="pull-right">' . a( get_admin_url('/add-content/' . get_pageargs(1) ) , 'Nouveau' ) . '</p>';
-	echo '<p>Liste des ' .  pluralize( get_pageargs(1) ) . ' ( ' . ( $the_limit*the_offset() ) . ' - ' . ($the_limit*the_offset()+$the_limit) . ' sur ' . count($contents->getAll()) . ' )</p>';
+	echo '<p>Liste des ' .  pluralize( get_pageargs(1) ) . ' ( ' . ( $the_limit*the_offset() ) . ' - ' . ($the_limit*the_offset()+$the_limit) . ' sur ' . $contents->new_based_on_current( array( 'limit' => 'nolimit' ) )->total  . ' )</p>';
 	div_close();
 	$contents->reset();
+
+
 	echo '<table class="table table-hover">';
 	echo '<thead><tr>';
-	echo '<th>#</th>';
+	echo '<th>', form_checkbox( array( 'name' => 'contents_id_all' , 'value' => 'all' ) ) ,  '</th>';
 	echo '<th class="col-sm-2">Titre du contenu</th>';
 	echo '<th class="col-sm-1">Auteur</th>';
 	echo '<th class="col-sm-1">Catégorie</th>';
 	echo '<th class="col-sm-2">Date de création</th>';
-	echo '<th class="col-sm-4">Message</th>';
+	echo '<th class="col-sm-5">Message</th>';
 	echo '<th class="col-sm-1">Statut</th>';
-	echo '<th class="col-sm-2">Contenu parent</th>';
 	echo '</tr></thead>';
 	echo '<tbody>';
 	if( $contents->has() ) :
 		while( $contents->next() ) :
 			echo '<tr>';
-			echo '<td scope="row">' . $contents->qid() . '</td>';
+			echo '<td>', form_checkbox( array( 'name' => 'contents_id[]' , 'value' => $contents->qid() ) ) , '</td>';
 			echo '<td >' . a( get_edit_content_url( $contents->qid() ) , $contents->qtitle() ) . ' ';
 			echo get_delete_url( 'content' , $contents->qid() );
 			echo '</td>';
-			echo '<td>' . $contents->qauthor() . '</td>';
+			echo '<td>' . a( get_edit_user_url( $contents->qauthorid() ) , $contents->qauthor() ) . '</td>';
 			echo '<td>' . $contents->qcategory() . '</td>';
 			echo '<td>' . $contents->qdate() . '</td>';
 			echo '<td>' . $contents->qsumup() . '</td>';
 			echo '<td>' . ucwords( $contents->qstatus() ) . '</td>';
-			echo '<td>' . get_contentname( $contents->qpid() ) . '</td>';
 			echo '</tr>';
 		endwhile;
 		echo '</tbody>';
@@ -664,7 +672,6 @@ function adminpage_list_contents(){
 	$contents->pagination();
 	echo '</nav>';
 }
-
 function adminpage_list_users(){
 	if( filter_exists( get_pageargs(1) ) ) : $userid = get_pageargs(1);
 		if( is_number( $userid ) )
