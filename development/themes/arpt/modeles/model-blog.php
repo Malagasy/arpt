@@ -11,7 +11,7 @@ $articles = get_contents( array( 'type' => 'article' ) );
 			while( $articles->qnext() ) : ?>
 				<h2><?php echo $articles->qtitle() ?><span class="date"><?php echo 'Le ' . $articles->qdate(); ?></span></h2>
 				<p class="contentdata">
-					<?php echo 'Publié le ' . $articles->qdate() . ' par ' . $articles->qauthor() . '. Dans la catégorie ' . $articles->qcategory(); ?>
+					<?php echo 'Publié le ' . $articles->qdate() . ' par ' . $articles->qauthor() . '. Dans la catégorie ' . a( $articles->qcategory() , $articles->qcategory() ); ?>
 				</p>
 				<p>
 					<?php echo $articles->qcontent(); ?>
