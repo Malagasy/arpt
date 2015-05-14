@@ -16,15 +16,15 @@ get_header();
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-6">
-						<h4>Concepts et notions</h4>
+						<h3>Concepts et notions</h4>
 					<?php
 					$childs = get_contentchilds( array( 'category' => 'concept' ) );
 					if( $childs->qhas() ){
-						echo '<div class="list-group">';
+						echo '<ul class="list-unstyled">';
 						while( $childs->next() ){
-							echo $childs->qtitlelink( array( 'class' => 'list-group-item' ) );
+							echo '<li>' . $childs->qtitlelink() . '</li>';
 						}
-						echo '</div>';
+						echo '</ul>';
 					}
 					$childs->free();
 					?>
@@ -35,11 +35,11 @@ get_header();
 					<?php
 					$childs = get_contentchilds( array( 'category' => 'pratique' ) );
 					if( $childs->qhas() ){
-						echo '<div clas="list-group">';
+						echo '<ul class="list-unstyled">';
 						while( $childs->next() ){
-							echo $childs->qtitlelink( array( 'class' => 'list-group-item' ) );
+							echo '<li>' . $childs->qtitlelink() . '</li>';
 						}
-						echo '</div>';
+						echo '</ul>';
 					}
 					?>
 					</div>
