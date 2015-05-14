@@ -81,14 +81,14 @@ function window_get_media_miniature(){
 						?>
 					</div>
 					<div class="modal-footer">
-						<a class="btn btn-primary valid" data-dismiss="modal" href="#">Sélectionner</a>
+						<a class="btn btn-primary valid-miniature" data-dismiss="modal" href="#">Sélectionner</a>
 						<a class="btn btn-default" data-dismiss="modal" href="#">Annuler</a>
 					</div>
 				</div>
 			</div>
 		</div>
 		<script type="text/javascript">
-			jQuery("div.modal").on("click",".modal-footer a.valid",function(){
+			jQuery("div.modal").on("click",".modal-footer a.valid-miniature",function(){
 				var miniatureSelection = jQuery(".panel-primary .content-miniature > img");
 				var path = jQuery("img.selected").data("path");
 
