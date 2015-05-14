@@ -151,17 +151,18 @@ function adminpage_add_edit_contents(){
 	div( array( 'class' => 'panel-heading' ) , 'Informations complémentaires' );
 	div( array( 'class' => 'panel-body' ) );
 
+		div( array( 'class' => 'form-group' ) );
+
+		div( array( 'class' => 'form-group content-miniature' ) );
+
 		if( $img = get_miniature( 'content' , $cid ) ){
 
 			form_checkbox( array( 'name' => 'delete_miniature' , 'value' => 1 ) , 'Supprimer la miniature' );
-			echo img( $img , get_format('miniature-small') + array( 'alt' => 'Miniature du contenu' , 'class' => 'img-responsive' ) );
+			echo img( $img , get_format('miniature-small') + array( 'alt' => 'Miniature du contenu' , 'class' => 'img-responsive' ) ) , '<br>';
 		}
-		echo '<br>';
 
-		div( array( 'class' => 'form-group' ) );
-		div( array( 'class' => 'form-group' ) );
-		form_input( array( 'type' => 'hidden' , 'name' => 'MAX_FILE_SIZE' , 'value'  => maxsize_upload_files() ) );
-		form_input( array( 'type' => 'file' , 'name' => 'miniature' ) , null );
+		window_get_media_miniature();
+
 		div_close();
 
 		div( array( 'class' => 'form-group' ) );
